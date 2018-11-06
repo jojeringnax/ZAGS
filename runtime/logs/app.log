@@ -22632,3 +22632,138 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1541514787,644
     'REQUEST_TIME' => 1541514787
 ]
+2018-11-06 16:29:04 [127.0.0.1][-][-][error][yii\base\InvalidArgumentException] yii\base\InvalidArgumentException: The file or directory to be published does not exist: F:\zags\vendor\bower/jquery/dist in F:\zags\vendor\yiisoft\yii2\web\AssetManager.php:456
+Stack trace:
+#0 F:\zags\vendor\yiisoft\yii2\web\AssetBundle.php(185): yii\web\AssetManager->publish('F:\\zags\\vendor\\...', Array)
+#1 F:\zags\vendor\yiisoft\yii2\web\AssetManager.php(268): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 F:\zags\vendor\yiisoft\yii2\web\AssetManager.php(239): yii\web\AssetManager->loadBundle('yii\\web\\JqueryA...', Array, true)
+#3 F:\zags\vendor\yiisoft\yii2\web\View.php(286): yii\web\AssetManager->getBundle('yii\\web\\JqueryA...')
+#4 F:\zags\vendor\yiisoft\yii2\web\View.php(291): yii\web\View->registerAssetBundle('yii\\web\\JqueryA...', NULL)
+#5 F:\zags\vendor\yiisoft\yii2\web\View.php(291): yii\web\View->registerAssetBundle('yii\\web\\YiiAsse...', NULL)
+#6 F:\zags\vendor\yiisoft\yii2\web\AssetBundle.php(125): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#7 F:\zags\views\layouts\main.php(12): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 F:\zags\vendor\yiisoft\yii2\base\View.php(336): require('F:\\zags\\views\\l...')
+#9 F:\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('F:\\zags\\views\\l...', Array)
+#10 F:\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('F:\\zags\\views\\l...', Array, Object(app\controllers\SiteController))
+#11 F:\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#12 F:\zags\controllers\SiteController.php(52): yii\base\Controller->render('index')
+#13 [internal function]: app\controllers\SiteController->actionIndex()
+#14 F:\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#15 F:\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#16 F:\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#17 F:\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#18 F:\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 F:\zags\web\index.php(12): yii\base\Application->run()
+#20 {main}
+2018-11-06 16:29:04 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.xxx'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,it-IT;q=0.8,it;q=0.7,ru-RU;q=0.6,ru;q=0.5,en-US;q=0.4'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\PuTTY\\;G:\\Git\\cmd;C:\\php7\\;C:\\Apache24\\bin\\;C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.35 (Win64) PHP/7.3.0RC3 OpenSSL/1.0.2p'
+    'SERVER_NAME' => 'zags.xxx'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'F:/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'F:/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'F:/zags/web/index.php'
+    'REMOTE_PORT' => '57517'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541521744.13
+    'REQUEST_TIME' => 1541521744
+]
+2018-11-06 16:31:30 [127.0.0.1][-][-][error][yii\base\InvalidArgumentException] yii\base\InvalidArgumentException: The file or directory to be published does not exist: F:\zags\vendor\bower/jquery/dist in F:\zags\vendor\yiisoft\yii2\web\AssetManager.php:456
+Stack trace:
+#0 F:\zags\vendor\yiisoft\yii2\web\AssetBundle.php(185): yii\web\AssetManager->publish('F:\\zags\\vendor\\...', Array)
+#1 F:\zags\vendor\yiisoft\yii2\web\AssetManager.php(268): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 F:\zags\vendor\yiisoft\yii2\web\AssetManager.php(239): yii\web\AssetManager->loadBundle('yii\\web\\JqueryA...', Array, true)
+#3 F:\zags\vendor\yiisoft\yii2\web\View.php(286): yii\web\AssetManager->getBundle('yii\\web\\JqueryA...')
+#4 F:\zags\vendor\yiisoft\yii2\web\View.php(291): yii\web\View->registerAssetBundle('yii\\web\\JqueryA...', NULL)
+#5 F:\zags\vendor\yiisoft\yii2\web\View.php(291): yii\web\View->registerAssetBundle('yii\\web\\YiiAsse...', NULL)
+#6 F:\zags\vendor\yiisoft\yii2\web\AssetBundle.php(125): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#7 F:\zags\views\layouts\main.php(12): yii\web\AssetBundle::register(Object(yii\web\View))
+#8 F:\zags\vendor\yiisoft\yii2\base\View.php(336): require('F:\\zags\\views\\l...')
+#9 F:\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('F:\\zags\\views\\l...', Array)
+#10 F:\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('F:\\zags\\views\\l...', Array, Object(app\controllers\SiteController))
+#11 F:\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#12 F:\zags\controllers\SiteController.php(52): yii\base\Controller->render('index')
+#13 [internal function]: app\controllers\SiteController->actionIndex()
+#14 F:\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#15 F:\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#16 F:\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#17 F:\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#18 F:\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#19 F:\zags\web\index.php(12): yii\base\Application->run()
+#20 {main}
+2018-11-06 16:31:30 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.xxx'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9,it-IT;q=0.8,it;q=0.7,ru-RU;q=0.6,ru;q=0.5,en-US;q=0.4'
+    'PATH' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\PuTTY\\;G:\\Git\\cmd;C:\\php7\\;C:\\Apache24\\bin\\;C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.35 (Win64) PHP/7.3.0RC3 OpenSSL/1.0.2p'
+    'SERVER_NAME' => 'zags.xxx'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'F:/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'F:/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'F:/zags/web/index.php'
+    'REMOTE_PORT' => '57744'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541521890.934
+    'REQUEST_TIME' => 1541521890
+]
