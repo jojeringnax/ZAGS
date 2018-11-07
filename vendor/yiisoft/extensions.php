@@ -3,15 +3,6 @@
 $vendorDir = dirname(__DIR__);
 
 return array (
-  'yiisoft/yii2-bootstrap' => 
-  array (
-    'name' => 'yiisoft/yii2-bootstrap',
-    'version' => '2.0.8.0',
-    'alias' => 
-    array (
-      '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap/src',
-    ),
-  ),
   'yiisoft/yii2-debug' => 
   array (
     'name' => 'yiisoft/yii2-debug',
@@ -48,13 +39,13 @@ return array (
       '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer/src',
     ),
   ),
-  'yiisoft/yii2-codeception' => 
+  'yiisoft/yii2-bootstrap' => 
   array (
-    'name' => 'yiisoft/yii2-codeception',
-    'version' => '2.0.6.0',
+    'name' => 'yiisoft/yii2-bootstrap',
+    'version' => '2.0.0.0-beta',
     'alias' => 
     array (
-      '@yii/codeception' => $vendorDir . '/yiisoft/yii2-codeception',
+      '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap',
     ),
   ),
 );

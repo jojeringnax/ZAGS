@@ -30,7 +30,7 @@ AppAsset::register($this);
         'brandLabel' => 'ZAGS',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-dark fixed-top bg-dark',
         ],
     ]);
     echo Nav::widget([
