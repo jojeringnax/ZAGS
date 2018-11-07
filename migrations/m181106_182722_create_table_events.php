@@ -15,7 +15,7 @@ class m181106_182722_create_table_events extends Migration
     public function safeUp()
     {
         $this->createTable('events', [
-            'device_id' => $this->primaryKey(),
+            'device_id' => $this->integer(11),
             'time' => $this->dateTime()->defaultExpression('CURRENT_TIMESTAMP')->notNull(),
             'name' => $this->string(40)->notNull(),
             'data' => $this->string(20)->defaultValue(0)->notNull(),

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Config;
+use app\models\Events;
 use app\models\Log;
 use app\models\Licenses;
 use app\models\Owner;
@@ -42,6 +43,16 @@ class AdminController extends \yii\web\Controller
                 ],
             ],
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function actionGames()
+    {
+        return $this->render('games', [
+            'games' => Events::getAllGames()
+        ]);
     }
 
     public function actionIndex()

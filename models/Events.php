@@ -46,4 +46,12 @@ class Events extends \yii\db\ActiveRecord
             'nonce' => 'Nonce',
         ];
     }
+
+    /**
+     * @return Events[]
+     */
+    public static function getAllGames()
+    {
+        return self::findAll(['name' => 'Game']);
+    }
 }
