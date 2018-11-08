@@ -15,15 +15,16 @@ class m181106_165520_create_table_config extends Migration
         $this->createTable('config', [
             'wedding_price' => $this->integer(11)->defaultValue(200),
             'disabled' => $this->integer(11)->defaultValue(null),
-            'device_id' => $this->primaryKey(),
+            'device_id' => $this->integer(11)->notNull(),
             'bills' => $this->string(255)->defaultValue(null),
             'multitouch_enabled' => $this->integer(11)->defaultValue(null),
             'description' => $this->string(255)->notNull(),
-            'quiet_time_start' => $this->integer(11)->defaultValue(0),
-            'quiet_time_end' => $this->integer(11)->defaultValue(0),
-            'reprint_price' => $this->integer(11)->defaultValue(50),
-            'talisman_price' => $this->integer(11)->defaultValue(200),
-            'kinoselfie_price' => $this->integer(11)->defaultValue(200),
+            'log_level' => $this->string(45)->notNull(),
+            'quiet_time_start' => $this->integer(11)->defaultValue(0)->notNull(),
+            'quiet_time_end' => $this->integer(11)->defaultValue(0)->notNull(),
+            'reprint_price' => $this->integer(11)->defaultValue(50)->notNull(),
+            'talisman_price' => $this->integer(11)->defaultValue(200)->notNull(),
+            'kinoselfie_price' => $this->integer(11)->defaultValue(200)->notNull(),
         ]);
 
     }
