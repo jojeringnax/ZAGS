@@ -23356,3 +23356,2048 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1541584607,081
     'REQUEST_TIME' => 1541584607
 ]
+2018-11-07 15:13:47 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=u479...', 'u479413', 's.7nSKI-9sePI', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:13:25 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '60876'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603604,847
+    'REQUEST_TIME' => 1541603604
+]
+2018-11-07 15:14:44 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=u479...', 'u479413', 's.7nSKI-9sePI', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:14:23 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '60992'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603663,42
+    'REQUEST_TIME' => 1541603663
+]
+2018-11-07 15:15:06 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=u479...', 'u479413', 's.7nSKI-9sePI', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:14:39 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '61018'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603679,414
+    'REQUEST_TIME' => 1541603679
+]
+2018-11-07 15:15:29 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=u479...', 'u479413', 's.7nSKI-9sePI', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:15:08 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '61062'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603708,568
+    'REQUEST_TIME' => 1541603708
+]
+2018-11-07 15:16:15 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'staik4'@'localhost' (using password: YES) in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'staik4', 'oothie3U', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'staik4'@'localhost' (using password: YES) in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:16:14 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '61178'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603774,088
+    'REQUEST_TIME' => 1541603774
+]
+2018-11-07 15:16:23 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'staik4'@'localhost' (using password: NO) in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'staik4', '', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'staik4'@'localhost' (using password: NO) in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:16:23 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '61179'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603783,37
+    'REQUEST_TIME' => 1541603783
+]
+2018-11-07 15:16:26 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'staik4'@'localhost' (using password: NO) in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'staik4', '', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'staik4'@'localhost' (using password: NO) in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 15:16:26 [127.0.0.1][-][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '61203'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541603786,761
+    'REQUEST_TIME' => 1541603786
+]
+2018-11-07 15:49:43 [127.0.0.1][1][k0f0lq0o9api8mffsmcdmhmvnu][error][Error] Error: Class 'yii\bootstrap\CustomNavBar' not found in C:\Server\data\htdocs\zags\views\layouts\main.php:29
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\SiteController))
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#4 C:\Server\data\htdocs\zags\controllers\SiteController.php(52): yii\base\Controller->render('index')
+#5 [internal function]: app\controllers\SiteController->actionIndex()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2018-11-07 15:49:42 [127.0.0.1][1][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '64518'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541605782,013
+    'REQUEST_TIME' => 1541605782
+]
+2018-11-07 15:50:59 [127.0.0.1][1][k0f0lq0o9api8mffsmcdmhmvnu][error][yii\base\UnknownClassException] yii\base\UnknownClassException: Unable to find 'app\models\custom\CustomNavBar' in file: C:\Server\data\htdocs\zags/models/custom/CustomNavBar.php. Namespace missing? in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php:296
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\models\\cust...')
+#1 C:\Server\data\htdocs\zags\views\layouts\main.php(29): spl_autoload_call('app\\models\\cust...')
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require('C:\\Server\\data\\...')
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\SiteController))
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#6 C:\Server\data\htdocs\zags\controllers\SiteController.php(52): yii\base\Controller->render('index')
+#7 [internal function]: app\controllers\SiteController->actionIndex()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('', Array)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('', Array)
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#14 {main}
+2018-11-07 15:50:59 [127.0.0.1][1][k0f0lq0o9api8mffsmcdmhmvnu][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'k0f0lq0o9api8mffsmcdmhmvnu'
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=k0f0lq0o9api8mffsmcdmhmvnu; _csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '64630'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541605859,01
+    'REQUEST_TIME' => 1541605859
+]
+2018-11-07 16:26:33 [127.0.0.1][-][k4hm3svpebkg8vaho1hp6u1ea4][error][ParseError] ParseError: syntax error, unexpected ''links'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in C:\Server\data\htdocs\zags\views\layouts\main.php:56
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\SiteController))
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#3 C:\Server\data\htdocs\zags\controllers\SiteController.php(66): yii\base\Controller->render('login', Array)
+#4 [internal function]: app\controllers\SiteController->actionLogin()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('login', Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2018-11-07 16:26:33 [127.0.0.1][-][k4hm3svpebkg8vaho1hp6u1ea4][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+    'PHPSESSID' => 'k4hm3svpebkg8vaho1hp6u1ea4'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => '_csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D; PHPSESSID=k4hm3svpebkg8vaho1hp6u1ea4'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '51745'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541607993,738
+    'REQUEST_TIME' => 1541607993
+]
+2018-11-07 16:31:20 [127.0.0.1][-][k4hm3svpebkg8vaho1hp6u1ea4][error][ParseError] ParseError: syntax error, unexpected '\' (T_NS_SEPARATOR), expecting ']' in C:\Server\data\htdocs\zags\views\layouts\main.php:56
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\SiteController))
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#3 C:\Server\data\htdocs\zags\controllers\SiteController.php(66): yii\base\Controller->render('login', Array)
+#4 [internal function]: app\controllers\SiteController->actionLogin()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('login', Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2018-11-07 16:31:20 [127.0.0.1][-][k4hm3svpebkg8vaho1hp6u1ea4][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+    'PHPSESSID' => 'k4hm3svpebkg8vaho1hp6u1ea4'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => '_csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D; PHPSESSID=k4hm3svpebkg8vaho1hp6u1ea4'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52231'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541608280,795
+    'REQUEST_TIME' => 1541608280
+]
+2018-11-07 16:39:17 [127.0.0.1][-][k4hm3svpebkg8vaho1hp6u1ea4][error][ParseError] ParseError: syntax error, unexpected ''links'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in C:\Server\data\htdocs\zags\views\layouts\main.php:58
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(399): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\SiteController))
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#3 C:\Server\data\htdocs\zags\controllers\SiteController.php(66): yii\base\Controller->render('login', Array)
+#4 [internal function]: app\controllers\SiteController->actionLogin()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('login', Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/login', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2018-11-07 16:39:17 [127.0.0.1][-][k4hm3svpebkg8vaho1hp6u1ea4][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => 'af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP\";}'
+    'PHPSESSID' => 'k4hm3svpebkg8vaho1hp6u1ea4'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => '_csrf=af51a7711c58ec3aa01be840e7d09e247220fb28d5cc02da41960e47f037fc7ba%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Y7CleAe9dBR6wyj1Bs_jOZSuqzi7UzGP%22%3B%7D; PHPSESSID=k4hm3svpebkg8vaho1hp6u1ea4'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '53122'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/web/index.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541608757,832
+    'REQUEST_TIME' => 1541608757
+]
+2018-11-07 18:08:55 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ParseError] ParseError: syntax error, unexpected 'echo' (T_ECHO) in C:\Server\data\htdocs\zags\views\admin\games.php:17
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\controllers\AdminController.php(54): yii\base\Controller->render('games', Array)
+#4 [internal function]: app\controllers\AdminController->actionGames()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2018-11-07 18:08:55 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_DNT' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '61847'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541614135,685
+    'REQUEST_TIME' => 1541614135
+]
+2018-11-07 21:46:42 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'zags', '', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 21:46:39 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '49851'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541627198,423
+    'REQUEST_TIME' => 1541627198
+]
+2018-11-07 22:23:04 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'zags', '', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 22:23:03 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '51576'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541629382,842
+    'REQUEST_TIME' => 1541629382
+]
+2018-11-07 22:23:25 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'zags', '', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 22:23:24 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '51587'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541629404,515
+    'REQUEST_TIME' => 1541629404
+]
+2018-11-07 22:24:15 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:687
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(687): PDO->__construct('mysql:host=127....', 'zags', '', NULL)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#15 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#22 [internal function]: yii\base\BaseObject->__construct(Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#28 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#30 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#38 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#39 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#40 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#41 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+ in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php:624
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(996): yii\db\Connection->open()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(253): yii\db\Connection->getSlavePdo()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(1143): yii\db\Command->prepare(true)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(312): yii\db\Command->queryAll()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\mysql\Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(744): yii\db\mysql\Schema->loadTableSchema('users')
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\Schema.php(194): yii\db\Schema->getTableMetadata('users', 'schema', false)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(384): yii\db\Schema->getTableSchema('users')
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(408): yii\db\ActiveRecord::getTableSchema()
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\ActiveRecord.php(178): yii\db\ActiveRecord::primaryKey()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\db\BaseActiveRecord.php(112): yii\db\ActiveRecord::findByCondition(1)
+#13 C:\Server\data\htdocs\zags\models\User.php(65): yii\db\BaseActiveRecord::findOne(1)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(690): app\models\User::findIdentity(1)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(192): yii\web\User->renewAuthStatus()
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\User.php(360): yii\web\User->getIdentity()
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(139): yii\web\User->getIsGuest()
+#18 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\panels\UserPanel.php(79): yii\base\Component->__get('isGuest')
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\panels\UserPanel->init()
+#20 [internal function]: yii\base\BaseObject->__construct(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\panel...', Array, Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\panel...', Array, Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(182): yii\BaseYii::createObject(Array)
+#25 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2-debug\src\Module.php(154): yii\debug\Module->initPanels()
+#26 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\debug\Module->init()
+#27 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(158): yii\base\BaseObject->__construct(Array)
+#28 [internal function]: yii\base\Module->__construct('debug', Object(yii\web\Application), Array)
+#29 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(375): ReflectionClass->newInstanceArgs(Array)
+#30 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#31 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#32 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#33 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#34 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#35 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#36 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#37 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#38 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->__construct('[<span class="s...')
+#39 {main}
+Additional Information:
+
+2018-11-07 22:24:14 [127.0.0.1][-][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '51592'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/web/index.php'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541629454,16
+    'REQUEST_TIME' => 1541629454
+]

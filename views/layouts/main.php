@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use app\models\custom\CustomNavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
@@ -26,34 +26,39 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
+    CustomNavBar::begin([
         'brandLabel' => 'ZAGS',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-dark fixed-top bg-dark',
+            'class' => 'navbar navbar-expand-lg navbar-dark fixed-top bg-dark',
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'nav justify-content-end d-flex', 'style' => 'width:100%'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'Главная', 'url' => ['/site/index'], 'options' => ['class' => 'item-nav-li']],
             Yii::$app->user->isGuest ?
                 ['label' => 'Войти', 'url' => ['/site/login']] :
                 [
                     'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
+                    'linkOptions' => ['data-method' => 'post'],
+                    'options' => ['class'=>'item-nav-li']
                 ],
         ],
     ]);
-    NavBar::end();
+    CustomNavBar::end();
     ?>
 
     <div class="container">
+      <nav aria-label="breadcrumb">
         <?= Breadcrumbs::widget([
+            'itemTemplate' => '<li class="breadcrumb-item">{link}</li>',
+            'activeItemTemplate' => '<li class="breadcrumb-item active">{link}</li>',
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?= $content ?>
+      </nav>
+      <?= $content ?>
     </div>
 </div>
 
