@@ -9,6 +9,7 @@ use yii\grid\GridView;
     'tableOptions' => [
         'class' => 'table table-striped table-bordered',
         'id' => 'games_table'
+        
     ]
 ]);
 
