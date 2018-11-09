@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use yii\data\ActiveDataProvider;
 use app\models\Config;
 use app\models\Events;
 use app\models\Log;
@@ -51,8 +52,13 @@ class AdminController extends \yii\web\Controller
     public function actionGames()
     {
         return $this->render('games', [
-            'games' => Events::getAllGames()
-        ]);
+            'games' => new ActiveDataProvider([
+                        'query' => Events::find()->where(['name' => 'Game']),
+                        'pagination' => [
+                            'pageSize' => 10
+                        ]
+                    ])
+            ]);
     }
 
     public function actionIndex()

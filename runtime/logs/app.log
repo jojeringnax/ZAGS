@@ -25401,3 +25401,1088 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1541629454,16
     'REQUEST_TIME' => 1541629454
 ]
+2018-11-08 20:59:15 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ParseError] ParseError: syntax error, unexpected ';', expecting ']' in C:\Server\data\htdocs\zags\controllers\AdminController.php:65
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(637): class_exists('app\\controllers...')
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(596): yii\base\Module->createControllerByID('admin')
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(522): yii\base\Module->createController('games')
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#8 {main}
+2018-11-08 20:59:15 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52344'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541710755,682
+    'REQUEST_TIME' => 1541710755
+]
+2018-11-08 20:59:27 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][Error] Error: Class 'app\controllers\ActiveDataProvider' not found in C:\Server\data\htdocs\zags\controllers\AdminController.php:54
+Stack trace:
+#0 [internal function]: app\controllers\AdminController->actionGames()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#7 {main}
+2018-11-08 20:59:27 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52366'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541710767,125
+    'REQUEST_TIME' => 1541710767
+]
+2018-11-08 20:59:52 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][Error] Error: Cannot use object of type yii\data\ActiveDataProvider as array in C:\Server\data\htdocs\zags\views\admin\games.php:16
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#4 C:\Server\data\htdocs\zags\controllers\AdminController.php(63): yii\base\Controller->render('games', Array)
+#5 [internal function]: app\controllers\AdminController->actionGames()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2018-11-08 20:59:52 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52406'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541710792,106
+    'REQUEST_TIME' => 1541710792
+]
+2018-11-08 21:00:36 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][Error] Error: Cannot use object of type yii\data\ActiveDataProvider as array in C:\Server\data\htdocs\zags\views\admin\games.php:11
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#4 C:\Server\data\htdocs\zags\controllers\AdminController.php(63): yii\base\Controller->render('games', Array)
+#5 [internal function]: app\controllers\AdminController->actionGames()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2018-11-08 21:00:36 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52483'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541710836,621
+    'REQUEST_TIME' => 1541710836
+]
+2018-11-08 21:01:49 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][Error] Error: Class 'GridView' not found in C:\Server\data\htdocs\zags\views\admin\games.php:6
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#4 C:\Server\data\htdocs\zags\controllers\AdminController.php(63): yii\base\Controller->render('games', Array)
+#5 [internal function]: app\controllers\AdminController->actionGames()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2018-11-08 21:01:49 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52602'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541710909,335
+    'REQUEST_TIME' => 1541710909
+]
+2018-11-08 21:23:32 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][Error] Error: Class 'GridView' not found in C:\Server\data\htdocs\zags\views\admin\games.php:6
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require()
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#4 C:\Server\data\htdocs\zags\controllers\AdminController.php(63): yii\base\Controller->render('games', Array)
+#5 [internal function]: app\controllers\AdminController->actionGames()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#12 {main}
+2018-11-08 21:23:32 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '54587'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541712212,732
+    'REQUEST_TIME' => 1541712212
+]
+2018-11-08 21:25:35 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][yii\base\ErrorException:8] yii\base\ErrorException: Undefined index: created_at in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\Sort.php:225
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\Sort.php(225): yii\base\ErrorHandler->handleError(8, 'Undefined index...', 'C:\\Server\\data\\...', 225, Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\ActiveDataProvider.php(113): yii\data\Sort->getOrders()
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\BaseDataProvider.php(101): yii\data\ActiveDataProvider->prepareModels()
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\BaseDataProvider.php(114): yii\data\BaseDataProvider->prepare()
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(584): yii\data\BaseDataProvider->getModels()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(538): yii\grid\GridView->guessColumns()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(283): yii\grid\GridView->initColumns()
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\grid\GridView->init()
+#8 [internal function]: yii\base\BaseObject->__construct(Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\grid\\GridVi...', Array, Array)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\grid\\GridVi...', Array, Array)
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Widget.php(137): yii\BaseYii::createObject(Array)
+#13 C:\Server\data\htdocs\zags\views\admin\games.php(8): yii\base\Widget::widget(Array)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require('C:\\Server\\data\\...')
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#17 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#18 C:\Server\data\htdocs\zags\controllers\AdminController.php(63): yii\base\Controller->render('games', Array)
+#19 [internal function]: app\controllers\AdminController->actionGames()
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#24 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#25 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#26 {main}
+2018-11-08 21:25:35 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '54804'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin/games'
+    'REQUEST_URI' => '/web/index.php?r=admin/games'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541712335,592
+    'REQUEST_TIME' => 1541712335
+]
+2018-11-08 23:17:37 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ParseError] ParseError: syntax error, unexpected ')', expecting ']' in C:\Server\data\htdocs\zags\views\admin\games.php:15
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\controllers\AdminController.php(56): yii\base\Controller->render('games', Array)
+#4 [internal function]: app\controllers\AdminController->actionGames()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2018-11-08 23:17:37 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '1'
+    'per-page' => '10'
+    'sort' => '-name'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=name'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '65358'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541719057,076
+    'REQUEST_TIME' => 1541719057
+]
+2018-11-08 23:17:43 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ParseError] ParseError: syntax error, unexpected ')', expecting ']' in C:\Server\data\htdocs\zags\views\admin\games.php:15
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#3 C:\Server\data\htdocs\zags\controllers\AdminController.php(56): yii\base\Controller->render('games', Array)
+#4 [internal function]: app\controllers\AdminController->actionGames()
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#11 {main}
+2018-11-08 23:17:43 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '1'
+    'per-page' => '10'
+    'sort' => '-name'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=name'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '65359'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541719063,274
+    'REQUEST_TIME' => 1541719063
+]
+2018-11-08 23:18:14 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ReflectionException] ReflectionException: Class sd does not exist in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('sd')
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('sd')
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('sd', Array, Array)
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('sd', Array, Array)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(547): yii\BaseYii::createObject(Array)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(283): yii\grid\GridView->initColumns()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\grid\GridView->init()
+#7 [internal function]: yii\base\BaseObject->__construct(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\grid\\GridVi...', Array, Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\grid\\GridVi...', Array, Array)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Widget.php(137): yii\BaseYii::createObject(Array)
+#12 C:\Server\data\htdocs\zags\views\admin\games.php(8): yii\base\Widget::widget(Array)
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require('C:\\Server\\data\\...')
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#17 C:\Server\data\htdocs\zags\controllers\AdminController.php(56): yii\base\Controller->render('games', Array)
+#18 [internal function]: app\controllers\AdminController->actionGames()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#24 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#25 {main}
+2018-11-08 23:18:14 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '1'
+    'per-page' => '10'
+    'sort' => '-name'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=name'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '65427'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541719094,576
+    'REQUEST_TIME' => 1541719094
+]
+2018-11-08 23:18:19 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ReflectionException] ReflectionException: Class sdasd does not exist in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('sdasd')
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('sdasd')
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('sdasd', Array, Array)
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('sdasd', Array, Array)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(547): yii\BaseYii::createObject(Array)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\grid\GridView.php(283): yii\grid\GridView->initColumns()
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\grid\GridView->init()
+#7 [internal function]: yii\base\BaseObject->__construct(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\grid\\GridVi...', Array, Array)
+#10 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\grid\\GridVi...', Array, Array)
+#11 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Widget.php(137): yii\BaseYii::createObject(Array)
+#12 C:\Server\data\htdocs\zags\views\admin\games.php(8): yii\base\Widget::widget(Array)
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(336): require('C:\\Server\\data\\...')
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(254): yii\base\View->renderPhpFile('C:\\Server\\data\\...', Array)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\View.php(156): yii\base\View->renderFile('C:\\Server\\data\\...', Array, Object(app\controllers\AdminController))
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(384): yii\base\View->render('games', Array, Object(app\controllers\AdminController))
+#17 C:\Server\data\htdocs\zags\controllers\AdminController.php(56): yii\base\Controller->render('games', Array)
+#18 [internal function]: app\controllers\AdminController->actionGames()
+#19 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#20 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#21 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#22 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#23 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#24 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#25 {main}
+2018-11-08 23:18:19 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '1'
+    'per-page' => '10'
+    'sort' => '-name'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=name'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '65428'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-name'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541719099,302
+    'REQUEST_TIME' => 1541719099
+]
+2018-11-08 23:48:24 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][ParseError] ParseError: syntax error, unexpected ':', expecting ']' in C:\Server\data\htdocs\zags\controllers\AdminController.php:60
+Stack trace:
+#0 [internal function]: yii\BaseYii::autoload('app\\controllers...')
+#1 [internal function]: spl_autoload_call('app\\controllers...')
+#2 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(637): class_exists('app\\controllers...')
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(596): yii\base\Module->createControllerByID('admin')
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(522): yii\base\Module->createController('games')
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#8 {main}
+2018-11-08 23:48:24 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '2'
+    'per-page' => '10'
+    'sort' => '-device_id'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-device_id'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52941'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=2&per-page=10&sort=-device_id'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=2&per-page=10&sort=-device_id'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541720904,126
+    'REQUEST_TIME' => 1541720904
+]
+2018-11-08 23:48:34 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Setting unknown property: yii\data\Pagination::itemOption in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php:163
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(546): yii\base\BaseObject->__set('itemOption', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(107): yii\BaseYii::configure(Object(yii\data\Pagination), Array)
+#2 [internal function]: yii\base\BaseObject->__construct(Array)
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\data\\Pagina...', Array, Array)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\data\\Pagina...', Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\BaseDataProvider.php(219): yii\BaseYii::createObject(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(180): yii\data\BaseDataProvider->setPagination(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(546): yii\base\Component->__set('pagination', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(107): yii\BaseYii::configure(Object(yii\data\ActiveDataProvider), Array)
+#10 C:\Server\data\htdocs\zags\controllers\AdminController.php(56): yii\base\BaseObject->__construct(Array)
+#11 [internal function]: app\controllers\AdminController->actionGames()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#18 {main}
+2018-11-08 23:48:34 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '2'
+    'per-page' => '10'
+    'sort' => '-device_id'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-device_id'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52959'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=2&per-page=10&sort=-device_id'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=2&per-page=10&sort=-device_id'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541720914,77
+    'REQUEST_TIME' => 1541720914
+]
+2018-11-08 23:48:42 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][error][yii\base\UnknownPropertyException] yii\base\UnknownPropertyException: Setting unknown property: yii\data\Pagination::itemOptions in C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php:163
+Stack trace:
+#0 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(546): yii\base\BaseObject->__set('itemOptions', Array)
+#1 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(107): yii\BaseYii::configure(Object(yii\data\Pagination), Array)
+#2 [internal function]: yii\base\BaseObject->__construct(Array)
+#3 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(383): ReflectionClass->newInstanceArgs(Array)
+#4 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\data\\Pagina...', Array, Array)
+#5 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\data\\Pagina...', Array, Array)
+#6 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\data\BaseDataProvider.php(219): yii\BaseYii::createObject(Array)
+#7 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Component.php(180): yii\data\BaseDataProvider->setPagination(Array)
+#8 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\BaseYii.php(546): yii\base\Component->__set('pagination', Array)
+#9 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\BaseObject.php(107): yii\BaseYii::configure(Object(yii\data\ActiveDataProvider), Array)
+#10 C:\Server\data\htdocs\zags\controllers\AdminController.php(56): yii\base\BaseObject->__construct(Array)
+#11 [internal function]: app\controllers\AdminController->actionGames()
+#12 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#13 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#14 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Module.php(528): yii\base\Controller->runAction('games', Array)
+#15 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('admin/games', Array)
+#16 C:\Server\data\htdocs\zags\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 C:\Server\data\htdocs\zags\web\index.php(12): yii\base\Application->run()
+#18 {main}
+2018-11-08 23:48:42 [127.0.0.1][1][gmee2i7h7gj66kfbddgsbld12h][info][application] $_GET = [
+    'r' => 'admin/games'
+    'page' => '2'
+    'per-page' => '10'
+    'sort' => '-device_id'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'PHPSESSID' => 'gmee2i7h7gj66kfbddgsbld12h'
+    '_csrf' => 'a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 1
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'zags.zu'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
+    'HTTP_DNT' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://zags.zu/web/index.php?r=admin%2Fgames&page=1&per-page=10&sort=-device_id'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7'
+    'HTTP_COOKIE' => 'PHPSESSID=gmee2i7h7gj66kfbddgsbld12h; _csrf=a0e1199e69c8cce6c4ac710130b28e556d06c3ed888a7a2f70854b0d8c047ccda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22K3M_PFZV4_rtlAPT6a7Rs8Rn_uwpX2as%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\composer;C:\\Server\\bin\\mysql\\bin\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache/2.4.37 (Win64) PHP/7.2.11'
+    'SERVER_NAME' => 'zags.zu'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'c:/Server/data/htdocs/zags'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'C:/Server/data/htdocs/zags/web/index.php'
+    'REMOTE_PORT' => '52973'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=admin%2Fgames&page=2&per-page=10&sort=-device_id'
+    'REQUEST_URI' => '/web/index.php?r=admin%2Fgames&page=2&per-page=10&sort=-device_id'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1541720922,426
+    'REQUEST_TIME' => 1541720922
+]
