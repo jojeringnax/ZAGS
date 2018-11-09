@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use yii\data\ActiveDataProvider;
 use app\models\Config;
 use app\models\Events;
 use app\models\events\Talisman;
@@ -60,9 +61,13 @@ class AdminController extends \yii\web\Controller
             ];
         $gameLabels = Events::$labels;
         return $this->render('games', [
-            'games' => $games,
-            'gameLabels' => $gameLabels
-        ]);
+            'games' => new ActiveDataProvider([
+                        'query' => Events::find()->where(['name' => 'Game']),
+                        'pagination' => [
+                            'pageSize' => 10
+                        ]
+                    ])
+            ]);
     }
 
     public function actionIndex()
