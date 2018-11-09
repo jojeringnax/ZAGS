@@ -5,11 +5,14 @@ namespace app\controllers;
 use yii\data\ActiveDataProvider;
 use app\models\Config;
 use app\models\Events;
+use app\models\events\Talisman;
+use app\models\events\Wedding;
 use app\models\Log;
 use app\models\Licenses;
 use app\models\Owner;
 use app\models\Requests;
 use app\models\User;
+use yii\data\ActiveDataProvider;
 use yii\data\SqlDataProvider;
 use Yii;
 use yii\filters\AccessControl;
@@ -51,6 +54,12 @@ class AdminController extends \yii\web\Controller
      */
     public function actionGames()
     {
+        $datapro = new ActiveDataProvider();
+        $games = [
+            'weddings' => Wedding::find(30)->all(),
+            'talismans' => Talisman::find(30)
+            ];
+        $gameLabels = Events::$labels;
         return $this->render('games', [
             'games' => new ActiveDataProvider([
                         'query' => Events::find()->where(['name' => 'Game']),
