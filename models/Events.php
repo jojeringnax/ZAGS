@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "events".
@@ -11,10 +10,18 @@ use Yii;
  * @property string $time [datetime]
  * @property string $name [varchar(40)]
  * @property string $data [varchar(20)]
- * @property string $nonce [varchar(20)]
+ * @property integer $nonce
  */
 class Events extends \yii\db\ActiveRecord
 {
+    public static $labels = [
+        'device_id' => 'ID устройства',
+        'time' => 'Время',
+        'name' => 'Событие',
+        'data' => 'Данные',
+        'nonce' => 'Nonce',
+    ];
+
     /**
      * @inheritdoc
      */
@@ -47,11 +54,4 @@ class Events extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @return Events[]
-     */
-    public static function getAllGames()
-    {
-        return self::findAll(['name' => 'Game']);
-    }
 }
