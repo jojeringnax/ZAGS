@@ -60,7 +60,9 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
       </nav>
-      <?= $content ?>
+        <div class="content_wrapper">
+            <?= $content ?>
+        </div>
     </div>
 </div>
 
