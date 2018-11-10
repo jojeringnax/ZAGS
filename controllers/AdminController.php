@@ -12,7 +12,6 @@ use app\models\Licenses;
 use app\models\Owner;
 use app\models\Requests;
 use app\models\User;
-use yii\data\ActiveDataProvider;
 use yii\data\SqlDataProvider;
 use Yii;
 use yii\filters\AccessControl;
@@ -54,19 +53,15 @@ class AdminController extends \yii\web\Controller
      */
     public function actionGames()
     {
-        $datapro = new ActiveDataProvider();
-        $games = [
-            'weddings' => Wedding::find(30)->all(),
-            'talismans' => Talisman::find(30)
-            ];
-        $gameLabels = Events::$labels;
+        $dataProvider = new ActiveDataProvider([
+            'query' => Wedding::find(),
+            'pagination' => [
+                'pageSize' => 10
+            ]
+        ]);
+
         return $this->render('games', [
-            'games' => new ActiveDataProvider([
-                        'query' => Events::find()->where(['name' => 'Game']),
-                        'pagination' => [
-                            'pageSize' => 10
-                        ]
-                    ])
+            'games' => $dataProvider
             ]);
     }
 
