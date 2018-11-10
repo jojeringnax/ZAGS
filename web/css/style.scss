@@ -1,41 +1,107 @@
 #games_table {
-  thead {
-    tr {
-      th {
-        a {
-          color: black;
-          text-decoration: none;
+    thead {
+        tr {
+            th {
+                a {
+                    color: black;
+                    text-decoration: none;
 
-          &:hover {
-            color: #276baf;
-          }
+                    &:hover {
+                        color: #276baf;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
 
 
 a.asc{
-  &:after {
-      content: "";
-      width : 12px;
-      height: 12px;
-      background-image: url(../img/icons/svg/arrow-top.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      margin-left: 10px;
-  }
+    &:after {
+        content: "";
+        width : 12px;
+        height: 12px;
+        background-image: url(../img/icons/svg/arrow-top.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-left: 10px;
+    }
 }
 
 a.desc {
-  &:after {
-    content: "";
-    width : 12px;
-    height: 12px;
-    background-image: url(../img/icons/svg/arrow-bottom.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-left: 10px;
-  }
+    &:after {
+        content: "";
+        width : 12px;
+        height: 12px;
+        background-image: url(../img/icons/svg/arrow-bottom.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-left: 10px;
+    }
+}
+
+.page-item {
+    span {
+        margin-left: 0;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        position: relative;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: black;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
+.filter {
+    margin-bottom: 25px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    .btn-filter {
+        button {
+            width: 150px;
+            height: 40px;
+        }
+    }
+
+    .filters {
+        .calendar {
+            margin-left: 20px;
+            input {
+                width: 150px;
+                height: 34px;
+                &:last-child {
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        .btn-go {
+            margin-left: 20px;
+        }
+    }
+}
+
+.search-input {
+    align-items: center;
+    input {
+        width: 250px;
+        margin-left: 10px;
+    }
+}
+
+.item-nav-li {
+    margin-right: 10px;
+    a {
+        color: white;
+        font-weight: bold;
+    }
 }
