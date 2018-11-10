@@ -1,18 +1,16 @@
 <?php
 /**
- * @var $games \app\models\Events[]
+ *  * @var $this \yii\web\View
+ * @var $games \yii\data\ActiveDataProvider
  */
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 ?>
-
 <div class="container">
     <div class="row">
         <div class="filter d-flex justify-content-start"  style="width:100%">
-            <div class="btn-filter col-3 d-flex">
-                <button type="button" name="button" class="btn btn-primary">Click</button>
-            </div>
+            <div class="btn-filter col-3 d-flex btn btn-primary">Click</div>
             <div class="filters hide col-9 d-flex">
                 <div class="search-input d-flex">
                     <label for="search-game">ID</label><input id="search-game" class="form-control" aria-label="Default" type="text" name="" value="" placeholder="Enter text">
@@ -29,35 +27,12 @@ use yii\widgets\Pjax;
     </div>
 </div>
 
-<?php Pjax::begin(); ?>
-
-<div class="container">
+<div class="grid_wrapper">
 <?php
-echo GridView::widget([
-    'dataProvider' => $games,
-    'tableOptions' => [
-        'class' => 'table table-striped table-bordered',
-        'id' => 'games_table'
-    ],
-    'pager' => [
-        'options' => [
-            'class' => 'pagination'
-        ],
-        'linkOptions' => [
-            'class' => 'page-link'
-        ],
-        'linkContainerOptions' => [
-            'class' => 'page-item'
-        ],
-        'prevPageCssClass' => [
-            'class' => 'prev'
-        ],
-        'prevPageLabel' => '<-',
-        'nextPageLabel' => '->'
-    ]
+
+echo $this->render('/tech/gridview', [
+        'dataProvider' => $games
 ]);
 
 ?>
 </div>
-
-<?php Pjax::end(); ?>

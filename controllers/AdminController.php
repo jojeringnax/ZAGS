@@ -53,15 +53,22 @@ class AdminController extends \yii\web\Controller
      */
     public function actionGames()
     {
-        $dataProvider = new ActiveDataProvider([
+        $games = new ActiveDataProvider([
             'query' => Wedding::find(),
             'pagination' => [
                 'pageSize' => 10
             ]
         ]);
+        if (Yii::$app->request->isAjax) {
+            $request = Yii::$app->request;
+            $games->query = Wedding::find()->andWhere(['device_id' => $request->get('id')]);
+            return $this->renderPartial('/tech/gridview', [
+                'dataProvider' => $games
+            ]);
+        }
 
         return $this->render('games', [
-            'games' => $dataProvider
+            'games' => $games
             ]);
     }
 
