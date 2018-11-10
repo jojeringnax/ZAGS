@@ -12,7 +12,6 @@ use app\models\Licenses;
 use app\models\Owner;
 use app\models\Requests;
 use app\models\User;
-use yii\data\ActiveDataProvider;
 use yii\data\SqlDataProvider;
 use Yii;
 use yii\filters\AccessControl;

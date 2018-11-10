@@ -22,6 +22,8 @@ class AppAsset extends AssetBundle
         'css/style.css'
     ];
     public $js = [
+        'js/main.js',
+        'js/air-datepicker/dist/js/datepicker.js' 
     ];
     public $depends = [
         'yii\web\YiiAsset',

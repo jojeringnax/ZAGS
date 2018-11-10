@@ -22,4 +22,50 @@ a.desc:after {
   background-size: cover;
   margin-left: 10px; }
 
+.page-item span {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: black;
+  background-color: #fff;
+  border: 1px solid #dee2e6; }
+
+.hide {
+  display: none !important; }
+
+.filter {
+  margin-bottom: 25px;
+  height: 100px;
+  display: flex;
+  align-items: center; }
+  .filter .btn-filter button {
+    width: 150px;
+    height: 40px; }
+  .filter .filters .calendar {
+    margin-left: 20px; }
+    .filter .filters .calendar input {
+      width: 150px;
+      height: 34px; }
+      .filter .filters .calendar input:last-child {
+        margin-top: 10px; }
+  .filter .filters .btn-go {
+    margin-left: 20px; }
+
+.search-input {
+  align-items: center; }
+  .search-input input {
+    width: 250px;
+    margin-left: 10px; }
+
+.item-nav-li {
+  margin-right: 10px; }
+  .item-nav-li a {
+    color: white;
+    font-weight: bold; }
+
 /*# sourceMappingURL=style.css.map */
