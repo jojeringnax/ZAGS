@@ -10,6 +10,7 @@ namespace app\models\events;
 
 
 use app\models\Events;
+use yii\db\ActiveQuery;
 
 class Game extends Events
 {
@@ -24,6 +25,14 @@ class Game extends Events
     }
 
     /**
+     * @return ActiveQuery
+     */
+    public static function find()
+    {
+        return parent::find()->where(self::$condition);
+    }
+
+    /**
      * @return array|null|Game
      */
     public function getEmail()
@@ -33,7 +42,7 @@ class Game extends Events
          */
         $class = $this->className().'Email';
         if ($this->className() === $this->className()) {
-            $query = self::find()->where(array_merge_recursive(WeddingEmail::CONDITION, KinoselfieEmail::CONDITION));
+            $query = self::find();
         } else {
             $query = $class::find();
         }
@@ -101,5 +110,10 @@ class Game extends Events
          */
         $class = $this->className().'Reprint';
         return $class::find()->andWhere(['device_id' => $this->device_id, 'nonce' => [0, $this->nonce+1]])->andWhere(['between', 'time', date('Y-m-d H:i:s',strtotime($this->time) + 30), $this->time])->one();
+    }
+
+    public function getAllGamesForDevice($deviceId)
+    {
+        return self::find()->andWhere(['device_id' => $deviceId]);
     }
 }

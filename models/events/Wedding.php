@@ -18,4 +18,5 @@ class Wedding extends Game
     {
         return parent::find()->andWhere(self::CONDITION)->limit($limit);
     }
+
 }
