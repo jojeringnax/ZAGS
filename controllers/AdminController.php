@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\events\Game;
+use app\models\events\Kinoselfie;
 use yii\data\ActiveDataProvider;
 use app\models\Config;
 use app\models\Events;
@@ -54,7 +56,7 @@ class AdminController extends \yii\web\Controller
     public function actionGames()
     {
         $games = new ActiveDataProvider([
-            'query' => Wedding::find(),
+            'query' => Game::find()->where(array_merge_recursive(Wedding::CONDITION, Kinoselfie::CONDITION, Talisman::CONDITION)),
             'pagination' => [
                 'pageSize' => 10
             ]
@@ -62,15 +64,46 @@ class AdminController extends \yii\web\Controller
 
         $columns = [
             'device_id',
+            'name',
             'time',
             'nonce',
             ['label' => 'Email', 'value' => 'EmailData'],
-            ['label' => 'Payment type', 'value' => 'PaymentType']
+            ['label' => 'Payment type', 'format' => 'raw', 'value' => function($model) {
+                $result = '<div class="payment_wrapper">';
+                foreach($model->getPaymentData() as $payment) {
+                    $result.='
+                        <div class="payment_element">
+                            <div class="payment_type">'.$payment['label'].'</div>
+                            <div class="payment_value">'.$payment['number'].'</div>
+                        </div>';
+                }
+                $result.='</div>';
+                return $result;
+            }]
         ];
         if (Yii::$app->request->isAjax) {
-            $request = Yii::$app->request;
-            $games->query = Wedding::find()->andWhere(['device_id' => $request->get('id')]);
-            return $this->renderPartial('/tech/gridview', [
+            $id = Yii::$app->request->get('id');
+            $date_first = Yii::$app->request->get('date_first');
+            $date_first_array = preg_split('/\./', $date_first);
+            $date_first = $date_first_array[2].'-'.$date_first_array[1].'-'.$date_first_array[0];
+            $date_second = Yii::$app->request->get('date_second');
+            $date_second_array = preg_split('/\./', $date_second);
+            $date_second = $date_second_array[2].'-'.$date_second_array[1].'-'.$date_second_array[0];
+            if($id) {
+                $games->query = $games->query->andWhere(['device_id' => $id]);
+            };
+            if (!empty([$date_first, $date_second])) {
+                if ($date_second === $date_first) {
+                    $games->query = $games->query->andWhere(['between', 'time', $date_first . ' 00:00:00', $date_second . ' 23:59:59']);
+                } else {
+                    $games->query = $games->query->andWhere(['between', 'time', $date_first, $date_second]);
+                }
+            } else if ($date_first) {
+                $games->query = $games->query->andWhere(['>', 'time', $date_first]);
+            } else {
+                $games->query = $games->query->andWhere(['<', 'time', $date_second]);
+            }
+            return $this->render('/tech/gridview', [
                 'dataProvider' => $games,
                 'columns' => $columns,
             ]);

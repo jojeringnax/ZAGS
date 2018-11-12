@@ -20,4 +20,12 @@ class Payment extends Events
         return parent::find()->andWhere(self::CONDITION)->limit($limit);
     }
 
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->name == 'Money' ? 'Наличный расчет' : 'Безналичный расчет';
+    }
+
 }
