@@ -6,7 +6,6 @@ use app\models\events\Game;
 use app\models\events\Kinoselfie;
 use yii\data\ActiveDataProvider;
 use app\models\Config;
-use app\models\Events;
 use app\models\events\Talisman;
 use app\models\events\Wedding;
 use app\models\Log;
@@ -103,7 +102,7 @@ class AdminController extends \yii\web\Controller
             } else {
                 $games->query = $games->query->andWhere(['<', 'time', $date_second]);
             }
-            return $this->render('/tech/gridview', [
+            return $this->render('games', [
                 'dataProvider' => $games,
                 'columns' => $columns,
             ]);
