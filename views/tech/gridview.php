@@ -1,6 +1,7 @@
 <?php
 /**
  * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $columns array
  */
 
 use yii\grid\GridView;
@@ -11,6 +12,7 @@ echo GridView::widget([
         'class' => 'table table-striped table-bordered',
         'id' => 'games_table'
     ],
+    'columns' => $columns,
     'pager' => [
         'options' => [
             'class' => 'pagination'

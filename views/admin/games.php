@@ -31,7 +31,8 @@ use yii\widgets\Pjax;
 <?php
 
 echo $this->render('/tech/gridview', [
-        'dataProvider' => $games
+        'dataProvider' => $games,
+        'columns' => $columns,
 ]);
 
 ?>

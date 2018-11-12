@@ -19,11 +19,21 @@ class Wedding extends Events
     }
 
     /**
-     * @return WeddingEmail[]
+     * @return array|null|WeddingEmail
      */
     public function getEmail()
     {
-        return WeddingEmail::find()->andWhere(['device_id' => $this->device_id, 'nonce' => [$this->nonce+1,$this->nonce+2]])->one();
+        $email = WeddingEmail::find()->andWhere(['device_id' => $this->device_id, 'nonce' => [$this->nonce+1,$this->nonce+2]])->andWhere(['<', 'time', date('Y-m-d H:i:s',strtotime($this->time) + 24*3600)])->one();
+        return $email;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getEmailData()
+    {
+        $email = $this->getEmail();
+        return $email !== null ? $email->data : null;
     }
 
     /**
@@ -31,15 +41,25 @@ class Wedding extends Events
      */
     public function getPaymentView()
     {
-        return WeddingPaymentView::find()->andWhere(['device_id' => $this->device_id, 'nonce' => $this->nonce-2])->one();
+        return WeddingPaymentView::find()->andWhere(['device_id' => $this->device_id, 'nonce' => $this->nonce-2])->andWhere(['<', 'time', date('Y-m-d H:i:s',strtotime($this->time) - 24*3600)])->one();
     }
 
     /**
-     * @return array|Payment
+     * @return array|null|Payment
      */
     public function getPayment()
     {
-        return Payment::find()->andWhere(['device_id' => $this->device_id, 'nonce' => $this->nonce-1])->one();
+        $payment = Payment::find()->andWhere(['device_id' => $this->device_id, 'nonce' => [0, $this->nonce-1]])->andWhere(['<', 'time', date('Y-m-d H:i:s',strtotime($this->time) - 30)])->one();
+        return $payment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentType()
+    {
+        $payment = $this->getPayment();
+        return $payment !== null ? $payment->name : null;
     }
 
     /**
@@ -47,7 +67,7 @@ class Wedding extends Events
      */
     public function getReprint()
     {
-        return WeddingReprint::find()->andWhere(['device_id' => $this->device_id, 'nonce' => $this->nonce+1])->one();
+        return WeddingReprint::find()->andWhere(['device_id' => $this->device_id, 'nonce' => $this->nonce+1])->andWhere(['<', 'time', date('Y-m-d H:i:s',strtotime($this->time) + 24*3600)])->one();
     }
 
 }
