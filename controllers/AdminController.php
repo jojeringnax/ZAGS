@@ -59,16 +59,26 @@ class AdminController extends \yii\web\Controller
                 'pageSize' => 10
             ]
         ]);
+
+        $columns = [
+            'device_id',
+            'time',
+            'nonce',
+            ['label' => 'Email', 'value' => 'EmailData'],
+            ['label' => 'Payment type', 'value' => 'PaymentType']
+        ];
         if (Yii::$app->request->isAjax) {
             $request = Yii::$app->request;
             $games->query = Wedding::find()->andWhere(['device_id' => $request->get('id')]);
             return $this->renderPartial('/tech/gridview', [
-                'dataProvider' => $games
+                'dataProvider' => $games,
+                'columns' => $columns,
             ]);
         }
 
         return $this->render('games', [
-            'games' => $games
+            'games' => $games,
+            'columns' => $columns,
             ]);
     }
 
