@@ -71,4 +71,9 @@ a.desc:after {
     color: white;
     font-weight: bold; }
 
+.item-metrics {
+  margin-left: 10px;
+  border: 1px solid #eee;
+  width: 100%; }
+
 /*# sourceMappingURL=style.css.map */

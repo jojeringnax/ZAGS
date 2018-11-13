@@ -74,7 +74,7 @@ a.desc {
 
     .filters {
         height: 100%;
-        opacity: 0;    
+        opacity: 0;
         .calendar {
             margin-left: 20px;
             input {
@@ -106,4 +106,10 @@ a.desc {
         color: white;
         font-weight: bold;
     }
+}
+
+.item-metrics {
+    margin-left: 10px;
+    border: 1px solid #eee;
+    width: 100%;
 }
