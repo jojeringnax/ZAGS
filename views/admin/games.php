@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
     <div class="row">
         <div class="filter d-flex justify-content-start"  style="width:100%">
             <div class="btn-filter col-3 d-flex btn btn-primary">Click</div>
-            <div class="filters hide col-9 d-flex">
+            <form class="filters hide col-9 d-flex form-control">
                 <div class="search-input d-flex">
                     <label for="search-game">ID</label><input id="search-game" class="form-control" aria-label="Default" type="text" name="" value="" placeholder="Enter text">
                 </div>
@@ -22,7 +22,7 @@ use yii\widgets\Pjax;
                 <div class="btn-go d-flex align-items-center">
                     <input id="go-game" class="btn btn-success" type="submit" name="" value="GO!!!">
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

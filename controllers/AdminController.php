@@ -57,7 +57,7 @@ class AdminController extends \yii\web\Controller
         $games = new ActiveDataProvider([
             'query' => Game::find()->where(array_merge_recursive(Wedding::CONDITION, Kinoselfie::CONDITION, Talisman::CONDITION)),
             'pagination' => [
-                'pageSize' => 10
+                'pageSize' => 20
             ]
         ]);
 

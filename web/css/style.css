@@ -46,15 +46,18 @@ a.desc:after {
   .filter .btn-filter button {
     width: 150px;
     height: 40px; }
-  .filter .filters .calendar {
-    margin-left: 20px; }
-    .filter .filters .calendar input {
-      width: 150px;
-      height: 34px; }
-      .filter .filters .calendar input:last-child {
-        margin-top: 10px; }
-  .filter .filters .btn-go {
-    margin-left: 20px; }
+  .filter .filters {
+    height: 100%;
+    opacity: 0; }
+    .filter .filters .calendar {
+      margin-left: 20px; }
+      .filter .filters .calendar input {
+        width: 150px;
+        height: 34px; }
+        .filter .filters .calendar input:last-child {
+          margin-top: 10px; }
+    .filter .filters .btn-go {
+      margin-left: 20px; }
 
 .search-input {
   align-items: center; }
