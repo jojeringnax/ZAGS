@@ -6,8 +6,8 @@ use app\models\events\Payment;
 use app\models\events\Talisman;
 use app\models\events\Wedding;
 use yii\db\Exception;
-
-
+use app\models\events\WeddingPaymentView;
+use app\models\events\TalismanPaymentView;
 /**
  * This is the model class for table "events".
  *
@@ -73,7 +73,7 @@ class Events extends \yii\db\ActiveRecord
             throw(new Exception('Need to choose time'));
         }
         $events = self::find()
-            ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION))
+            ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION))
             ->andWhere(['between', 'time', $timeFrom, $timeTo])
             ->andWhere(['device_id' => $deviceId])
             ->all();

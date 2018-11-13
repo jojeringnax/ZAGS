@@ -74,7 +74,7 @@ a.desc {
 
     .filters {
         height: 100%;
-        opacity: 0;    
+        opacity: 0;
         .calendar {
             margin-left: 20px;
             input {
@@ -105,5 +105,35 @@ a.desc {
     a {
         color: white;
         font-weight: bold;
+    }
+}
+
+
+
+.head-metrics{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .item-head-metrics {
+        justify-content: center;
+        display: flex;
+        width: 12.5%;
+        span {
+            font-size: 12px;
+
+        }
+    }
+}
+
+.data-metrics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .item-metrics {
+        // margin-left: 10px;
+        border: 1px solid #eee;
+        width: 12.5%;
+        text-align: center;
+        //     width: 100%;
     }
 }

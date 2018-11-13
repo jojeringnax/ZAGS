@@ -71,4 +71,24 @@ a.desc:after {
     color: white;
     font-weight: bold; }
 
+.head-metrics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .head-metrics .item-head-metrics {
+    justify-content: center;
+    display: flex;
+    width: 12.5%; }
+    .head-metrics .item-head-metrics span {
+      font-size: 12px; }
+
+.data-metrics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .data-metrics .item-metrics {
+    border: 1px solid #eee;
+    width: 12.5%;
+    text-align: center; }
+
 /*# sourceMappingURL=style.css.map */
