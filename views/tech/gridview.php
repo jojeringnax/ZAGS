@@ -5,14 +5,10 @@
  */
 
 use yii\grid\GridView;
-use yii\widgets\Pjax;
 
-Pjax::begin([
-    'enablePushState' => false, // to disable push state
-    'enableReplaceState' => false // to disable replace state
-]); ?>
 
-<?php echo GridView::widget([
+<?php 
+echo GridView::widget([
     'dataProvider' => $dataProvider,
     'tableOptions' => [
         'class' => 'table table-striped table-bordered',
@@ -36,4 +32,3 @@ Pjax::begin([
         'nextPageLabel' => '->'
     ]
 ]); ?>
-<?php Pjax::end(); ?>
