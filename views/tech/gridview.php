@@ -5,7 +5,7 @@
  */
 
 use yii\grid\GridView;
-
+\yii\widgets\Pjax::begin();
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'tableOptions' => [
@@ -30,3 +30,5 @@ echo GridView::widget([
         'nextPageLabel' => '->'
     ]
 ]);
+
+\yii\widgets\Pjax::end();

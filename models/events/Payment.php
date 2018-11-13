@@ -6,6 +6,7 @@ namespace app\models\events;
 
 use \app\models\Events;
 use yii\db\ActiveQuery;
+use yii\db\Exception;
 
 class Payment extends Events
 {
@@ -27,5 +28,7 @@ class Payment extends Events
     {
         return $this->name == 'Money' ? 'Наличный расчет' : 'Безналичный расчет';
     }
+
+
 
 }
