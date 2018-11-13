@@ -11,13 +11,40 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
 ?>
 <h1>Метрики устройства №<?= $id ?></h1>
 <div class="month_before">
+    <div class="head-metrics d-flex row">
+        <div class="item-head-metrics date-head">
+            <span style="">Дата</span>
+        </div>
+        <div class="item-head-metrics turnover">
+            <span>Оборот (всего)</span>
+        </div>
+        <div class="item-head-metrics">
+            <span>Оборот (нал)</span>
+        </div>
+        <div class="item-head-metrics">
+            <span>Оборот (без/нал)</span>
+        </div>
+        <div class="item-head-metrics">
+            <span>Игр "Свадьба"</span>
+        </div>
+        <div class="item-head-metrics">
+            <span>Конверсия "Свадьбы"</span>
+        </div>
+        <div class="item-head-metrics">
+            <span>Игр "Талисман"</span>
+        </div>
+        <div class="item-head-metrics">
+            <span>Конверсия "Талисманов"</span>
+        </div>
+    </div>
 <?php foreach ($events as $data => $eventArray) {
     if(date('m') === preg_split('/-/', $data)[1]) {
-        echo '</div><div class="current_month container">';
+        echo '</div><div class="current_month">';
     }
     ?>
-    <div class="data d-flex row">
-        <div class="date col-4">
+
+    <div class="data-metrics d-flex row ">
+        <div class="date item-metrics">
             <?= $data ?>
         </div>
         <?php foreach($eventArray as $eventName => $eventss) {
@@ -37,13 +64,13 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
 
                 $sum_total = $sum_cashless + $sum_cash;
                 ?>
-                <div class="item-metrics sum_total col-2">
+                <div class="item-metrics sum_total">
                     <?= $sum_total ?>
                 </div>
-                <div class="item-metrics sum_cash col-1">
+                <div class="item-metrics sum_cash">
                     <?= $sum_cash ?>
                 </div>
-                <div class="item-metrics sum_cashless col-1">
+                <div class="item-metrics sum_cashless">
                     <?= $sum_cashless ?>
                 </div>
             <?php } // if(in_array($eventName, app\models\events\Payment::CONDITION['name']))?>
@@ -79,26 +106,26 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             } // foreach($eventArray as $eventName => $eventss) {
             ?>
 
-            <div class="game">
-                <div id="amount_of_wed" class="item-metrics wedings col-1">
+            <div class="game item-metrics">
+                <div id="amount_of_wed" class="weddings">
                     <?= $sumWeddings ?>
                 </div>
             </div>
 
-            <div id="" class="conversion">
-                <div id="conversion_of_wedding" class="item-metrics wed col-1">
+            <div id="" class="conversion item-metrics">
+                <div id="conversion_of_wedding" class="wed">
                     <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                 </div>
             </div>
 
-            <div class="game">
-                <div id="amount_of_talisman" class="item-metrics talisman  col-1">
+            <div class="game item-metrics">
+                <div id="amount_of_talisman" class="talisman">
                     <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
                 </div>
             </div>
 
-            <div id="" class="conversion">
-                <div id="conversion_of_talisman" class="item-metrics talisman col-1">
+            <div id="" class="conversion item-metrics">
+                <div id="conversion_of_talisman" class=" talisman">
                     <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                 </div>
             </div>
