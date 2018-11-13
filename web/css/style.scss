@@ -73,6 +73,8 @@ a.desc {
     }
 
     .filters {
+        height: 100%;
+        opacity: 0;    
         .calendar {
             margin-left: 20px;
             input {
