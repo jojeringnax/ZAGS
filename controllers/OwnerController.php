@@ -11,11 +11,15 @@ use yii\data\SqlDataProvider;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\db\Expression;
 
-class OwnerController extends \yii\web\Controller
+class OwnerController extends Controller
 {
+    /**
+     * @return array
+     */
     public function behaviors()
     {
         return [
@@ -53,6 +57,9 @@ class OwnerController extends \yii\web\Controller
         ];
     }
 
+    /**
+     * @return bool
+     */
     protected function isOwner()
     {
         $user_id = Yii::$app->user->id;
@@ -61,6 +68,9 @@ class OwnerController extends \yii\web\Controller
         return $result;
     }
 
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
         $count = Yii::$app->db->createCommand('SELECT COUNT(owners.id) FROM licenses JOIN owners ON (licenses.id=owners.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryScalar();
@@ -95,6 +105,10 @@ class OwnerController extends \yii\web\Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function actionConfig($id)
     {
         $dataProvider = new SqlDataProvider([
@@ -115,53 +129,10 @@ class OwnerController extends \yii\web\Controller
         ]);
     }
 
-	public function getDeviceStatistics($id) {
-		// one query to rule them all:
-		/*
-			SELECT
-				DATE( time ) AS date,
-				COUNT( device_id ) AS count,
-				SUM( data ) AS sum,
-				name
-			FROM
-				events
-			WHERE
-				device_id = 101 AND
-				time >= DATE_ADD( DATE_ADD( LAST_DAY( now() ), INTERVAL 1 DAY ), INTERVAL -7 MONTH ) AND
-				name != 'EMail'
-			GROUP BY
-				DAY( time ),
-				name
-			ORDER BY
-				DATE( time ) DESC;
-		*/
-
-		$set = Events::find()->select(['DATE( time ) AS date','COUNT( device_id ) AS count','SUM( data ) AS sum','name'])->where(['device_id' => $id])->andWhere(new Expression('time >= DATE_ADD( DATE_ADD( LAST_DAY( now() ), INTERVAL 1 DAY ), INTERVAL -7 MONTH )'))->andWhere("name != 'EMail'")->groupBy(['DAY( time )','name'])->orderBy('DATE( time ) DESC')->all();
-
-		var_dump($set);
-
-	}
-
-    public function getRevenueCash($id, $day)
-    {
-        $set = Events::find()->where(['device_id' => $id])->andWhere(['name'=>'Money'])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->all();
-
-        $result = 0;
-        foreach ($set as $row)
-            $result = $result + $row->data;
-        return $result;
-    }
-
-    public function getRevenueCashless($id, $day)
-    {
-        $set = Events::find()->where(['device_id' => $id])->andWhere(['name'=>'Cashless'])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->all();
-
-        $result = 0;
-        foreach ($set as $row)
-            $result = $result + $row->data;
-        return $result;
-    }
-
+    /**
+     * @param $id
+     * @return int|mixed
+     */
     public function getStackerContent_new($id)
     {
         $set = Events::find()->where(['device_id' => $id])->andWhere(['name'=>'Money'])->andWhere(new Expression('time > (select IfNull(max(time), \'01-01-01 00:00:00\') from events where name = \'Encashment\' AND device_id = ' . $id . ')'))->all();
@@ -172,44 +143,10 @@ class OwnerController extends \yii\web\Controller
         return $result;
     }
 
-    public function getActivations_new($id, $day)
-    {
-        return Events::find()->where(['device_id' => $id])->andWhere(['LIKE', 'name', 'Payment screen activated'])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->count();
-    }
-
-    public function getActivationsWedding($id, $day)
-    {
-        return Events::find()->where(['device_id' => $id])->andWhere(['OR',['LIKE', 'name', 'Payment screen activated'],['LIKE', 'name', 'Wedding payment screen activated']])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->count();
-    }
-
-    public function getActivationsTalisman($id, $day)
-    {
-        return Events::find()->where(['device_id' => $id])->andWhere(['LIKE', 'name', 'Talisman payment screen activated'])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->count();
-    }
-
-    public function getGamesWedding($id, $day)
-    {
-        return Events::find()->where(['device_id' => $id])->andWhere(['name' => 'Game'])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->count();
-    }
-
-    public function getGamesTalisman($id, $day)
-    {
-        return Events::find()->where(['device_id' => $id])->andWhere(['name' => 'Talisman'])->andWhere(new Expression('time BETWEEN \'' . $day . '\' AND DATE_ADD(\'' . $day . '\', INTERVAL 1 DAY) '))->count();
-    }
-
-    /*public function getRevenue($id, $day)
-    {
-        $set = Log::find()->where([ 'device_id' => $id ])->andWhere(['like', 'message', 'Recieved % rubles', false])->andWhere(new Expression('time BETWEEN \''.$day.'\' AND DATE_ADD(\''.$day.'\', INTERVAL 1 DAY) '))->all();
-
-        $result = 0;
-        foreach ($set as $row)
-        {
-            preg_match_all('!\d+!', $row->message, $counts);
-            $result = $result + implode($counts[0]);
-        }
-        return $result;
-    }*/
-
+    /**
+     * @param $id
+     * @return int|string
+     */
     public function getStackerContent($id)
     {
         $set = Log::find()->where([ 'device_id' => $id ])->andWhere(['like', 'message', 'Recieved % rubles', false])->andWhere(new Expression('time > (select IfNull(max(time), \'01-01-01 00:00:00\') from logs where message = \'Stacker inserted\' AND device_id = '.$id.')'))->all();
@@ -223,28 +160,42 @@ class OwnerController extends \yii\web\Controller
         return $result;
     }
 
-    /*public function getActivations($id, $day)
-    {
-        return Log::find()->where([ 'device_id' => $id ])->andWhere(['sender' => 'Payment screen'])->andWhere(['message' => 'Initiated'])->andWhere(new Expression('time BETWEEN \''.$day.'\' AND DATE_ADD(\''.$day.'\', INTERVAL 1 DAY) '))->count();
-    }*/
 
-    public function getGames($id, $day)
-    {
-        return Log::find()->where([ 'device_id' => $id ])->andWhere(['sender' => 'Form screen'])->andWhere(['message' => 'Initiated'])->andWhere(new Expression('time BETWEEN \''.$day.'\' AND DATE_ADD(\''.$day.'\', INTERVAL 1 DAY) '))->count();
-    }
-
+    /**
+     * @param $id
+     * @return string
+     */
     public function actionView($id)
     {
         $monthBefore = date('m') - 1;
         $timeFrom = date("Y-$monthBefore-01");
         $timeTo = date('Y-m-d', strtotime(date('Y-m-d')) + 3600*24);
         $events = Events::getEventsForTime($id, $timeFrom, $timeTo);
+
+        foreach($events as $event) {
+            $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
+        }
+
+        ksort($resultArray, SORT_STRING);
+
+        foreach ($resultArray as $data => $events) {
+            $array = [];
+            foreach($events as $event) {
+                $array[$event->name][] = $event;
+            }
+            $resultArray[$data] = $array;
+        }
+
         return $this->render('view', [
             'id' => $id,
-           'events' => $events
+           'events' => isset($resultArray) ? $resultArray : null
         ]);
     }
 
+    /**
+     * @param $id
+     * @return string|\yii\web\Response
+     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -258,6 +209,10 @@ class OwnerController extends \yii\web\Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function actionLog($id)
     {
         $model = $this->findModel($id);

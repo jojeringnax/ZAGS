@@ -64,7 +64,7 @@ class Events extends \yii\db\ActiveRecord
      * @param null|string $timeFrom
      * @param null|string $timeTo
      * @param $deviceId integer
-     * @return null
+     * @return null|Events[]
      * @throws Exception
      */
     public static function getEventsForTime($deviceId, $timeFrom = null, $timeTo = null)
@@ -72,24 +72,12 @@ class Events extends \yii\db\ActiveRecord
         if($timeFrom === null || $timeTo === null) {
             throw(new Exception('Need to choose time'));
         }
-        /* @var $events Events[] */
         $events = self::find()
             ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION))
             ->andWhere(['between', 'time', $timeFrom, $timeTo])
             ->andWhere(['device_id' => $deviceId])
             ->all();
-        foreach($events as $event) {
-            $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
-        }
-        ksort($resultArray, SORT_STRING);
-        foreach ($resultArray as $data => $events) {
-            $array = [];
-            foreach($events as $event) {
-                $array[$event->name][] = $event;
-            }
-            $resultArray[$data] = $array;
-        }
-        return isset($resultArray) ? $resultArray : null;
+        return $events;
     }
 
 }

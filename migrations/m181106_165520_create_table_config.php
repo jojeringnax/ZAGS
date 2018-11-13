@@ -15,7 +15,7 @@ class m181106_165520_create_table_config extends Migration
         $this->createTable('config', [
             'wedding_price' => $this->integer(11)->defaultValue(200),
             'disabled' => $this->integer(11)->defaultValue(null),
-            'device_id' => $this->integer(11)->notNull(),
+            'device_id' => $this->primaryKey(),
             'bills' => $this->string(255)->defaultValue(null),
             'multitouch_enabled' => $this->integer(11)->defaultValue(null),
             'description' => $this->string(255)->notNull(),
