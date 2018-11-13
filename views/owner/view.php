@@ -47,88 +47,82 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
         <div class="date item-metrics">
             <?= $data ?>
         </div>
-        <?php foreach($eventArray as $eventName => $eventss) {
+        <?php
+        foreach($eventArray as $eventName => $eventss) {
+            $sumCash = 0;
+            $sumCashless = 0;
 
-            if(in_array($eventName, app\models\events\Payment::CONDITION['name'])) {
-                $sum_cash = 0;
-                $sum_cashless = 0;
-                if ($eventName === 'Money') {
-                    foreach ($eventss as $value) {
-                        $sum_cash += $value->data;
-                    }
-                } else {
-                    foreach ($eventss as $value) {
-                        $sum_cashless += $value->data;
-                    }
+            if ($eventName === 'Money') {
+                foreach ($eventss as $value) {
+                    $sumCash += $value->data;
                 }
+            }
 
-                $sum_total = $sum_cashless + $sum_cash;
-                ?>
-                <div class="item-metrics sum_total">
-                    <?= $sum_total ?>
-                </div>
-                <div class="item-metrics sum_cash">
-                    <?= $sum_cash ?>
-                </div>
-                <div class="item-metrics sum_cashless">
-                    <?= $sum_cashless ?>
-                </div>
-            <?php } // if(in_array($eventName, app\models\events\Payment::CONDITION['name']))?>
-
-            <?php
-                if($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
-                    $sumWeddings1 = count($eventss);
+            if ($eventName === 'Cashless') {
+                foreach ($eventss as $value) {
+                    $sumCashless += $value->data;
                 }
+            }
+            if ($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
+                $sumWeddings1 = count($eventss);
+            }
 
-                if($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
-                    $sumWeddings2 = count($eventss);
-                }
+            if ($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
+                $sumWeddings2 = count($eventss);
+            }
 
-                if($eventName === app\models\events\Talisman::CONDITION['name']) {
-                    $sumTalisman = count($eventss);
-                }
+            if ($eventName === app\models\events\Talisman::CONDITION['name']) {
+                $sumTalisman = count($eventss);
+            }
 
 
-                if($eventName === app\models\events\TalismanPaymentView::CONDITION['name']) {
-                    $talPayView = count($eventss);
-                }
+            if ($eventName === app\models\events\TalismanPaymentView::CONDITION['name']) {
+                $talPayView = count($eventss);
+            }
 
-                if($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][0]) {
-                    $wedPayView1 = count($eventss);
-                }
+            if ($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][0]) {
+                $wedPayView1 = count($eventss);
+            }
 
-                if($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][1]) {
-                    $wedPayView2 = count($eventss);
-                }
+            if ($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][1]) {
+                $wedPayView2 = count($eventss);
+            }
 
-                $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + isset($wedPayView2) ? $wedPayView2 : 0;
-                $sumWeddings = isset($sumWeddings1) ? $sumWeddings1 : 0  + isset($sumWeddings2) ? $sumWeddings2 : 0;
-            } // foreach($eventArray as $eventName => $eventss) {
-            ?>
-
-            <div class="game item-metrics">
-                <div id="amount_of_wed" class="weddings">
-                    <?= $sumWeddings ?>
-                </div>
+            $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + isset($wedPayView2) ? $wedPayView2 : 0;
+            $sumWeddings = isset($sumWeddings1) ? $sumWeddings1 : 0  + isset($sumWeddings2) ? $sumWeddings2 : 0;
+        } ?>
+        <div class="item-metrics sum_total">
+            <?= $sumCash + $sumCashless ?>
+        </div>
+        <div class="item-metrics sum_cash">
+            <?= isset($sumCash) ? $sumCash : 0 ?>
+        </div>
+        <div class="item-metrics sum_cashless">
+            <?= isset($sumCashless) ? $sumCashless : 0 ?>
+        </div>
+        <div class="game item-metrics">
+            <div id="amount_of_wed" class="weddings">
+                <?= $sumWeddings ?>
             </div>
+        </div>
 
-            <div id="" class="conversion item-metrics">
-                <div id="conversion_of_wedding" class="wed">
-                    <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : 0 ?>
-                </div>
+        <div id="" class="conversion item-metrics">
+            <div id="conversion_of_wedding" class="wed">
+                <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : 0 ?>
             </div>
+        </div>
 
-            <div class="game item-metrics">
-                <div id="amount_of_talisman" class="talisman">
-                    <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
-                </div>
+        <div class="game item-metrics">
+            <div id="amount_of_talisman" class="talisman">
+                <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
             </div>
+        </div>
 
-            <div id="" class="conversion item-metrics">
-                <div id="conversion_of_talisman" class=" talisman">
-                    <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
-                </div>
+        <div id="" class="conversion item-metrics">
+            <div id="conversion_of_talisman" class=" talisman">
+                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
             </div>
+        </div>
     </div>
 <?php } ?>
 </div>
