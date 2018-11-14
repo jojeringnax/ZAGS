@@ -82,26 +82,12 @@ class AdminController extends \yii\web\Controller
         ];
         if (Yii::$app->request->isAjax) {
             $id = Yii::$app->request->get('id');
-            $date_first = Yii::$app->request->get('date_first');
-            $date_first_array = preg_split('/\./', $date_first);
-            $date_first = $date_first_array[2].'-'.$date_first_array[1].'-'.$date_first_array[0];
-            $date_second = Yii::$app->request->get('date_second');
-            $date_second_array = preg_split('/\./', $date_second);
-            $date_second = $date_second_array[2].'-'.$date_second_array[1].'-'.$date_second_array[0];
+            $dateFirst = Yii::$app->request->get('date_first');
+            $dateSecond = Yii::$app->request->get('date_second');
             if($id) {
                 $games->query = $games->query->andWhere(['device_id' => $id]);
             };
-            if (!empty([$date_first, $date_second])) {
-                if ($date_second === $date_first) {
-                    $games->query = $games->query->andWhere(['between', 'time', $date_first . ' 00:00:00', $date_second . ' 23:59:59']);
-                } else {
-                    $games->query = $games->query->andWhere(['between', 'time', $date_first, $date_second]);
-                }
-            } else if ($date_first) {
-                $games->query = $games->query->andWhere(['>', 'time', $date_first]);
-            } else {
-                $games->query = $games->query->andWhere(['<', 'time', $date_second]);
-            }
+            $games->query = $games->query->andWhere(['between', 'time', $dateFirst, $dateSecond]);
             return $this->render('games', [
                 'dataProvider' => $games,
                 'columns' => $columns,
