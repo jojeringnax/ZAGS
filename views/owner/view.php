@@ -6,7 +6,7 @@
 $sum_game = 0;
 $this->title = 'Метрики устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
-$this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id, 'url' => ['owner/view', 'id' => $id]];
+$this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id];
 
 ?>
 <h1>Метрики устройства №<?= $id ?></h1>
@@ -37,13 +37,23 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             <span>Конверсия "Талисманов"</span>
         </div>
     </div>
-<?php foreach ($events as $data => $eventArray) {
-    if(date('m') === preg_split('/-/', $data)[1]) {
-        echo '</div><div class="current_month">';
-    }
-    ?>
+    <?php foreach ($events as $data => $eventArray) {
+        if ($eventArray === []) {
+            $sumCash = 0;
+            $sumCashless = 0;
+            $sumWeddings1 = 0;
+            $sumWeddings2 = 0;
+            $sumWeddings = 0;
+            $sumTalisman = 0;
+            $wedPayView = 1;
+            $talPayView = 1;
+        }
+        if(date('m') === preg_split('/-/', $data)[1]) {
+            echo '</div><div class="current_month">';
+        }
+        ?>
 
-    <div class="data-metrics d-flex row ">
+        <div class="data-metrics d-flex row ">
         <div class="date item-metrics">
             <?= $data ?>
         </div>
@@ -91,38 +101,40 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + isset($wedPayView2) ? $wedPayView2 : 0;
             $sumWeddings = isset($sumWeddings1) ? $sumWeddings1 : 0  + isset($sumWeddings2) ? $sumWeddings2 : 0;
         } ?>
-        <div class="item-metrics sum_total">
-            <?= $sumCash + $sumCashless ?>
-        </div>
-        <div class="item-metrics sum_cash">
-            <?= isset($sumCash) ? $sumCash : 0 ?>
-        </div>
-        <div class="item-metrics sum_cashless">
-            <?= isset($sumCashless) ? $sumCashless : 0 ?>
-        </div>
-        <div class="game item-metrics">
-            <div id="amount_of_wed" class="weddings">
-                <?= $sumWeddings ?>
+        <?php if(!empty($events)) { ?>
+            <div class="item-metrics sum_total">
+                <?= $sumCash + $sumCashless ?>
             </div>
-        </div>
+            <div class="item-metrics sum_cash">
+                <?= isset($sumCash) ? $sumCash : 0 ?>
+            </div>
+            <div class="item-metrics sum_cashless">
+                <?= isset($sumCashless) ? $sumCashless : 0 ?>
+            </div>
+            <div class="game item-metrics">
+                <div id="amount_of_wed" class="weddings">
+                    <?= $sumWeddings ?>
+                </div>
+            </div>
 
-        <div id="" class="conversion item-metrics">
-            <div id="conversion_of_wedding" class="wed">
-                <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+            <div id="" class="conversion item-metrics">
+                <div id="conversion_of_wedding" class="wed">
+                    <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : '0.00%' ?>
+                </div>
             </div>
-        </div>
 
-        <div class="game item-metrics">
-            <div id="amount_of_talisman" class="talisman">
-                <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+            <div class="game item-metrics">
+                <div id="amount_of_talisman" class="talisman">
+                    <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+                </div>
             </div>
-        </div>
 
-        <div id="" class="conversion item-metrics">
-            <div id="conversion_of_talisman" class=" talisman">
-                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+            <div id="" class="conversion item-metrics">
+                <div id="conversion_of_talisman" class=" talisman">
+                    <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                </div>
             </div>
-        </div>
-    </div>
-<?php } ?>
+            </div>
+        <?php }
+    } ?>
 </div>

@@ -1,11 +1,13 @@
 <?php
 /**
- *  * @var $this \yii\web\View
+ * @var $this \yii\web\View
  * @var $games \yii\data\ActiveDataProvider
+ * @var $columns array
  */
-use yii\grid\GridView;
-use yii\widgets\Pjax;
 
+$this->title = 'Статистика по играм';
+$this->params['breadcrumbs'][] = ['label' => 'Статистика', 'url' => ['index', 'r' => 'owner']];
+$this->params['breadcrumbs'][] = ['label' => 'Игры'];
 ?>
 <div class="container">
     <div class="row">
@@ -28,9 +30,9 @@ use yii\widgets\Pjax;
 </div>
 
 <div class="grid_wrapper">
-<?php
+<?=
 
-echo $this->render('/tech/gridview', [
+$this->render('/tech/gridview', [
         'dataProvider' => $games,
         'columns' => $columns,
 ]);

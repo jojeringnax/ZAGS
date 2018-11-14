@@ -4,8 +4,10 @@ namespace app\controllers;
 
 use app\models\Config;
 use app\models\Events;
+use app\models\events\Encashment;
 use app\models\Log;
 use app\models\Owner;
+use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\data\SqlDataProvider;
 use Yii;
@@ -31,10 +33,10 @@ class OwnerController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['config', 'view', 'log', 'update'],
+                'only' => ['config', 'view', 'log', 'update', 'encashment'],
                 'rules' => [
                     [
-                        'actions' => ['config', 'view', 'log', 'update'],
+                        'actions' => ['config', 'view', 'log', 'update', 'encashment'],
                         'allow' => false,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
@@ -167,17 +169,22 @@ class OwnerController extends Controller
      */
     public function actionView($id)
     {
-        $monthBefore = date('m') - 1;
-        $timeFrom = date("Y-$monthBefore-01");
-        $timeTo = date('Y-m-d', strtotime(date('Y-m-d')) + 3600*24);
-        $events = Events::getEventsForTime($id, $timeFrom, $timeTo);
+        $timeFrom = new \DateTime();
+        $timeFrom->setDate(date('Y'), date('m') - 1, 1);
+        $timeTo = new \DateTime();
+        $timeTo->modify('+1 day');
+        $resultArray[$timeFrom->format('Y-m-d')] = [];
+        $diff = $timeTo->diff($timeFrom)->days;
+        $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
 
+        for($i=0;$i < $diff; $i++) {
+            $timeFrom->modify('+1 day');
+            $resultArray[$timeFrom->format('Y-m-d')] = [];
+        }
         foreach($events as $event) {
             $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
         }
-
         ksort($resultArray, SORT_STRING);
-
         foreach ($resultArray as $data => $events) {
             $array = [];
             foreach($events as $event) {
@@ -265,6 +272,25 @@ class OwnerController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
+    public function actionEncashment($id)
+    {
+        $encashments = Encashment::getEncashmentsWithTotalForDevice($id);
+
+        return $this->render('encashment' ,[
+            'encashments' => $encashments,
+            'id' => $id
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return null|static
+     * @throws NotFoundHttpException
+     */
     protected function findModel($id)
     {
         if (($model = Config::findOne($id)) !== null) {
