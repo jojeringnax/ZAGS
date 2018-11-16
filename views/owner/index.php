@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['attribute'=>'Номер устройства', 'value'=> 'device_id'],
-        ['attribute'=>'Лицензионный ключ', 'value'=> 'license'],
         ['attribute'=>'Денег в кассете', 'value'=>'stacker'],
         ['attribute'=>'Дальномер 1', 'value'=>'fill_wedding'],
         ['attribute'=>'Online', 'value'=> function ($data) {
@@ -32,12 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'buttons'=>[
                 'config'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/config','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<span class="oi oi-cog"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<div class="d-flex"><span class="oi oi-cog"></span>', $customurl,
                         ['title' => "Настройки", 'data-pjax' => '0']);
                 },
                 'view'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/view','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<span class="oi oi-document"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<span class="oi oi-document" style="margin-left:10px"></span></div>', $customurl,
                         ['title' => "Статистика", 'data-pjax' => '0']);
                 },
                 /*'log'=>function ($url, $model) {
