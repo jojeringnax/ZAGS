@@ -21,7 +21,7 @@ GridView::widget([
             'buttons'=>[
                 'delete'=>function ($url, $model) use($deviceID) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['admin/delete_owner', 'deviceID' => $deviceID, 'userID' => $model['id']]);
-                    return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-remove"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<span class="oi oi-delete"></span>', $customurl,
                         ['title' => "Удалить", 'data-pjax' => '0']);
                 }
             ],
@@ -42,7 +42,7 @@ GridView::widget([
             'buttons' => [
                 'add' => function ($url, $model) use ($deviceID) {
                     $customurl = Yii::$app->getUrlManager()->createUrl(['admin/assign_user', 'userID' => $model['id'], 'deviceID' => $deviceID]);
-                    return \yii\helpers\Html::a('<span class="glyphicon glyphicon-ok"></span>', $customurl,
+                    return \yii\helpers\Html::a('<span class="oi oi-circle-check"></span>', $customurl,
                         ['title' => "Назначить", 'data-pjax' => '0']);
                 }
             ],

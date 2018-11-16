@@ -1,3 +1,4 @@
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" /> -->
 <?php
 /* @var $this yii\web\View */
 
@@ -15,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['attribute'=>'Номер устройства', 'value'=> 'device_id'],
-        ['attribute'=>'Лицензионный ключ', 'value'=> 'license'],
         ['attribute'=>'Денег в кассете', 'value'=>'stacker'],
         ['attribute'=>'Дальномер 1', 'value'=>'fill_wedding'],
         ['attribute'=>'Online', 'value'=> function ($data) {
@@ -31,12 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'buttons'=>[
                 'config'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/config','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-cog"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<div class="d-flex"><span class="oi oi-cog"></span>', $customurl,
                         ['title' => "Настройки", 'data-pjax' => '0']);
                 },
                 'view'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/view','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-duplicate"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<span class="oi oi-document" style="margin-left:10px"></span></div>', $customurl,
                         ['title' => "Статистика", 'data-pjax' => '0']);
                 },
                 /*'log'=>function ($url, $model) {

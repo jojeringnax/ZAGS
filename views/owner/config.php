@@ -32,7 +32,7 @@ GridView::widget([
             'buttons'=>[
                 'view'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/update','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<span class="glyphicon glyphicon-pencil"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<span class="oi oi-pencil"></span>', $customurl,
                         ['title' => "Настройки", 'data-pjax' => '0']);
                 }
             ],

@@ -25,7 +25,7 @@ GridView::widget([
             'buttons' => [
                 'view' => function ($url, $model) {
                     $customurl = Yii::$app->getUrlManager()->createUrl(['admin/delete_user', 'id' => $model['id']]);
-                    return \yii\helpers\Html::a('<span class="glyphicon glyphicon-remove"></span>', $customurl,
+                    return \yii\helpers\Html::a('<span class="oi oi-delete"></span>', $customurl,
                         ['title' => "Удалить", 'data-pjax' => '0']);
                 }
             ],
