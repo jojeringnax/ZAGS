@@ -21,6 +21,8 @@ use Yii;
  */
 class Config extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -46,16 +48,23 @@ class Config extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'wedding_price' => 'Цена игры',
-            'reprint_price' => 'Цена повторной печати свидетельства',
+            'wedding_price' => 'Цена Свадьбы',
+            'reprint_price' => 'Цена повторной печати',
             'disabled' => 'Отключение аппарата',
             'device_id' => 'Номер устройства',
-            /*'bills' => 'Купюры',*/
+            'bills' => 'Купюры',
             'multitouch_enabled' => 'Мультитач',
             'description' => 'Описание',
             'log_level' => 'Уровень логов',
             'quiet_time_start' => 'Начало тихого режима',
             'quiet_time_end' => 'Конец тихого режима',
         ];
+    }
+
+    /**
+     * @return int
+     */
+    public function getToner() {
+        return CurrentStatus::findOne($this->device_id)->printer_media_count;
     }
 }

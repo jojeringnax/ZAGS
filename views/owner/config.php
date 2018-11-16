@@ -1,27 +1,33 @@
 <?php
-/* @var $this yii\web\View */
+/**
+ * @var $dataProvider \yii\data\ActiveDataProvider
+ * @var $this yii\web\View
+ **/
 
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-$this->title = 'Настройки устройства №' . $model->device_id;
+$this->title = 'Настройки устройства №' . $id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<h1>Настройки устройства №<?=$model->device_id?></h1>
-
+<h1>Настройки устройства №<?=$id?></h1>
 <?=
 GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
-        ['attribute'=>'Цена игры', 'value'=>'wedding_price'],
-        ['attribute'=>'Цена повторной печати', 'value'=>'reprint_price'],
-        ['attribute'=>'Отключение аппарата', 'value'=>'disabled_string'],
-        ['attribute'=>'Купюры', 'value'=>'bills'],
-        ['attribute'=>'Мультитач', 'value'=>'multitouch_string'],
-        ['attribute'=>'Начало тихого режима', 'value'=>'quiet_time_start'],
-        ['attribute'=>'Конец тихого режима', 'value'=>'quiet_time_end'],
-        ['attribute'=>'Описание', 'value'=>'description'],
+        'wedding_price',
+        'reprint_price',
+        'device_id',
+        ['label' => 'Состояние аппарата', 'value' => function($model) {
+            return $model->disabled ? "Включен" : "Выключен";
+        }],
+        ['label' => 'Мультитач', 'value' => function($model) {
+            return $model->multitouch_enabled ? "Включен" : "Выключен";
+        }],
+        'quiet_time_start',
+        'quiet_time_end',
+        ['label' => 'Количество тонера', 'value' => 'toner'],
         ['class' => \yii\grid\ActionColumn::className(),
             'buttons'=>[
                 'view'=>function ($url, $model) {
