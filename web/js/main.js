@@ -78,24 +78,7 @@ $(document).ready(function(){
 
     });
 
-    // vconsole.log(ququ);
-    // let dataContainer = $('#data-container');
-    // $('.pagination').pagination({
-    //     dataSource: ququ,
-    //     pageSize: 10,
-    //     showPageNumbers: true,
-    //     showPrevious: true,
-    //     showNext: true,
-    //     showNavigator: true,
-    //     showFirstOnEllipsisShow: true,
-    //     showLastOnEllipsisShow: true,
-    //     className: 'paginationjs-theme-blue',
-    //     callback: function(data, pagination) {
-    //         // template method of yourself
-    //         var html = data;
-    //         dataContainer.html(html);
-    //     }
-    // });
+
 
     $('.filter-data-encashment').on('submit', function(e){
         e.preventDefault();

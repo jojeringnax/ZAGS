@@ -36,7 +36,7 @@ class Encashment extends Events
     {
         $i = 0;
         $totalForEncashment = 0;
-        $paymentsAndEncashments = Events::find()->where(array_merge(['device_id' => 82], array_merge_recursive(Encashment::CONDITION, Payment::CONDITION)))->orderBy('time ASC')->all();
+        $paymentsAndEncashments = Events::find()->where(array_merge(['device_id' => $id], array_merge_recursive(Encashment::CONDITION, Payment::CONDITION)))->orderBy('time ASC')->all();
         if ($paymentsAndEncashments === null) {return false;}
         foreach ($paymentsAndEncashments as $event) {
             if($event->name == self::CONDITION['name']) {
@@ -48,6 +48,6 @@ class Encashment extends Events
                 $totalForEncashment += $event->data;
             }
         }
-        return isset($resultArray) ? $resultArray : null;
+        return isset($resultArray) ? $resultArray : [];
     }
 }
