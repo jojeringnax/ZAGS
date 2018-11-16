@@ -20,7 +20,8 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/style.css',
-        'js/paginationjs/dist/pagination.css'
+        'js/paginationjs/dist/pagination.css',
+        'img/icons/font/css/open-iconic-bootstrap.min.css'
     ];
     public $js = [
         'js/main.js',
