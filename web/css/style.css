@@ -1,3 +1,6 @@
+.hide {
+  display: none; }
+
 #games_table thead tr th a {
   color: black;
   text-decoration: none; }
@@ -71,24 +74,53 @@ a.desc:after {
     color: white;
     font-weight: bold; }
 
-.head-metrics {
+/*======================owner-encashmwnt=================================*/
+#row-encashment .item-encashment {
+  width: 50%;
   display: flex;
-  justify-content: space-between;
-  align-items: center; }
-  .head-metrics .item-head-metrics {
-    justify-content: center;
-    display: flex;
-    width: 12.5%; }
-    .head-metrics .item-head-metrics span {
-      font-size: 12px; }
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  border-left: 2px solid #4682B4;
+  color: #2F4F4F; }
 
-.data-metrics {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-  .data-metrics .item-metrics {
-    border: 1px solid #eee;
-    width: 12.5%;
-    text-align: center; }
+.encashment {
+  border: 2px solid #4682B4;
+  border-left: 0;
+  border-top: 0; }
+  .encashment:first-child {
+    border-top: 2px solid #4682B4; }
+  .encashment:last-child {
+    border-bottom: 2px solid #4682B4; }
+
+.head-encashment {
+  background: #1E90FF; }
+  .head-encashment .item-encashment {
+    color: white !important;
+    font-size: 18px;
+    font-weight: bold; }
+
+.wrapper-encashment {
+  border-radius: 10px; }
+
+.filter-data-encashment {
+  height: 130px; }
+  .filter-data-encashment .btn-go #go-game {
+    margin: -10px 0 0 30px; }
+  .filter-data-encashment .calendar label .item-datepicker {
+    margin-left: 10px; }
+
+#date_second_encashment {
+  margin-top: 10px; }
+
+.item-statistics-filter {
+  margin-left: 25px;
+  height: 40px; }
+
+.checkbox-inp-stat:checked {
+  background: #337ab7;
+  border: none; }
+.checkbox-inp-stat:disabled {
+  border-color: rgba(0, 0, 0, 0.26); }
 
 /*# sourceMappingURL=style.css.map */

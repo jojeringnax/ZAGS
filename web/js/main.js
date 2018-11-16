@@ -34,7 +34,7 @@ $(document).ready(function(){
         });
     });
 
-    $("#go-game").click( function() {
+    $("#game > .btn-go > #go-game").click( function() {
         let id_inp = $('#search-game').val();
         let date_inp_first = $('#date_first').val();
 
@@ -77,4 +77,43 @@ $(document).ready(function(){
         });
 
     });
+
+    // vconsole.log(ququ);
+    // let dataContainer = $('#data-container');
+    // $('.pagination').pagination({
+    //     dataSource: ququ,
+    //     pageSize: 10,
+    //     showPageNumbers: true,
+    //     showPrevious: true,
+    //     showNext: true,
+    //     showNavigator: true,
+    //     showFirstOnEllipsisShow: true,
+    //     showLastOnEllipsisShow: true,
+    //     className: 'paginationjs-theme-blue',
+    //     callback: function(data, pagination) {
+    //         // template method of yourself
+    //         var html = data;
+    //         dataContainer.html(html);
+    //     }
+    // });
+
+    $('.filter-data-encashment').on('submit', function(e){
+        e.preventDefault();
+        console.log('form');
+    });
+
+    $('.checkbox-inp-stat').change(function() {
+        console.log($(this).val(), $(this).prop("checked"));
+        if ($(this).prop("checked") == false) {
+            $('.'+$(this).val()).addClass('hide');
+        } else {
+            $('.'+$(this).val()).removeClass('hide');
+        }
+    });
+
+    // $('.filter-statistics').on('submit', function(e){
+    //     e.preventDefault();
+    //     console.log('kukus');
+    // });
+
 });

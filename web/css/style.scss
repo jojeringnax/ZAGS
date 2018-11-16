@@ -1,3 +1,25 @@
+// @font-face {
+//     font-family: 'AvenirNextRegular';
+//     src: url('../css/fonts/AvenirNextRegular.eot');
+//     src: url('../css/fonts/AvenirNextRegular.eot') format('embedded-opentype'),
+//          url('../css/fonts/AvenirNextRegular.woff2') format('woff2'),
+//          url('../css/fonts/AvenirNextRegular.woff') format('woff'),
+//          url('../css/fonts/AvenirNextRegular.ttf') format('truetype'),
+//          url('../css/fonts/AvenirNextRegular.svg#AvenirNextRegular') format('svg');
+// }
+$md-checkbox-checked-color: rgb(51, 122, 183);
+$md-checkbox-border-color: rgba(0, 0, 0, 0.54);
+$md-checkbox-border-color-disabled: rgba(0, 0, 0, 0.26);
+$md-checkbox-checked-color-disabled: rgba(0, 0, 0, 0.26);
+
+.hide {
+    display: none;   
+}
+
+* {
+
+}
+
 #games_table {
     thead {
         tr {
@@ -110,30 +132,122 @@ a.desc {
 
 
 
-.head-metrics{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .item-head-metrics {
-        justify-content: center;
-        display: flex;
-        width: 12.5%;
-        span {
-            font-size: 12px;
+// .head-metrics{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     .item-head-metrics {
+//         justify-content: center;
+//         display: flex;
+//         width: 12.5%;
+//         span {
+//             font-size: 12px;
+//
+//         }
+//     }
+// }
+//
+// .data-metrics {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     .item-metrics {
+//         // margin-left: 10px;
+//         border: 1px solid #eee;
+//         width: 12.5%;
+//         text-align: center;
+//         //     width: 100%;
+//     }
+// }
 
+/*======================owner-encashmwnt=================================*/
+#row-encashment {
+    .item-encashment {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 35px;
+        border-left: 2px solid #4682B4;
+        color: #2F4F4F;
+    }
+}
+
+.encashment {
+    border: 2px solid #4682B4;
+    border-left: 0;
+    border-top: 0;
+
+    &:first-child {
+        border-top: 2px solid #4682B4;
+
+    }
+
+    &:last-child {
+        border-bottom: 2px solid #4682B4;
+
+    }
+}
+
+.head-encashment {
+    background: #1E90FF;
+    .item-encashment {
+        color: white !important;
+        font-size: 18px;
+        font-weight: bold;
+
+    }
+}
+
+.wrapper-encashment {
+    border-radius: 10px;
+}
+
+.filter-data-encashment {
+    height: 130px;
+    .btn-go {
+        #go-game {
+            margin: -10px 0 0 30px;
+
+        }
+    }
+
+    .calendar {
+        label {
+            .item-datepicker {
+                margin-left: 10px;
+            }
         }
     }
 }
 
-.data-metrics {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .item-metrics {
-        // margin-left: 10px;
-        border: 1px solid #eee;
-        width: 12.5%;
-        text-align: center;
-        //     width: 100%;
+#date_second_encashment {
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.item-statistics-filter {
+    margin-left: 25px;
+    height: 40px;
+}
+
+.checkbox-inp-stat {
+
+    &:checked {
+        background: $md-checkbox-checked-color;
+        border:none;
     }
+    &:disabled{
+    border-color: $md-checkbox-border-color-disabled;
+  }
+
 }
