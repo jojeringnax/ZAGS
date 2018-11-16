@@ -2,24 +2,39 @@
 /**
  * @var $id integer
  * @var $encashments \app\models\Events[]
+ * @var $this \yii\web\View
  */
 
 $this->title = 'Инкассации устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
-$this->params['breadcrumbs'][] = ['label' => 'Инкассации устройства №'.$id]; ?>
-<script type="text/javascript">
-    let ququ = [];
-</script>
-<?php
-foreach($encashments as $encashment) { ?>
-    <script type="text/javascript">
-        // console.log("<?= $encashment->time ?>");
-        ququ.push("<tr><td class='date-of-encashment'>"+
-        "<?= $encashment->time ?>"+"</td><td class=value-of-encashment'>"+
-        "<?= $encashment->data ?>"+"</td></tr>"
-        );
-    </script>
-<?php } ?>
+$this->params['breadcrumbs'][] = ['label' => 'Инкассации устройства №'.$id];
+
+if(!empty($encashments)) $this->registerJs(
+        "
+        let ququ = [];
+        $('tbody#data-container').children().each( function() {
+            ququ.push($(this));
+        });
+          console.log(ququ);
+     let dataContainer = $('#data-container');
+     $('.pagination').pagination({
+         dataSource: ququ,
+         pageSize: 10,
+         showPageNumbers: true,
+         showPrevious: true,
+         showNext: true,
+         showNavigator: true,
+         showFirstOnEllipsisShow: true,
+         showLastOnEllipsisShow: true,
+         className: 'paginationjs-theme-blue',
+         callback: function(data, pagination) {
+             var html = data;
+             dataContainer.html(html);
+         }
+     });");
+?>
+
+
 <!-- <form class="filter" action="" method="">
     <div class="input-group-text">
         <label for="date">Date</label><input id="date" type="checkbox" aria-label="Checkbox for following text input">
@@ -47,6 +62,21 @@ foreach($encashments as $encashment) { ?>
         <th scope="col">Сумма инкасации</th>
       </tr>
     </thead>
-    <tbody id="data-container" ></tbody>
+    <tbody id="data-container" >
+    <?php if(!empty($encashments)) {
+        foreach ($encashments as $encashment) { ?>
+            <tr>
+                <td class='date-of-encashment' data-time="<?= date('d.m.Y', strtotime($encashment->time)) ?>">
+                    <?= $encashment->time ?></td>
+                <td class=value-of-encashment'>
+                    <?= $encashment->data ?></td>
+            </tr>
+        <?php }
+    } else {?>
+        <tr>
+            <td colspan="2" style="text-align: center">Ничего не найдено!</td>
+        </tr>
+    <?php } ?>
+    </tbody>
 </table>
 <div class="pagination"></div>
