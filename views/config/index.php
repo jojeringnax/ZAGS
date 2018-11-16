@@ -1,5 +1,7 @@
 <?php
 /* @var $this yii\web\View */
+use \app\models\events\Encashment;
+use \app\models\events\Payment;
 ?>
 <h1>config/index</h1>
 
@@ -9,6 +11,12 @@
 </p>
 <pre>
 <?php
-print_r(array_keys(\app\models\Events::getEventsForTime(date('2018-03-01'), date('2018-05-01'))));
 
+$timeFrom = new \DateTime();
+$timeFrom->setDate(date('Y'), date('m') - 1, 1);
+$timeTo = new \DateTime();
+$timeTo->modify('+1 day');
+$resultArray[$timeFrom->format('Y-m-d')] = 0;
+$interval = $timeTo->diff($timeFrom);
+print_r( $interval->days);
 ?>
