@@ -113,9 +113,8 @@ class OwnerController extends Controller
      */
     public function actionConfig($id)
     {
-        $dataProvider = new SqlDataProvider([
-            'sql' => 'SELECT device_id, wedding_price, reprint_price, (CASE WHEN disabled = \'1\' THEN \'Выключен\' ELSE \'Включен\' END) AS disabled_string, bills, (CASE WHEN multitouch_enabled = \'1\' THEN \'Включен\' ELSE \'Выключен\' END) AS multitouch_string, description, quiet_time_start, quiet_time_end FROM config WHERE config.device_id = :deviceID',
-            'params' => [':deviceID' => $id],
+        $dataProvider = new ActiveDataProvider([
+            'query' => Config::find()->where(['device_id' => $id]),
             'sort' => [
                 'attributes' => [
                     'id',
@@ -123,11 +122,9 @@ class OwnerController extends Controller
             ],
         ]);
 
-        $model = $this->findModel($id);
-
         return $this->render('config', [
             'dataProvider' => $dataProvider,
-            'model' => $model,
+            'id' => $id,
         ]);
     }
 
