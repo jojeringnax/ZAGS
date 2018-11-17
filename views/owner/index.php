@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         ['attribute'=>'Номер устройства', 'value'=> 'device_id'],
-        ['attribute'=>'Лицензионный ключ', 'value'=> 'license'],
         ['attribute'=>'Денег в кассете', 'value'=>'stacker'],
         ['attribute'=>'Дальномер 1', 'value'=>'fill_wedding'],
         ['attribute'=>'Online', 'value'=> function ($data) {
