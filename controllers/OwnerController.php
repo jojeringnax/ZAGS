@@ -76,7 +76,7 @@ class OwnerController extends Controller
     public function actionIndex()
     {
         $count = Yii::$app->db->createCommand('SELECT COUNT(owners.id) FROM licenses JOIN owners ON (licenses.id=owners.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryScalar();
-
+       
         $table = array();
         $set = Yii::$app->db->createCommand('SELECT owners.device_id AS device_id, licenses.license AS license, (NOW() - last_check) AS online, description, current_status.fill_wedding AS fill_wedding FROM licenses RIGHT JOIN owners ON (licenses.id=owners.device_id) RIGHT JOIN config ON (owners.device_id = config.device_id) LEFT JOIN current_status ON (config.device_id = current_status.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryAll();
 
@@ -103,7 +103,7 @@ class OwnerController extends Controller
         ]);
 
         return $this->render('index', [
-            'dataProvider' => $provider,
+            'dataProvider' => $provider
         ]);
     }
 
