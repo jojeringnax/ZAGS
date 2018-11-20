@@ -3,7 +3,22 @@
  * @var $id integer
  * @var $events array
  */
+$bin = false;
 $sum_game = 0;
+$mounthName = array(
+    '1' => 'Январь',
+    '2' => 'Февраль',
+    '3' => 'Март',
+    '4' => 'Апрель',
+    '5' => 'Май',
+    '6' => 'Июнь',
+    '7' => 'Июль',
+    '8' => 'Август',
+    '9' => 'Сентябрь',
+    '10' => 'Октябрь',
+    '11' => 'Ноябрь',
+    '12' => 'Декабрь',
+);
 $this->title = 'Метрики устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
 $this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id];
@@ -26,10 +41,14 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
         <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="$6" type="checkbox" aria-label="Checkbox for following text input">Игра№6</label>
         <!-- <input id="stat-filter" class="btn btn-success" type="submit" name="" value="GO!!" style="margin-left: 30px; height: 40px; border-bottom: 0.5rem"> -->
     </div>
-
 </form>
-<div class="month_before">
-    <table class="table table-striped" >
+
+<div class="month_before card">
+    <a class="" data-toggle="collapse" href="#<?php echo $mounthName[substr(key($events),5,2)];?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+     <?php echo $mounthName[substr(key($events),5,2)]; ?>
+    </a>
+    <div class="collapse" id="<?php echo $mounthName[substr(key($events),5,2)]; ?>">
+    <table class="table table-striped" style="margin-top:10px;">
         <thead class="thead-light">
             <tr style="font-size: 13px;">
                 <th class="data" scope="col">Дата</th>
@@ -54,27 +73,42 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                 $wedPayView = 1;
                 $talPayView = 1;
             }
-            if(date('m') === preg_split('/-/', $data)[1]) {
-                //echo '</div><div class="current_month">';
+
+            $namemounth = substr($data,  5, 2);
+            if(date('m') === preg_split('/-/', $data)[1] && !$bin) {
+                echo "</tbody></table></div></div>
+                <div class='month_current'>
+                <table class='table table-striped'>
+                    <thead class='thead-light'>
+                            <tr style='font-size: 13px;'>
+                                <th class='data' scope='col'>Дата</th>
+                                <th class='sum_total' scope='col'>Оборот (всего)</th>
+                                <th class='sum_cash' scope='col'>Оборот (нал)</th>
+                                <th class='sum_cashless' scope='col'>Оборот (без/нал)</th>
+                                <th class='amount_of_wed' scope='col'>Игр 'Свадьба'</th>
+                                <th class='conversion_of_wedding' scope='col'>Конверсия 'Свадьбы'</th>
+                                <th class='amount_of_talisman' scope='col'>Игр 'Талисман'</th>
+                                <th class='conversion_of_talisman' scope='col'>Конверсия 'Талисманов'</th>
+                            </tr>
+                        </thead><tbody>";
+                $bin = true;
             }
             ?>
-
                 <tr class="data-metrics">
                     <td id="data" class="data">
                         <?= $data ?>
                     </td>
                     <?php
+                    $sumCash = 0;
+                    $sumCashless = 0;
                     foreach($eventArray as $eventName => $eventss) {
-                        $sumCash = 0;
-                        $sumCashless = 0;
-
-                        if ($eventName === 'Money') {
+                        if ($eventName == 'Money') {
                             foreach ($eventss as $value) {
                                 $sumCash += $value->data;
                             }
                         }
 
-                        if ($eventName === 'Cashless') {
+                        if ($eventName == 'Cashless') {
                             foreach ($eventss as $value) {
                                 $sumCashless += $value->data;
                             }
@@ -141,6 +175,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                             </td>
                         <!-- </div> -->
                     </tr>
+
+                </div>
                 <?php }
             } ?>
         </tbody>

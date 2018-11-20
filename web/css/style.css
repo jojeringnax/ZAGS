@@ -123,4 +123,7 @@ a.desc:after {
 .checkbox-inp-stat:disabled {
   border-color: rgba(0, 0, 0, 0.26); }
 
+.month_before {
+  padding: 10px 15px 10px 15px; }
+
 /*# sourceMappingURL=style.css.map */
