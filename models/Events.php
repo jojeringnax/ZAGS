@@ -76,6 +76,7 @@ class Events extends \yii\db\ActiveRecord
             ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION))
             ->andWhere(['between', 'time', $timeFrom, $timeTo])
             ->andWhere(['device_id' => $deviceId])
+            ->orderBy('time DESC')
             ->all();
         return $events;
     }

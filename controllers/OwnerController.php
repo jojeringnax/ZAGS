@@ -7,6 +7,7 @@ use app\models\Events;
 use app\models\events\Encashment;
 use app\models\Log;
 use app\models\Owner;
+use function GuzzleHttp\Psr7\str;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
 use yii\data\SqlDataProvider;
@@ -169,30 +170,54 @@ class OwnerController extends Controller
         $timeFrom = new \DateTime();
         $timeFrom->setDate(date('Y'), date('m') - 1, 1);
         $timeTo = new \DateTime();
-        $timeTo->modify('+1 day');
-        $resultArray[$timeFrom->format('Y-m-d')] = [];
+        $resultArray[$timeTo->format('Y-m-d')] = [];
         $diff = $timeTo->diff($timeFrom)->days;
         $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
-
         for($i=0;$i < $diff; $i++) {
-            $timeFrom->modify('+1 day');
-            $resultArray[$timeFrom->format('Y-m-d')] = [];
+            $timeTo->modify('-1 day');
+            $resultArray[$timeTo->format('Y-m-d')] = [];
         }
         foreach($events as $event) {
             $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
         }
-        ksort($resultArray, SORT_STRING);
+        $oldMonthNumber = date('m', strtotime(array_keys($resultArray)[0]));
+        $totalMonthMoney = 0;
+        $totalMonthCashless = 0;
+        $totalesMonthMoney = [];
+        $totalesMonthMoney[$oldMonthNumber] = array(
+            'Money' => 0,
+            'Cashless' => 0
+        );
+
         foreach ($resultArray as $data => $events) {
+            $currentMonthNumber = date('m', strtotime($data));
+            if ($currentMonthNumber !== $oldMonthNumber) {
+                $totalesMonthMoney[$currentMonthNumber] = array(
+                    'Money' => 0,
+                    'Cashless' => 0
+                );
+            }
             $array = [];
             foreach($events as $event) {
                 $array[$event->name][] = $event;
             }
+            if (isset($array['Money'])) {
+                foreach ($array['Money'] as $event) {
+                    $totalesMonthMoney[$currentMonthNumber]['Money'] += $event->data;
+                }
+            }
+            if (isset($array['Cashless'])) {
+                foreach ($array['Cashless'] as $event) {
+                    $totalesMonthMoney[$currentMonthNumber]['Cashless'] += $event->data;
+                }
+            }
             $resultArray[$data] = $array;
+            $oldMonthNumber = $currentMonthNumber;
         }
-
         return $this->render('view', [
             'id' => $id,
-           'events' => isset($resultArray) ? $resultArray : null
+            'events' => isset($resultArray) ? $resultArray : null,
+            'totales' => isset($totalesMonthMoney) ? $totalesMonthMoney : null,
         ]);
     }
 
@@ -296,6 +321,4 @@ class OwnerController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
-
 }
