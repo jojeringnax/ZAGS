@@ -13,7 +13,7 @@ $md-checkbox-border-color-disabled: rgba(0, 0, 0, 0.26);
 $md-checkbox-checked-color-disabled: rgba(0, 0, 0, 0.26);
 
 .hide {
-    display: none;   
+    display: none;
 }
 
 * {
@@ -250,4 +250,8 @@ a.desc {
     border-color: $md-checkbox-border-color-disabled;
   }
 
+}
+
+.month_before {
+    padding: 10px 15px 10px 15px;
 }
