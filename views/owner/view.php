@@ -2,23 +2,25 @@
 /**
  * @var $id integer
  * @var $events array
+ * @var $totales array
  */
 $bin = false;
 $sum_game = 0;
 $mounthName = array(
-    '1' => 'Январь',
-    '2' => 'Февраль',
-    '3' => 'Март',
-    '4' => 'Апрель',
-    '5' => 'Май',
-    '6' => 'Июнь',
-    '7' => 'Июль',
-    '8' => 'Август',
-    '9' => 'Сентябрь',
-    '10' => 'Октябрь',
-    '11' => 'Ноябрь',
-    '12' => 'Декабрь',
+    1 => 'Январь',
+    2 => 'Февраль',
+    3 => 'Март',
+    4 => 'Апрель',
+    5 => 'Май',
+    6 => 'Июнь',
+    7 => 'Июль',
+    8 => 'Август',
+    9 => 'Сентябрь',
+    10 => 'Октябрь',
+    11 => 'Ноябрь',
+    12 => 'Декабрь',
 );
+$dateTime = DateTime::createFromFormat('Y-m-d', array_keys($events)[0]);
 $this->title = 'Метрики устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
 $this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id];
@@ -43,26 +45,14 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
     </div>
 </form>
 
-<div class="month_before card">
-    <a class="" data-toggle="collapse" href="#<?php echo $mounthName[substr(key($events),5,2)];?>" role="button" aria-expanded="false" aria-controls="collapseExample">
-     <?php echo $mounthName[substr(key($events),5,2)]; ?>
+<div class="month_current card">
+    <a class="" data-toggle="collapse" href="#month_<?= $dateTime->format('m_Y') ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <?= $mounthName[$dateTime->format('m')] ?> - Оборот наличными: <?= $totales[$dateTime->format('m')]['Money'] ?> - Оборот б/нал: <?= $totales[$dateTime->format('m')]['Cashless'] ?> - Оборот всего: <?= $totales[$dateTime->format('m')]['Cashless'] + $totales[$dateTime->format('m')]['Money'] ?>
     </a>
-    <div class="collapse" id="<?php echo $mounthName[substr(key($events),5,2)]; ?>">
-    <table class="table table-striped" style="margin-top:10px;">
-        <thead class="thead-light">
-            <tr style="font-size: 13px;">
-                <th class="data" scope="col">Дата</th>
-                <th class="sum_total" scope="col">Оборот (всего)</th>
-                <th class="sum_cash" scope="col">Оборот (нал)</th>
-                <th class="sum_cashless" scope="col">Оборот (без/нал)</th>
-                <th class="amount_of_wed" scope="col">Игр "Свадьба"</th>
-                <th class="conversion_of_wedding" scope="col">Конверсия "Свадьбы"</th>
-                <th class="amount_of_talisman" scope="col">Игр "Талисман"</th>
-                <th class="conversion_of_talisman" scope="col">Конверсия "Талисманов"</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($events as $data => $eventArray) {
+    <div class="collapse" id="month_<?= $dateTime->format('m_Y') ?>">
+        <?php
+        $flag = true;
+        foreach ($events as $data => $eventArray) {
             if ($eventArray === []) {
                 $sumCash = 0;
                 $sumCashless = 0;
@@ -73,27 +63,28 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                 $wedPayView = 1;
                 $talPayView = 1;
             }
-
-            $namemounth = substr($data,  5, 2);
-            if(date('m') === preg_split('/-/', $data)[1] && !$bin) {
-                echo "</tbody></table></div></div>
-                <div class='month_current'>
-                <table class='table table-striped'>
-                    <thead class='thead-light'>
-                            <tr style='font-size: 13px;'>
-                                <th class='data' scope='col'>Дата</th>
-                                <th class='sum_total' scope='col'>Оборот (всего)</th>
-                                <th class='sum_cash' scope='col'>Оборот (нал)</th>
-                                <th class='sum_cashless' scope='col'>Оборот (без/нал)</th>
-                                <th class='amount_of_wed' scope='col'>Игр 'Свадьба'</th>
-                                <th class='conversion_of_wedding' scope='col'>Конверсия 'Свадьбы'</th>
-                                <th class='amount_of_talisman' scope='col'>Игр 'Талисман'</th>
-                                <th class='conversion_of_talisman' scope='col'>Конверсия 'Талисманов'</th>
-                            </tr>
-                        </thead><tbody>";
-                $bin = true;
-            }
-            ?>
+            if(preg_split('/-/', $data)[1] !== $dateTime->format('m')) {
+                $flag = true;
+                ?>
+                </tbody></table></div></div>
+                <div class="month_before">
+            <?php }
+            if ($flag) { ?>
+                <table class="table table-striped" style="margin-top:10px;">
+                    <thead class="thead-light">
+                    <tr style="font-size: 13px;">
+                        <th class="data" scope="col">Дата</th>
+                        <th class="sum_total" scope="col">Оборот (всего)</th>
+                        <th class="sum_cash" scope="col">Оборот (нал)</th>
+                        <th class="sum_cashless" scope="col">Оборот (без/нал)</th>
+                        <th class="amount_of_wed" scope="col">Игр "Свадьба"</th>
+                        <th class="conversion_of_wedding" scope="col">Конверсия "Свадьбы"</th>
+                        <th class="amount_of_talisman" scope="col">Игр "Талисман"</th>
+                        <th class="conversion_of_talisman" scope="col">Конверсия "Талисманов"</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+            <?php  } ?>
                 <tr class="data-metrics">
                     <td id="data" class="data">
                         <?= $data ?>
@@ -177,7 +168,10 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                     </tr>
 
                 </div>
-                <?php }
+                <?php
+                }
+                $dateTime->modify($data);
+                $flag = false;
             } ?>
         </tbody>
     </table>
