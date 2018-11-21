@@ -124,6 +124,15 @@ a.desc:after {
   border-color: rgba(0, 0, 0, 0.26); }
 
 .month_before {
-  padding: 10px 15px 10px 15px; }
+  padding: 10px 15px 10px 15px;
+  margin-top: 10px;
+  background-color: #eee; }
+  .month_before .collapse-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold; }
+  .month_before div table {
+    border: 2.5px solid #ddd;
+    border-radius: 3px; }
 
 /*# sourceMappingURL=style.css.map */
