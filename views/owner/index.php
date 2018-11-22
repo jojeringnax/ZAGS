@@ -31,12 +31,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'buttons'=>[
                 'config'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/config','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<div class="d-flex"><span class="oi oi-cog"></span>', $customurl,
+                    return \yii\helpers\Html::a( '<span class="oi oi-cog"></span>', $customurl,
                         ['title' => "Настройки", 'data-pjax' => '0']);
                 },
                 'view'=>function ($url, $model) {
                     $customurl=Yii::$app->getUrlManager()->createUrl(['owner/view','id'=>$model['device_id']]);
-                    return \yii\helpers\Html::a( '<span class="oi oi-document" style="margin-left:10px"></span></div>', $customurl,
+                    return \yii\helpers\Html::a( '<span class="oi oi-document"></span>', $customurl,
+                        ['title' => "Статистика", 'data-pjax' => '0']);
+                },
+                'encashment'=>function ($url, $model) {
+                    $customurl=Yii::$app->getUrlManager()->createUrl(['owner/encashment','id'=>$model['device_id']]);
+                    return \yii\helpers\Html::a( '<span class="oi oi-briefcase"></span>', $customurl,
                         ['title' => "Статистика", 'data-pjax' => '0']);
                 },
                 /*'log'=>function ($url, $model) {
@@ -46,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }*/
             ],
             /*'template'=>'{config}   {view}   {log}',*/
-			'template'=>'{config}   {view}',
+			'template'=>'<div class="flex">{config} {view} {encashment}</div>',
         ]
     ],
          'summary'=>'',
