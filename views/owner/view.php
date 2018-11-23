@@ -26,11 +26,83 @@ $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['
 $this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id];
 
 ?>
+
 <h1>Метрики устройства №<?= $id ?></h1>
-<form class="filter-statistics" action="" method="">
-    <div class="filter-checlbox d-flex flex-wrap">
-        <label class="item-statistics-filter d-flex align-items-center" for="data"><input id="data" checked class="checkbox-inp-stat" value="data" type="checkbox" aria-label="Checkbox for following text input">Дата</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="sum_total"><input id="sum_total" checked class="checkbox-inp-stat" value="sum_total" type="checkbox" aria-label="Checkbox for following text input">Оборот (всего)</label>
+<form class="filter-statistics bmd-form-group d-flex flex-wrap" action="" method="">
+    <!-- <div class="filter-checlbox d-flex flex-wrap"> -->
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="data">
+                <input id="data" checked class="checkbox-inp-stat" value="data" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Дата</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="sum_total">
+                <input id="sum_total" checked class="checkbox-inp-stat" value="sum_total" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Оборот (всего)</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="sum_cash">
+                <input id="sum_cash" checked class="checkbox-inp-stat" value="sum_cash" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Оборот (нал)</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="sum_cashless">
+                <input id="sum_cashless" checked class="checkbox-inp-stat" value="sum_cashless" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Оборот (без/нал)</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="amount_of_wed">
+                <input id="amount_of_wed" checked class="checkbox-inp-stat" value="amount_of_wed" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Игр "Свадьба"</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="conversion_of_wedding">
+                <input id="conversion_of_wedding" checked class="checkbox-inp-stat" value="conversion_of_wedding" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Конверсия "Свадьбы"</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="amount_of_talisman">
+                <input id="amount_of_talisman" checked class="checkbox-inp-stat" value="amount_of_talisman" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Игр "Талисман"</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="conversion_of_talisman">
+                <input id="conversion_of_talisman" checked class="checkbox-inp-stat" value="conversion_of_talisman" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Конверсия "Талисманов"</span>
+            </label>
+        </div>
+        <!-- <label class="item-statistics-filter d-flex align-items-center" for="sum_total"><input id="sum_total" checked class="checkbox-inp-stat" value="sum_total" type="checkbox" aria-label="Checkbox for following text input">Оборот (всего)</label>
         <label class="item-statistics-filter d-flex align-items-center" for="sum_cash"><input id="sum_cash" checked class="checkbox-inp-stat" value="sum_cash" type="checkbox" aria-label="Checkbox for following text input">Оборот (нал)</label>
         <label class="item-statistics-filter d-flex align-items-center" for="sum_cashless"><input id="sum_cashless" checked class="checkbox-inp-stat" value="sum_cashless" type="checkbox" aria-label="Checkbox for following text input">Оборот (без/нал)</label>
         <label class="item-statistics-filter d-flex align-items-center" for="amount_of_wed"><input id="amount_of_wed" checked class="checkbox-inp-stat" value="amount_of_wed" type="checkbox" aria-label="Checkbox for following text input">Игр "Свадьба"</label>
@@ -40,9 +112,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
         <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="#3" type="checkbox" aria-label="Checkbox for following text input">Игра№3</label>
         <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="#4" type="checkbox" aria-label="Checkbox for following text input">Игра№4</label>
         <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="#5" type="checkbox" aria-label="Checkbox for following text input">Игра№5</label>
-        <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="$6" type="checkbox" aria-label="Checkbox for following text input">Игра№6</label>
+        <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="$6" type="checkbox" aria-label="Checkbox for following text input">Игра№6</label> -->
         <!-- <input id="stat-filter" class="btn btn-success" type="submit" name="" value="GO!!" style="margin-left: 30px; height: 40px; border-bottom: 0.5rem"> -->
-    </div>
+    <!-- </div> -->
 </form>
         <?php
         $flag = true;

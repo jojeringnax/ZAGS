@@ -20,7 +20,6 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    
     <link rel="stylesheet" href="../web/js/air-datepicker/dist/css/datepicker.css">
 </head>
 <body>
