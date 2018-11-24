@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Config;
 use app\models\CurrentStatus;
 use app\models\Licenses;
+use Codeception\Util\XmlBuilder;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -119,20 +120,35 @@ class SiteController extends Controller
         if ($config === null) {
             return 'Устройсто не найдено в БД';
         }
-
-        echo'<?xml version="1.0" encoding="utf-8" ?>';
-        echo'<data>';
-        echo'<wedding_price>'.isset($config->wedding_price) ? $config->wedding_price : null.'</wedding_price>';
-        echo'<reprint_price>'.isset($config->reprint_price) ? $config->reprint_price : null.'</reprint_price>';
-        echo'<talisman_price>'.isset($config->talisman_price) ? $config->talisman_price : null.'</talisman_price>';
-        echo'<kinoselfie_price>'.isset($config->kinoselfie_price) ? $config->kinoselfie_price : null.'</kinoselfie_price>';
-        echo'<disabled>'.isset($config->disabled) ? $config->disabled : null.'</disabled>';
-        echo'<bills>50,100,200,500</bills>';
-        echo'<multitouch_enabled>'.isset($config->multitouch_enabled) ? $config->multitouch_enabled : null.'</multitouch_enabled>';
-        echo'<quiet_time_start>'.isset($config->quiet_time_start) ? $config->quiet_time_start : null.'</quiet_time_start>';
-        echo'<quiet_time_end>'.isset($config->quiet_time_end) ? $config->quiet_time_end : null.'</quiet_time_end>';
-        echo'</data>';
-
+        $xml = new XmlBuilder();
+        $xml->data
+            ->wedding_price
+                ->val(isset($config->wedding_price) ? $config->wedding_price : null)
+                ->parents('data')
+            ->reprint_price
+                ->val(isset($config->reprint_price) ? $config->reprint_price : null)
+                ->parents('data')
+            ->talisman_price
+                ->val(isset($config->talisman_price) ? $config->talisman_price : null)
+                ->parents('data')
+            ->kinoselfie_price
+                ->val(isset($config->kinoselfie_price) ? $config->kinoselfie_price : null)
+                ->parents('data')
+            ->disabled
+                ->val(isset($config->disabled) ? $config->disabled : null)
+                ->parents('data')
+            ->bills
+                ->val('50,100,200,500')
+                ->parents('data')
+            ->multitouch_enabled
+                ->val(isset($config->multitouch_enabled) ? $config->multitouch_enabled : null)
+                ->parents('data')
+            ->quiet_time_start
+                ->val(isset($config->quiet_time_start) ? $config->quiet_time_start : null)
+                ->parents('data')
+            ->quiet_time_end
+                ->val(isset($config->quiet_time_end) ? $config->quiet_time_end : null)
+                ->parents('data');
         $currentStatus = CurrentStatus::updateOrCreate($id);
         $currentStatus->device_id = $id;
         $currentStatus->last_update = date('Y-m-d H:i:s');
