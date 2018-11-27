@@ -10,6 +10,10 @@ $this->params['breadcrumbs'][] = ['label' => 'Редактирование'];
 ?>
 <?php $form = ActiveForm::begin(); ?>
 
+<?= $form->field($model, 'wedding_price')->textInput() ?>
+<?= $form->field($model, 'reprint_price')->textInput() ?>
+<?= $form->field($model, 'talisman_price')->textInput() ?>
+<?= $form->field($model, 'kinoselfie_price')->textInput() ?>
 <?= $form->field($model, 'wedding_price', [
     'labelOptions' => [ 'class' => 'bmd-label-static']
     ])->textInput() ?>
