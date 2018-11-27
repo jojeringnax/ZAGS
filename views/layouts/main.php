@@ -42,7 +42,7 @@ AppAsset::register($this);
             'linkOptions' => ['data-method' => 'post', 'class' => 'nav-link']
             ],
             Yii::$app->user->isGuest ?
-                ['label' => 'Войти', 'url' => ['/site/login']] :
+                ['label' => 'Войти', 'url' => ['/site/login'],'linkOptions' => ['data-method' => 'post', 'class' => 'nav-link']] :
                 [
                     'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
