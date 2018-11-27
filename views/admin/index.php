@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['title' => "Подробности", 'data-pjax' => '0']);
                 }
             ],
-            'template'=>'{config}   {view}',
+            'template'=>'{config} {view}',
         ]
     ],
          'summary'=>'',
