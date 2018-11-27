@@ -55,6 +55,8 @@ class Config extends \yii\db\ActiveRecord
             'bills' => 'Купюры',
             'multitouch_enabled' => 'Мультитач',
             'description' => 'Описание',
+            'kinoselfie_price' => 'Стоимость "Киноселфи"',
+            'talisman_price' => 'Стоимость "Талисмана"',
             'log_level' => 'Уровень логов',
             'quiet_time_start' => 'Начало тихого режима',
             'quiet_time_end' => 'Конец тихого режима',

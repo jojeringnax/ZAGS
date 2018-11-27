@@ -107,6 +107,14 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+
+    /**
+     * @param $id
+     * @param null $fill_wedding
+     * @param null $fill_talisman
+     * @param $printer_media_count
+     * @return bool|string
+     */
     public function actionGet_config($id, $fill_wedding=null, $fill_talisman=null, $printer_media_count)
     {
         $license = Licenses::findOne($id);
@@ -158,5 +166,23 @@ class SiteController extends Controller
         $currentStatus->save();
 
         return true;
+    }
+
+    /**
+     * @param $id
+     * @param null $fill_wedding
+     * @param null $fill_talisman
+     * @param $printer_media_count
+     */
+    public function actionStatus($id, $fill_wedding=null, $fill_talisman=null, $printer_media_count)
+    {
+        $currentStatus = CurrentStatus::updateOrCreate($id);
+        $currentStatus->device_id = $id;
+        $currentStatus->last_update = date('Y-m-d H:i:s');
+        $currentStatus->fill_wedding = $fill_wedding;
+        $currentStatus->fill_talisman = $fill_talisman;
+        $currentStatus->printer_media_count = $printer_media_count;
+        $currentStatus->save();
+
     }
 }
