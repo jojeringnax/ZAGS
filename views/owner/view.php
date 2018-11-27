@@ -6,20 +6,7 @@
  */
 $bin = false;
 $sum_game = 0;
-$mounthName = array(
-    1 => 'Январь',
-    2 => 'Февраль',
-    3 => 'Март',
-    4 => 'Апрель',
-    5 => 'Май',
-    6 => 'Июнь',
-    7 => 'Июль',
-    8 => 'Август',
-    9 => 'Сентябрь',
-    10 => 'Октябрь',
-    11 => 'Ноябрь',
-    12 => 'Декабрь',
-);
+
 $dateTime = DateTime::createFromFormat('Y-m-d', array_keys($events)[0]);
 $this->title = 'Метрики устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
@@ -129,7 +116,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                 $wedPayView = 1;
                 $talPayView = 1;
             }
-            if(preg_split('/-/', $data)[1] !== $dateTime->format('m')) {
+            if(date('m', strtotime($data)) !== $dateTime->format('m')) {
                 $flag = true;
                 ?>
             </tbody></table></div></div>
@@ -138,7 +125,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             if ($flag) { ?>
                 <div class="month_before card">
                     <a class="collapse-link" data-toggle="collapse" href="#month_<?= date('Y_m', strtotime($data)) ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <?= $mounthName[preg_split('/-/', $data)[1]] ?> - Оборот наличными: <?= $totales[preg_split('/-/', $data)[1]]['Money'] ?> - Оборот б/нал: <?= $totales[preg_split('/-/', $data)[1]]['Cashless'] ?> - Оборот всего: <?= $totales[preg_split('/-/', $data)[1]]['Cashless'] + $totales[preg_split('/-/', $data)[1]]['Money'] ?>
+                        <?= $monthName[(integer)date('m', strtotime($data))] ?> - Оборот наличными: <?= $totales[date('m_Y', strtotime($data))]['Money'] ?> - Оборот б/нал: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] ?> - Оборот всего: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money'] ?>
                     </a>
                 <div class="collapse" id="month_<?= date('Y_m', strtotime($data)) ?>">
                     <table class="table table-striped" style="margin-top:10px;">
@@ -200,7 +187,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 $wedPayView2 = count($eventss);
                             }
 
-                            $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + isset($wedPayView2) ? $wedPayView2 : 0;
+                            $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + 0;
                             $sumWeddings = isset($sumWeddings1) ? $sumWeddings1 : 0  + isset($sumWeddings2) ? $sumWeddings2 : 0;
                         } ?>
                         <?php if(!empty($events)) { ?>

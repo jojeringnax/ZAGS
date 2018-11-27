@@ -19,14 +19,6 @@ use app\models\events\TalismanPaymentView;
  */
 class Events extends \yii\db\ActiveRecord
 {
-    public static $labels = [
-        'device_id' => 'ID устройства',
-        'time' => 'Время',
-        'name' => 'Событие',
-        'data' => 'Данные',
-        'nonce' => 'Nonce',
-    ];
-
     /**
      * @inheritdoc
      */
@@ -59,6 +51,14 @@ class Events extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @return string
+     */
+    public static function getTimeOfFirstEvent()
+    {
+        return self::find()->orderBy('time ASC')->one()->time;
+    }
+
 
     /**
      * @param null|string $timeFrom
@@ -69,16 +69,14 @@ class Events extends \yii\db\ActiveRecord
      */
     public static function getEventsForTime($deviceId, $timeFrom = null, $timeTo = null)
     {
-        if($timeFrom === null || $timeTo === null) {
-            throw(new Exception('Need to choose time'));
-        }
         $events = self::find()
             ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION))
-            ->andWhere(['between', 'time', $timeFrom, $timeTo])
-            ->andWhere(['device_id' => $deviceId])
-            ->orderBy('time DESC')
+            ->andWhere(['device_id' => $deviceId]);
+        if($timeFrom !== null || $timeTo !== null) {
+           $events->andWhere(['between', 'time', $timeFrom, $timeTo]);
+        }
+        return $events->orderBy('time DESC')
             ->all();
-        return $events;
     }
 
 }
