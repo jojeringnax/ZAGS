@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Config;
 use app\models\Events;
 use app\models\events\Encashment;
+use app\models\events\Game;
 use app\models\Log;
 use app\models\Owner;
 use function GuzzleHttp\Psr7\str;
@@ -196,7 +197,8 @@ class OwnerController extends Controller
         $totalesMonthMoney = [];
         $totalesMonthMoney[$oldMonthNumber] = array(
             'Money' => 0,
-            'Cashless' => 0
+            'Cashless' => 0,
+            'Games' => 0
         );
 
         foreach ($resultArray as $data => $events) {
@@ -204,11 +206,14 @@ class OwnerController extends Controller
             if ($currentMonthNumber !== $oldMonthNumber) {
                 $totalesMonthMoney[$currentMonthNumber] = array(
                     'Money' => 0,
-                    'Cashless' => 0
+                    'Cashless' => 0,
+                    'Games' => 0
                 );
             }
             $array = [];
             foreach($events as $event) {
+                if(in_array($event->name, Game::getCondition()['name']))
+                    $totalesMonthMoney[$currentMonthNumber]['Games']+= 1;
                 $array[$event->name][] = $event;
             }
             if (isset($array['Money'])) {

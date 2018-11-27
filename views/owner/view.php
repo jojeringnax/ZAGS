@@ -106,16 +106,14 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
         <?php
         $flag = true;
         foreach ($events as $data => $eventArray) {
-            if ($eventArray === []) {
-                $sumCash = 0;
-                $sumCashless = 0;
-                $sumWeddings1 = 0;
-                $sumWeddings2 = 0;
-                $sumWeddings = 0;
-                $sumTalisman = 0;
-                $wedPayView = 1;
-                $talPayView = 1;
-            }
+            $sumCash = 0;
+            $sumCashless = 0;
+            $sumWeddings1 = 0;
+            $sumWeddings2 = 0;
+            $sumWeddings = 0;
+            $sumTalisman = 0;
+            $wedPayView = 1;
+            $talPayView = 1;
             if(date('m', strtotime($data)) !== $dateTime->format('m')) {
                 $flag = true;
                 ?>
@@ -125,7 +123,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             if ($flag) { ?>
                 <div class="month_before card">
                     <a class="collapse-link" data-toggle="collapse" href="#month_<?= date('Y_m', strtotime($data)) ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <?= $monthName[(integer)date('m', strtotime($data))] ?> - Оборот наличными: <?= $totales[date('m_Y', strtotime($data))]['Money'] ?> - Оборот б/нал: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] ?> - Оборот всего: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money'] ?>
+                        <?= $monthName[(integer)date('m', strtotime($data))] ?> - Игр: <?= $totales[date('m_Y', strtotime($data))]['Games'] ?> - Оборот б/нал: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] ?> - Оборот всего: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money'] ?>
                     </a>
                 <div class="collapse" id="month_<?= date('Y_m', strtotime($data)) ?>">
                     <table class="table table-striped" style="margin-top:10px;">
@@ -172,6 +170,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
 
                             if ($eventName === app\models\events\Talisman::CONDITION['name']) {
                                 $sumTalisman = count($eventss);
+                                echo '<script>console.log("Date: '.$data.' Talisman: '.count($eventss).'")</script>';
                             }
 
 

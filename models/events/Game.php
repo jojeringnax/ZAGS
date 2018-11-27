@@ -15,13 +15,19 @@ use yii\db\ActiveQuery;
 class Game extends Events
 {
 
-    private static $condition;
 
 
     public function __construct(array $config = [])
     {
-        self::$condition = array_merge_recursive(Wedding::CONDITION, Kinoselfie::CONDITION, Talisman::CONDITION);
         parent::__construct($config);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getCondition()
+    {
+        return array_merge_recursive(Wedding::CONDITION, Kinoselfie::CONDITION, Talisman::CONDITION);
     }
 
     /**
