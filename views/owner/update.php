@@ -12,6 +12,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Редактирование'];
 
 <?= $form->field($model, 'wedding_price')->textInput() ?>
 <?= $form->field($model, 'reprint_price')->textInput() ?>
+<?= $form->field($model, 'talisman_price')->textInput() ?>
+<?= $form->field($model, 'kinoselfie_price')->textInput() ?>
 <!--<?php //$form->field($model, 'bills')->textInput() ?>-->
 <?= $form->field($model, 'disabled')->DropDownList(['1' => 'Выключен', '0' => 'Включен']) ?>
 <?= $form->field($model, 'multitouch_enabled')->DropDownList(['0' => 'Выключен', '1' => 'Включен']) ?>

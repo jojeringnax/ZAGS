@@ -25,6 +25,8 @@ GridView::widget([
         ['label' => 'Мультитач', 'value' => function($model) {
             return $model->multitouch_enabled ? "Включен" : "Выключен";
         }],
+        'kinoselfie_price',
+        'talisman_price',
         'quiet_time_start',
         'quiet_time_end',
         ['label' => 'Количество тонера', 'value' => 'toner'],
