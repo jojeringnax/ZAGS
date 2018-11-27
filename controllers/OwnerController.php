@@ -165,14 +165,24 @@ class OwnerController extends Controller
      * @param $id
      * @return string
      */
-    public function actionView($id)
+    public function actionView($id, $timeFrom=null, $timeTo=null)
     {
-        $timeFrom = new \DateTime();
-        $timeFrom->setDate(date('Y'), date('m') - 1, 1);
-        $timeTo = new \DateTime();
+        if($timeFrom === null && $timeTo === null) {
+            $timeFrom = \DateTime::createFromFormat('Y-m-d H:i:s', Events::getTimeOfFirstEvent());
+            $timeTo = new \DateTime();
+        } else if ($timeFrom === null) {
+            $timeFrom = \DateTime::createFromFormat('Y-m-d H:i:s', Events::getTimeOfFirstEvent());
+        } else if ($timeTo === null) {
+            $timeTo = new \DateTime();
+        } else {
+            $timeFrom = \DateTime::createFromFormat('Y-m-d', $timeFrom);
+            $timeTo = \DateTime::createFromFormat('Y-m-d', $timeTo);
+            $timeTo->modify('+1 day');
+        }
+        $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
+        $timeTo->modify('-1 day');
         $resultArray[$timeTo->format('Y-m-d')] = [];
         $diff = $timeTo->diff($timeFrom)->days;
-        $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
         for($i=0;$i < $diff; $i++) {
             $timeTo->modify('-1 day');
             $resultArray[$timeTo->format('Y-m-d')] = [];
@@ -180,7 +190,7 @@ class OwnerController extends Controller
         foreach($events as $event) {
             $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
         }
-        $oldMonthNumber = date('m', strtotime(array_keys($resultArray)[0]));
+        $oldMonthNumber = date('m_Y');
         $totalMonthMoney = 0;
         $totalMonthCashless = 0;
         $totalesMonthMoney = [];
@@ -190,7 +200,7 @@ class OwnerController extends Controller
         );
 
         foreach ($resultArray as $data => $events) {
-            $currentMonthNumber = date('m', strtotime($data));
+            $currentMonthNumber = date('m_Y', strtotime($data));
             if ($currentMonthNumber !== $oldMonthNumber) {
                 $totalesMonthMoney[$currentMonthNumber] = array(
                     'Money' => 0,
@@ -218,6 +228,20 @@ class OwnerController extends Controller
             'id' => $id,
             'events' => isset($resultArray) ? $resultArray : null,
             'totales' => isset($totalesMonthMoney) ? $totalesMonthMoney : null,
+            'monthName' => array(
+                1 => 'Январь',
+                2 => 'Февраль',
+                3 => 'Март',
+                4 => 'Апрель',
+                5 => 'Май',
+                6 => 'Июнь',
+                7 => 'Июль',
+                8 => 'Август',
+                9 => 'Сентябрь',
+                10 => 'Октябрь',
+                11 => 'Ноябрь',
+                12 => 'Декабрь',
+            )
         ]);
     }
 
