@@ -128,8 +128,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                 <div class="collapse" id="month_<?= date('Y_m', strtotime($data)) ?>">
                     <table class="table table-striped" style="margin-top:10px;">
                         <thead class="thead-light">
-                        <tr style="font-size: 13px;">
-                            <th class="data" scope="col">Дата</th>
+                        <tr style="font-size: 13px;" class="text-center">
+                            <th class="data" width="120" scope="col" style="vertical-align:middle;">Дата</th>
                             <th class="sum_total" scope="col">Оборот (всего)</th>
                             <th class="sum_cash" scope="col">Оборот (нал)</th>
                             <th class="sum_cashless" scope="col">Оборот (без/нал)</th>
