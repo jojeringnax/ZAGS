@@ -54,6 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
 			'template'=>'<div class="flex">{config} {view} {encashment}</div>',
         ]
     ],
-         'summary'=>'',
+     'summary'=>'',
 
 ]); ?>
