@@ -18,7 +18,6 @@ GridView::widget([
     'columns' => [
         ['label'=>'Цена Свадьбы', 'value'=> 'wedding_price'],
         ['label'=>'Цена повторной печати', 'value'=> 'reprint_price'],
-        ['label'=>'Номер устройства', 'value'=> 'device_id'],
         ['label' => 'Состояние аппарата', 'value' => function($model) {
             return $model->disabled ? "Включен" : "Выключен";
         }],
