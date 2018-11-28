@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Config;
 use app\models\CurrentStatus;
 use app\models\Licenses;
+use app\models\Module;
 use Codeception\Util\XmlBuilder;
 use Yii;
 use yii\filters\AccessControl;
@@ -113,7 +114,7 @@ class SiteController extends Controller
      * @param null $fill_wedding
      * @param null $fill_talisman
      * @param $printer_media_count
-     * @return bool|string
+     * @return XmlBuilder|string
      */
     public function actionGet_config($id, $fill_wedding=null, $fill_talisman=null, $printer_media_count)
     {
@@ -165,24 +166,52 @@ class SiteController extends Controller
         $currentStatus->printer_media_count = $printer_media_count;
         $currentStatus->save();
 
-        return true;
+        return $xml;
     }
 
     /**
-     * @param $id
-     * @param null $fill_wedding
-     * @param null $fill_talisman
-     * @param $printer_media_count
+     * @return bool
      */
-    public function actionStatus($id, $fill_wedding=null, $fill_talisman=null, $printer_media_count)
+    public function actionStatus()
     {
-        $currentStatus = CurrentStatus::updateOrCreate($id);
-        $currentStatus->device_id = $id;
-        $currentStatus->last_update = date('Y-m-d H:i:s');
-        $currentStatus->fill_wedding = $fill_wedding;
-        $currentStatus->fill_talisman = $fill_talisman;
-        $currentStatus->printer_media_count = $printer_media_count;
-        $currentStatus->save();
+        $request = Yii::$app->request;
+        $params = [
+            'id',
+            'fill_talisman',
+            'fill_wedding',
+            'printer_media_count',
+            'date'
+        ];
+        foreach (Module::NAMES as $name) {
+            $params[] = $name.'_uptime_yesterday';
+            $params[] = $name.'_uptime_today';
+            $params[] = $name.'_uptime_month';
+            $params[] = $name.'_status';
+            $params[] = $name.'_error';
+        }
+        foreach($params as $param) {
+            $$param = $request->get($param) ? $request->get($param) : null;
+        }
 
+        foreach (Module::NAMES as $name)
+        {
+            $uy = $name.'_uptime_yesterday';
+            $ut = $name.'_uptime_today';
+            $um = $name.'_uptime_month';
+            $s = $name.'_status';
+            $e = $name.'_error';
+            $modules[] = [
+                'name' => $name,
+                'uptime_yesterday' => $$uy,
+                'uptime_today' => $$ut,
+                'uptime_month' => $$um,
+                'status' => $$s,
+                'error' => $$e
+            ];
+        }
+        foreach ($modules as $module){
+            Module::findOrCreateAndUpdate($id, $module['name'], $module['uptime_yesterday'], $module['uptime_today'], $module['uptime_month'], $module['status'], $module['error']);
+        }
+        return true;
     }
 }
