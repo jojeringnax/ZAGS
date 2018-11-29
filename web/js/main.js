@@ -17,7 +17,7 @@ $(document).ready(function(){
         e.preventDefault();
         let data = $(this).attr('data-page');
 
-        let link = "http://zags.zu/web/index.php?r=admin/games&page=" + data;
+        let link = "http://zags.zu/web/index_cop_old.php?r=admin/games&page=" + data;
         // console.log(link);
 
         $.ajax({

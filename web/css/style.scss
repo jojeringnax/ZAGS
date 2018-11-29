@@ -64,7 +64,6 @@ a.desc {
 
 .page-item {
     span {
-        margin-left: 0;
         border-top-left-radius: 0.25rem;
         border-bottom-left-radius: 0.25rem;
         position: relative;
@@ -269,4 +268,69 @@ a.desc {
             border-radius: 3px;
         }
     }
+}
+
+
+/*======================owner-views=================================*/
+
+.elem-card {
+    width: 32%;
+    margin: 30px 0 0 0;
+}
+
+.elem-card-inf {
+    .elem-th {
+        height: 30px;
+        border-bottom: 2px solid rgba(0,0,0,.06);
+
+        span {
+            font-size: 12px;
+        }
+    }
+    .elem-td {
+        display: flex;
+        height: 30px;
+        border: 2px solid rgba(0,0,0,.06);
+        border-top: 0;
+        span {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+        }
+        .state-td {
+            width: 50%;
+            text-align: center;
+            span {
+                font-size: 12px;
+            }
+        }
+
+        .state-pr {
+            width: 50%;
+            text-align: center;
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.th-card-inf {
+    width: 48%;
+}
+
+.td-card-inf {
+    width: 32%;
+}
+
+.buttons {
+    width: 20%;
+    .btn-set {
+        a {
+            .img-icon {
+                width: 30px;
+            }
+          }
+    }
+
 }

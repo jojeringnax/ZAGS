@@ -26,7 +26,6 @@ a.desc:after {
   margin-left: 10px; }
 
 .page-item span {
-  margin-left: 0;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   position: relative;
@@ -131,5 +130,46 @@ a.desc:after {
   .month_before div table {
     border: 2.5px solid #ddd;
     border-radius: 3px; }
+
+/*======================owner-views=================================*/
+.elem-card {
+  width: 32%;
+  margin: 30px 0 0 0; }
+
+.elem-card-inf .elem-th {
+  height: 30px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06); }
+  .elem-card-inf .elem-th span {
+    font-size: 12px; }
+.elem-card-inf .elem-td {
+  display: flex;
+  height: 30px;
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  border-top: 0; }
+  .elem-card-inf .elem-td span {
+    width: 100%;
+    text-align: center;
+    font-size: 12px; }
+  .elem-card-inf .elem-td .state-td {
+    width: 50%;
+    text-align: center; }
+    .elem-card-inf .elem-td .state-td span {
+      font-size: 12px; }
+  .elem-card-inf .elem-td .state-pr {
+    width: 50%;
+    text-align: center; }
+    .elem-card-inf .elem-td .state-pr span {
+      font-size: 12px; }
+
+.th-card-inf {
+  width: 48%; }
+
+.td-card-inf {
+  width: 32%; }
+
+.buttons {
+  width: 20%; }
+  .buttons .btn-set a .img-icon {
+    width: 30px; }
 
 /*# sourceMappingURL=style.css.map */
