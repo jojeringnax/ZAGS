@@ -2,11 +2,13 @@
 
 namespace app\models;
 
+use function GuzzleHttp\Psr7\str;
 use Yii;
 
 /**
  * This is the model class for table "modules".
  *
+ * @property int $id
  * @property int $device_id
  * @property string $name
  * @property float $uptime_yesterday
@@ -14,6 +16,7 @@ use Yii;
  * @property float $uptime_month
  * @property int $status
  * @property string $error
+ * @property string $update_at
  * @property CurrentStatus $device
  */
 class Module extends \yii\db\ActiveRecord
@@ -35,6 +38,7 @@ class Module extends \yii\db\ActiveRecord
         'camera',
         'dispenser'
     ];
+
     /**
      * {@inheritdoc}
      */
@@ -68,9 +72,43 @@ class Module extends \yii\db\ActiveRecord
             'uptime_yesterday' => 'Uptime за вчера',
             'uptime_today' => 'Uptime за сегодня',
             'uptime_month' => 'Uptime за месяц',
+            'updated_at' => 'Изменен',
             'status' => 'Статус',
             'error' => 'Ошибка',
         ];
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function setUptimesNeeded()
+    {
+        $uptimes = Uptime::getForCurrentMonthForModule($this->id);
+        if ($uptimes === null) {
+            $this->uptime_yesterday = 0;
+            $this->uptime_today = 0;
+            $this->uptime_month = 0;
+            return false;
+        }
+        $sum = 0;
+        $uptimeToday = 0;
+        $uptimeYesterday = 0;
+        foreach ($uptimes as $uptime) {
+            $uptimeDay = date('Y-m-d', strtotime($uptime->created_date));
+            $sum += $uptime->uptime;
+            if ($uptimeDay === date('Y-m-d')) {
+                $uptimeToday = $uptime->uptime;
+            }
+            if ($uptimeDay === date('Y-m-d', strtotime(date('Y-m-d')) - 24*3600)) {
+                $uptimeYesterday = $uptime->uptime;
+            }
+        }
+        $uptimeAvgMonth = $sum/count($uptimes);
+        $this->uptime_yesterday = $uptimeYesterday;
+        $this->uptime_today = $uptimeToday;
+        $this->uptime_month = $uptimeAvgMonth;
+        return true;
     }
 
     /**
@@ -90,16 +128,22 @@ class Module extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUptimes()
+    {
+        return $this->hasMany(Uptime::className(), ['module_id' => 'id']);
+    }
+
+    /**
      * @param $device_id
      * @param $name
-     * @param $uptime_yesterday
-     * @param $uptime_today
-     * @param $uptime_month
+     * @param $uptime
      * @param $status
      * @param $error
      * @return int
      */
-    public static function findOrCreateAndUpdate($device_id, $name, $uptime_yesterday, $uptime_today, $uptime_month, $status, $error)
+    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $status, $error)
     {
         $module = self::find()->where(['device_id' => $device_id, 'name' => $name])->one();
         if ($module === null) {
@@ -110,12 +154,16 @@ class Module extends \yii\db\ActiveRecord
         } else {
             $result = self::UPDATED;
         }
-        $module->uptime_yesterday = $uptime_yesterday;
-        $module->uptime_today = $uptime_today;
-        $module->uptime_month = $uptime_month;
         $module->status = $status;
         $module->error = $error;
         $module->save();
+        $uptimeEx = new Uptime();
+        $uptimeEx->module_id = $module->id;
+        $uptimeEx->uptime = $uptime;
+        $uptimeEx->save();
+        $module->setUptimesNeeded();
         return $result;
     }
+
+
 }

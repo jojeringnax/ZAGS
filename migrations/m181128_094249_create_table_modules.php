@@ -18,11 +18,9 @@ class m181128_094249_create_table_modules extends Migration
             'id' => $this->primaryKey(),
             'device_id' => $this->integer(11),
             'name' => $this->string(16),
-            'uptime_today' => $this->float(),
-            'uptime_yesterday' => $this->float(),
-            'uptime_month' => $this->float(),
             'status' => $this->integer(1),
-            'error' => $this->text()
+            'error' => $this->text(),
+            'update_at' => $this->timestamp()
         ]);
 
         $this->addForeignKey(
