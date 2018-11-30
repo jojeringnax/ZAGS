@@ -3,11 +3,15 @@
 namespace app\controllers;
 
 use app\models\Config;
+use app\models\CurrentStatus;
 use app\models\Events;
 use app\models\events\Encashment;
 use app\models\events\Game;
+use app\models\events\Payment;
+use app\models\Licenses;
 use app\models\Log;
 use app\models\Owner;
+use app\models\User;
 use function GuzzleHttp\Psr7\str;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
@@ -15,6 +19,7 @@ use yii\data\SqlDataProvider;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\db\Expression;
@@ -77,35 +82,29 @@ class OwnerController extends Controller
      */
     public function actionIndex()
     {
-        $count = Yii::$app->db->createCommand('SELECT COUNT(owners.id) FROM licenses JOIN owners ON (licenses.id=owners.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryScalar();
-
-        $table = array();
-        $set = Yii::$app->db->createCommand('SELECT owners.device_id AS device_id, licenses.license AS license, (NOW() - last_check) AS online, description, current_status.fill_wedding AS fill_wedding FROM licenses RIGHT JOIN owners ON (licenses.id=owners.device_id) RIGHT JOIN config ON (owners.device_id = config.device_id) LEFT JOIN current_status ON (config.device_id = current_status.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryAll();
-
-        foreach ($set as $row) {
-            array_push($table, array(
-				'device_id' => $row['device_id'],
-				'license' => $row['license'],
-				'online' => $row['online'],
-				'description' => $row['description'],
-				'fill_wedding' => (is_null($row['fill_wedding']))?'н/д':$row['fill_wedding'],
-				'stacker' => max($this->getStackerContent($row['device_id']), $this->getStackerContent_new($row['device_id']))
-			));
+        $owners = Owner::find()->where(['user_id' => Yii::$app->getUser()->id])->select(['device_id'])->all();
+        if ($owners === null) {
+            return $this->render('index', [
+                'data' => [],
+            ]);
+        }
+        foreach($owners as $owner) {
+            $devicesArray[] = $owner->device_id;
         }
 
-        $provider = new ArrayDataProvider([
-            'allModels' => $table,
-            'sort' => [
-                'attributes' => ['device_id'],
-            ],
-            'totalCount' => $count,
-            'pagination' => [
-                'pageSize' => 100,
-            ],
-        ]);
+        $licenses = Licenses::findAll(['id' => $devicesArray]);
 
+        foreach ($licenses as $license) {
+            $currentStatus = $license->getCurrentStatus();
+            $config = $license->getConfig();
+            $resultArray[$license->id]['licence'] = $license->license;
+            $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Офлайн' : 'Онлайн';
+            $resultArray[$license->id]['description'] = $config->description;
+            $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
+            $resultArray[$license->id]['stacker'] = Payment::getStackerForDevice($license->id);
+        }
         return $this->render('index', [
-            'dataProvider' => $provider,
+            'data' => $resultArray,
         ]);
     }
 
