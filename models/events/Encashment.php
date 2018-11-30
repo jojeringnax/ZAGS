@@ -28,6 +28,16 @@ class Encashment extends Events
         return self::find()->andWhere(['device_id' => $deviceId]);
     }
 
+
+    /**
+     * @param $deviceId
+     * @return array|null|\yii\db\ActiveRecord|self
+     */
+    public static function getLastEncashmentForDevice($deviceId)
+    {
+        return self::find()->andWhere(['device_id' => $deviceId])->orderBy('time DESC')->one();
+    }
+
     /**
      * @param $id
      * @return array|bool|null
