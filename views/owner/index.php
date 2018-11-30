@@ -2,6 +2,23 @@
 <?php
 /* @var $this yii\web\View */
 
+/**
+ * @var $data array = array(
+        [$id] => [
+ *          ['license'] => *****
+ *          ['online'] => *****
+ *          ['description'] => ****
+ *          ['fill_wedding'] => ****
+ *          ['stacker'] => ****
+ *      ]
+ * )
+ *
+ * For $loop use foreach($data as $id => $value) {
+        $value['license']
+ *      ...
+ * }
+ */
+
 use yii\helpers\Html;
 use yii\grid\GridView;
 

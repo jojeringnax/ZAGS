@@ -42,4 +42,20 @@ class Licenses extends \yii\db\ActiveRecord
             'last_check' => 'Last check',
         ];
     }
+
+    /**
+     * @return Config
+     */
+    public function getConfig()
+    {
+        return $this->hasOne(Config::className(), ['device_id' => 'id'])->one();
+    }
+
+    /**
+     * @return CurrentStatus
+     */
+    public function getCurrentStatus()
+    {
+        return $this->hasOne(CurrentStatus::className(), ['device_id' => 'id'])->one();
+    }
 }

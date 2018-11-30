@@ -183,9 +183,7 @@ class SiteController extends Controller
             'date'
         ];
         foreach (Module::NAMES as $name) {
-            $params[] = $name.'_uptime_yesterday';
-            $params[] = $name.'_uptime_today';
-            $params[] = $name.'_uptime_month';
+            $params[] = $name.'_uptime';
             $params[] = $name.'_status';
             $params[] = $name.'_error';
         }
@@ -195,22 +193,18 @@ class SiteController extends Controller
 
         foreach (Module::NAMES as $name)
         {
-            $uy = $name.'_uptime_yesterday';
-            $ut = $name.'_uptime_today';
-            $um = $name.'_uptime_month';
+            $u = $name.'_uptime';
             $s = $name.'_status';
             $e = $name.'_error';
             $modules[] = [
                 'name' => $name,
-                'uptime_yesterday' => $$uy,
-                'uptime_today' => $$ut,
-                'uptime_month' => $$um,
+                'uptime' => $$u,
                 'status' => $$s,
                 'error' => $$e
             ];
         }
         foreach ($modules as $module){
-            Module::findOrCreateAndUpdate($id, $module['name'], $module['uptime_yesterday'], $module['uptime_today'], $module['uptime_month'], $module['status'], $module['error']);
+            Module::findOrCreateAndUpdate($id, $module['name'], $module['uptime'], $module['status'], $module['error']);
         }
         return true;
     }

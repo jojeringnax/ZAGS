@@ -16,8 +16,13 @@ class Payment extends Events
      * @param null $limit
      * @return ActiveQuery
      */
-    public static function find($limit=null)
+    public static function find($limit=null, $onlyCashless = false, $onlyMoney = false)
     {
+        if ($onlyMoney) {
+            return parent::find()->andWhere(['name' => 'Money'])->limit($limit);
+        } else if ($onlyCashless) {
+            return parent::find()->andWhere(['name' => 'Cashless'])->limit($limit);
+        }
         return parent::find()->andWhere(self::CONDITION)->limit($limit);
     }
 
@@ -29,6 +34,20 @@ class Payment extends Events
         return $this->name == 'Money' ? 'Наличный расчет' : 'Безналичный расчет';
     }
 
-
+    /**
+     * @param $deviceId
+     * @return int|mixed
+     */
+    public static function getStackerForDevice($deviceId)
+    {
+        $result = 0;
+        $lastEncashment = Encashment::getLastEncashmentForDevice($deviceId);
+        $time = $lastEncashment === null ? '' : $lastEncashment->time;
+        $payments = self::find(null, false, true)->andWhere(['device_id' => $deviceId])->andWhere(['between', 'time', $time, date('Y-m-d H:i:s')])->all();
+        foreach ($payments as $payment) {
+            $result += $payment->data;
+        }
+        return $result;
+    }
 
 }
