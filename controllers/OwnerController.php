@@ -97,8 +97,8 @@ class OwnerController extends Controller
         foreach ($licenses as $license) {
             $currentStatus = $license->getCurrentStatus();
             $config = $license->getConfig();
-            $resultArray[$license->id]['licence'] = $license->license;
-            $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Офлайн' : 'Онлайн';
+            $resultArray[$license->id]['license'] = $license->license;
+            $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Оффлайн' : 'Онлайн';
             $resultArray[$license->id]['description'] = $config->description;
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
             $resultArray[$license->id]['stacker'] = Payment::getStackerForDevice($license->id);
