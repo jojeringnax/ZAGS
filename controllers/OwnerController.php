@@ -10,6 +10,7 @@ use app\models\events\Game;
 use app\models\events\Payment;
 use app\models\Licenses;
 use app\models\Log;
+use app\models\LoginForm;
 use app\models\Module;
 use app\models\Owner;
 use app\models\User;
@@ -83,6 +84,15 @@ class OwnerController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->getIsGuest()) {
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->goBack();
+            }
+            return $this->render('/site/login', [
+                'model' => $model,
+            ]);
+        }
         $owners = Owner::find()->where(['user_id' => Yii::$app->getUser()->id])->select(['device_id'])->all();
         if ($owners == null) {
             return $this->render('index', [
@@ -94,7 +104,7 @@ class OwnerController extends Controller
             $devicesArray[] = $owner->device_id;
         }
         $modules = Module::find()->where(['device_id' => $devicesArray])->all();
-
+        $money = Payment::getStackerForDevices($devicesArray);
         $licenses = Licenses::findAll(['id' => $devicesArray]);
         foreach ($licenses as $license) {
             /** @var $modules Module[]*/
@@ -110,12 +120,14 @@ class OwnerController extends Controller
             }
             if (!isset($founded)) {
                 foreach (Module::NAMES as $name) {
-                    $resultArray[$license->id][$name.'_uptime_yesterday'] = null;
-                    $resultArray[$license->id][$name.'_uptime_today'] = null;
-                    $resultArray[$license->id][$name.'_uptime_month'] = null;
-                    $resultArray[$license->id][$name.'_status'] = null;
+                    $resultArray[$license->id][$name.'_uptime_yesterday'] = '';
+                    $resultArray[$license->id][$name.'_uptime_today'] = '';
+                    $resultArray[$license->id][$name.'_uptime_month'] = '';
+                    $resultArray[$license->id][$name.'_status'] = '';
                 }
             }
+            $resultArray[$license->id]['stacker'] = !isset($money['stacker'][$license->id]) ? $money['stacker'] : $money['stacker'][$license->id];
+            $resultArray[$license->id]['profit'] = !isset($money['profit'][$license->id]) ? $money['profit'] : $money['profit'][$license->id];
             $currentStatus = $license->getCurrentStatus();
             $config = $license->getConfig();
             $resultArray[$license->id]['license'] = $license->license;
@@ -123,7 +135,6 @@ class OwnerController extends Controller
             $resultArray[$license->id]['description'] = $config->description;
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
             $resultArray[$license->id]['printer_media_count'] = $currentStatus->printer_media_count;
-            $resultArray[$license->id]['stacker'] = Payment::getStackerForDevice($license->id);
         }
         return $this->render('index', [
             'data' => $resultArray
