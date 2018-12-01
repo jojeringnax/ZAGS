@@ -35,11 +35,17 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    $value['license'];
                     ?>
                <div class='card elem-card' style='padding: 0'>
+                   <div class="bg-primary card-header d-flex justify-content-center" style="font-weight: bold">
+                       <div class="elem-th">
+                           <span>Номер устройства № </span>
+                       </div>
+                       <div class="elem-td">
+                           <span> <?= $id ?></span>
+                       </div>
+                   </div>
                    <div class="d-flex">
                        <div class="elem-card-inf th th-card-inf">
-                           <div class="elem-th">
-                               <span>Номер устройства</span>
-                           </div>
+
                            <div class="elem-th">
                                <span>Выручка за текущий месяц</span>
                            </div>
@@ -72,11 +78,9 @@ $this->params['breadcrumbs'][] = $this->title;
                            </div>
                        </div>
                        <div class="elem-card-inf td-card-inf">
+
                            <div class="elem-td">
-                               <span> <?= $id ?></span>
-                           </div>
-                           <div class="elem-td">
-                               <span>???</span>
+                               <span><?= $value['profit']?></span>
                            </div>
                            <div class="elem-td">
                                <span><?= $value['stacker']?></span>
@@ -104,10 +108,10 @@ $this->params['breadcrumbs'][] = $this->title;
                            <?php foreach (\app\models\Module::NAMES as $name) { ?>
                                <div class='elem-td'>
                                    <div class="state-td">
-                                       <?= $value[$name.'_status'] ?>
+                                       <span><?= $value[$name.'_status'] ?></span>
                                    </div>
                                    <div class="state-pr">
-                                       <select name="" id="">
+                                       <select class="form-control" name="" id="">
                                            <option value=""> <?= $value[$name.'_uptime_yesterday'] ?></option>
                                            <option value=""> <?= $value[$name.'_uptime_today'] ?></option>
                                            <option value=""> <?= $value[$name.'_uptime_month'] ?></option>
@@ -115,6 +119,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                    </div>
                                </div>
                            <?php } ?>
+                           <div class='elem-td'>
+                               <span><?= $value['printer_media_count'] ?></span>
+                           </div>
+                           <div class='elem-td'>
+                               <span style="font-weight: bold"><?= $value['description'] ?></span>
+                           </div>
     <!--                       <div class="elem-td">
                                <div class="state-td">
                                    <span>???</span>
@@ -166,13 +176,13 @@ $this->params['breadcrumbs'][] = $this->title;
                        </div>
                        <div class="elem-card-inf buttons d-flex flex-column justify-content-around align-items-center">
                            <div class="btn-set btn-settings">
-                               <a href=""><img class="img-icon" src="img/icons/svg/cog.svg" alt=""></a>
+                               <a href=""><span class="oi oi-cog"></span></a>
                            </div>
                            <div class="btn-set btn-statistics">
-                               <a href=""><img class="img-icon" src="img/icons/svg/document.svg" alt=""></a>
+                               <a href=""> <span class="oi oi-document"></span></a>
                            </div>
                            <div class="btn-set btn-encashment">
-                               <a href=""><img class="img-icon" src="img/icons/svg/briefcase.svg" alt=""></a>
+                               <a href=""><span class="oi oi-briefcase"></span></a>
                            </div>
 
                        </div>
