@@ -10,6 +10,7 @@ use app\models\events\Game;
 use app\models\events\Payment;
 use app\models\Licenses;
 use app\models\Log;
+use app\models\Module;
 use app\models\Owner;
 use app\models\User;
 use function GuzzleHttp\Psr7\str;
@@ -93,11 +94,15 @@ class OwnerController extends Controller
         }
 
         $licenses = Licenses::findAll(['id' => $devicesArray]);
-
         foreach ($licenses as $license) {
+            /** @var $modules Module[]*/
+            $modules = Module::find()->where(['device_id' => $license->id])->all();
+            foreach($modules as $module) {
+                $module->setUptimesNeeded();
+            }
             $currentStatus = $license->getCurrentStatus();
             $config = $license->getConfig();
-            $resultArray[$license->id]['licence'] = $license->license;
+            $resultArray[$license->id]['license'] = $license->license;
             $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Офлайн' : 'Онлайн';
             $resultArray[$license->id]['description'] = $config->description;
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
@@ -105,6 +110,7 @@ class OwnerController extends Controller
         }
         return $this->render('index', [
             'data' => $resultArray,
+            'modules' => $modules
         ]);
     }
 
