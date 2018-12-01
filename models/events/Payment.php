@@ -72,11 +72,13 @@ class Payment extends Events
                 }
                 $time = $lastEncashment->time;
                 foreach ($payments as $payment) {
-                    if (strtotime($payment->time) <= strtotime(date('Y-m-d')) && strtotime($payment->time) >= strtotime(date('Y-m-1'))) {
-                        $resultProfit[$id] += $payment->data;
-                    }
-                    if (strtotime($payment->time) > strtotime($time) && $payment->device_id === $id && $payment->name === 'Money') {
-                        $resultStacker[$id] += $payment->data;
+                    if ($payment->device_id === $id) {
+                        if (strtotime($payment->time) <= strtotime(date('Y-m-d')) && strtotime($payment->time) >= strtotime(date('Y-m-1'))) {
+                            $resultProfit[$id] += $payment->data;
+                        }
+                        if (strtotime($payment->time) > strtotime($time) && $payment->name === 'Money') {
+                            $resultStacker[$id] += $payment->data;
+                        }
                     }
                 }
             }
