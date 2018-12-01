@@ -99,6 +99,10 @@ class OwnerController extends Controller
             $modules = Module::find()->where(['device_id' => $license->id])->all();
             foreach($modules as $module) {
                 $module->setUptimesNeeded();
+                $resultArray[$license->id][$module->name.'_uptime_yesterday'] = $module->uptime_yesterday;
+                $resultArray[$license->id][$module->name.'_uptime_today'] = $module->uptime_today;
+                $resultArray[$license->id][$module->name.'_uptime_month'] = $module->uptime_month;
+                $resultArray[$license->id][$module->name.'_status'] = $module->status;
             }
             $currentStatus = $license->getCurrentStatus();
             $config = $license->getConfig();
@@ -107,10 +111,10 @@ class OwnerController extends Controller
             $resultArray[$license->id]['description'] = $config->description;
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
             $resultArray[$license->id]['stacker'] = Payment::getStackerForDevice($license->id);
+
         }
         return $this->render('index', [
-            'data' => $resultArray,
-            'modules' => $modules
+            'data' => $resultArray
         ]);
     }
 
