@@ -120,10 +120,10 @@ class OwnerController extends Controller
             }
             if (!isset($founded)) {
                 foreach (Module::NAMES as $name) {
-                    $resultArray[$license->id][$name.'_uptime_yesterday'] = '';
-                    $resultArray[$license->id][$name.'_uptime_today'] = '';
-                    $resultArray[$license->id][$name.'_uptime_month'] = '';
-                    $resultArray[$license->id][$name.'_status'] = '';
+                    $resultArray[$license->id][$name.'_uptime_yesterday'] = 'not set';
+                    $resultArray[$license->id][$name.'_uptime_today'] = 'not set';
+                    $resultArray[$license->id][$name.'_uptime_month'] = 'not set';
+                    $resultArray[$license->id][$name.'_status'] = 'not set';
                 }
             }
             $resultArray[$license->id]['stacker'] = !isset($money['stacker'][$license->id]) ? $money['stacker'] : $money['stacker'][$license->id];
@@ -131,7 +131,7 @@ class OwnerController extends Controller
             $currentStatus = $license->getCurrentStatus();
             $config = $license->getConfig();
             $resultArray[$license->id]['license'] = $license->license;
-            $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Офлайн' : 'Онлайн';
+            $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Оффлайн' : 'Онлайн';
             $resultArray[$license->id]['description'] = $config->description;
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
             $resultArray[$license->id]['printer_media_count'] = $currentStatus->printer_media_count;
