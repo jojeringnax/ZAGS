@@ -89,20 +89,43 @@ $this->params['breadcrumbs'][] = $this->title;
                                    <span>uptime</span>
                                </div>
                            </div>
-                           <div class="elem-td">
+<!--                           <div class="elem-td">
+                               <div class="state-td">
+
+                               </div>
+                               <div class="state-pr">
+                                   <select name="" id="">
+                                       <option value=""><?/*= $value['_uptime_yesterday'] */?></option>
+                                       <option value=""><?/*= $value['_uptime_today'] */?></option>
+                                       <option value=""><?/*= $value['_uptime_month'] */?></option>
+                                   </select>
+                               </div>
+                           </div>-->
+                           <?php foreach (\app\models\Module::NAMES as $name) { ?>
+                               <div class='elem-td'>
+                                   <div class="state-td">
+                                       <?= $value[$name.'_status'] ?>
+                                   </div>
+                                   <div class="state-pr">
+                                       <select name="" id="">
+                                           <option value=""> <?= $value[$name.'_uptime_yesterday'] ?></option>
+                                           <option value=""> <?= $value[$name.'_uptime_today'] ?></option>
+                                           <option value=""> <?= $value[$name.'_uptime_month'] ?></option>
+                                       </select>
+                                   </div>
+                               </div>
+                           <?php } ?>
+    <!--                       <div class="elem-td">
                                <div class="state-td">
                                    <span>???</span>
                                </div>
                                <div class="state-pr">
-                                   <span>???</span>
-                               </div>
-                           </div>
-                           <div class="elem-td">
-                               <div class="state-td">
-                                   <span>???</span>
-                               </div>
-                               <div class="state-pr">
-                                   <span>???</span>
+                                   <select name="" id="">
+
+                                       <option value=""><?/*= $value['validator_uptime_yesterday'] */?></option>
+                                       <option value=""><?/*= $value['validator_uptime_today'] */?></option>
+                                       <option value=""><?/*= $value['validator_uptime_month'] */?></option>
+                                   </select>
                                </div>
                            </div>
                            <div class="elem-td">
@@ -139,7 +162,7 @@ $this->params['breadcrumbs'][] = $this->title;
                            </div>
                            <div class="elem-td">
                                <span>???</span>
-                           </div>
+                           </div>-->
                        </div>
                        <div class="elem-card-inf buttons d-flex flex-column justify-content-around align-items-center">
                            <div class="btn-set btn-settings">

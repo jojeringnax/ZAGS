@@ -110,10 +110,10 @@ class OwnerController extends Controller
             }
             if (!isset($founded)) {
                 foreach (Module::NAMES as $name) {
-                    $resultArray[$license->id][$name.'_uptime_yesterday'] = null;
-                    $resultArray[$license->id][$name.'_uptime_today'] = null;
-                    $resultArray[$license->id][$name.'_uptime_month'] = null;
-                    $resultArray[$license->id][$name.'_status'] = null;
+                    $resultArray[$license->id][$name.'_uptime_yesterday'] = "not set";
+                    $resultArray[$license->id][$name.'_uptime_today'] = "not set";
+                    $resultArray[$license->id][$name.'_uptime_month'] = "not set";
+                    $resultArray[$license->id][$name.'_status'] = "not set";
                 }
             }
             $currentStatus = $license->getCurrentStatus();
