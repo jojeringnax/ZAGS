@@ -84,25 +84,37 @@ class OwnerController extends Controller
     public function actionIndex()
     {
         $owners = Owner::find()->where(['user_id' => Yii::$app->getUser()->id])->select(['device_id'])->all();
-        if ($owners === null) {
+        if ($owners == null) {
             return $this->render('index', [
                 'data' => [],
+                'noOwner' => true
             ]);
         }
         foreach($owners as $owner) {
             $devicesArray[] = $owner->device_id;
         }
+        $modules = Module::find()->where(['device_id' => $devicesArray])->all();
 
         $licenses = Licenses::findAll(['id' => $devicesArray]);
         foreach ($licenses as $license) {
             /** @var $modules Module[]*/
-            $modules = Module::find()->where(['device_id' => $license->id])->all();
             foreach($modules as $module) {
-                $module->setUptimesNeeded();
-                $resultArray[$license->id][$module->name.'_uptime_yesterday'] = $module->uptime_yesterday;
-                $resultArray[$license->id][$module->name.'_uptime_today'] = $module->uptime_today;
-                $resultArray[$license->id][$module->name.'_uptime_month'] = $module->uptime_month;
-                $resultArray[$license->id][$module->name.'_status'] = $module->status;
+                if ($module->device_id === $license->id) {
+                    $module->setUptimesNeeded();
+                    $resultArray[$license->id][$module->name . '_uptime_yesterday'] = $module->uptime_yesterday;
+                    $resultArray[$license->id][$module->name . '_uptime_today'] = $module->uptime_today;
+                    $resultArray[$license->id][$module->name . '_uptime_month'] = $module->uptime_month;
+                    $resultArray[$license->id][$module->name . '_status'] = $module->status;
+                    $founded = true;
+                }
+            }
+            if (!isset($founded)) {
+                foreach (Module::NAMES as $name) {
+                    $resultArray[$license->id][$name.'_uptime_yesterday'] = null;
+                    $resultArray[$license->id][$name.'_uptime_today'] = null;
+                    $resultArray[$license->id][$name.'_uptime_month'] = null;
+                    $resultArray[$license->id][$name.'_status'] = null;
+                }
             }
             $currentStatus = $license->getCurrentStatus();
             $config = $license->getConfig();
@@ -111,7 +123,6 @@ class OwnerController extends Controller
             $resultArray[$license->id]['description'] = $config->description;
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
             $resultArray[$license->id]['stacker'] = Payment::getStackerForDevice($license->id);
-
         }
         return $this->render('index', [
             'data' => $resultArray
