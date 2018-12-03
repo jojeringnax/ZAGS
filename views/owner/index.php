@@ -178,7 +178,11 @@ $this->params['breadcrumbs'][] = $this->title;
                        </div>
 
                        <div class="elem-card-inf buttons d-flex flex-column justify-content-around align-items-center">
-                           <?php $url_statistics = Url::to(['owner/view', 'id' => $id]); $url_cog = Url::to(['owner/config', 'id' => $id]); $url_encashment = Url::to(['owner/encashment', 'id' => $id]);?>
+                           <?php
+                               $url_statistics = Url::to(['owner/view', 'id' => $id]);
+                               $url_cog = Url::to(['owner/config', 'id' => $id]);
+                               $url_encashment = Url::to(['owner/encashment', 'id' => $id]);
+                           ?>
                            <div class="btn-set btn-settings">
                                <a href="<?= $url_cog ?>"><span class="oi oi-cog"></span></a>
                            </div>

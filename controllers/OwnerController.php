@@ -231,7 +231,10 @@ class OwnerController extends Controller
         $totalesMonthMoney[$oldMonthNumber] = array(
             'Money' => 0,
             'Cashless' => 0,
-            'Games' => 0
+            'Games' => 0,
+            'Weddings' => 0,
+            'Kinoselfies' => 0,
+            'Talismans' => 0
         );
 
         foreach ($resultArray as $data => $events) {
@@ -252,7 +255,7 @@ class OwnerController extends Controller
                     if (in_array($event->name, Wedding::CONDITION['name']))
                         $totalesMonthMoney[$currentMonthNumber]['Weddings'] += 1;
                     if ($event->name === Kinoselfie::CONDITION['name'])
-                        $totalesMonthMoney[$currentMonthNumber['Kinoselfies']] += 1;
+                        $totalesMonthMoney[$currentMonthNumber]['Kinoselfies'] += 1;
                     if ($event->name === Talisman::CONDITION['name'])
                         $totalesMonthMoney[$currentMonthNumber]['Talismans'] += 1;
                     $totalesMonthMoney[$currentMonthNumber]['Games'] += 1;
