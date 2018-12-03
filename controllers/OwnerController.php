@@ -7,7 +7,10 @@ use app\models\CurrentStatus;
 use app\models\Events;
 use app\models\events\Encashment;
 use app\models\events\Game;
+use app\models\events\Kinoselfie;
 use app\models\events\Payment;
+use app\models\events\Talisman;
+use app\models\events\Wedding;
 use app\models\Licenses;
 use app\models\Log;
 use app\models\LoginForm;
@@ -224,8 +227,6 @@ class OwnerController extends Controller
             $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
         }
         $oldMonthNumber = date('m_Y');
-        $totalMonthMoney = 0;
-        $totalMonthCashless = 0;
         $totalesMonthMoney = [];
         $totalesMonthMoney[$oldMonthNumber] = array(
             'Money' => 0,
@@ -239,13 +240,23 @@ class OwnerController extends Controller
                 $totalesMonthMoney[$currentMonthNumber] = array(
                     'Money' => 0,
                     'Cashless' => 0,
-                    'Games' => 0
+                    'Games' => 0,
+                    'Weddings' => 0,
+                    'Kinoselfies' => 0,
+                    'Talismans' => 0
                 );
             }
             $array = [];
             foreach($events as $event) {
-                if(in_array($event->name, Game::getCondition()['name']))
-                    $totalesMonthMoney[$currentMonthNumber]['Games']+= 1;
+                if(in_array($event->name, Game::getCondition()['name'])) {
+                    if (in_array($event->name, Wedding::CONDITION['name']))
+                        $totalesMonthMoney[$currentMonthNumber]['Weddings'] += 1;
+                    if ($event->name === Kinoselfie::CONDITION['name'])
+                        $totalesMonthMoney[$currentMonthNumber['Kinoselfies']] += 1;
+                    if ($event->name === Talisman::CONDITION['name'])
+                        $totalesMonthMoney[$currentMonthNumber]['Talismans'] += 1;
+                    $totalesMonthMoney[$currentMonthNumber]['Games'] += 1;
+                }
                 $array[$event->name][] = $event;
             }
             if (isset($array['Money'])) {
@@ -261,6 +272,8 @@ class OwnerController extends Controller
             $resultArray[$data] = $array;
             $oldMonthNumber = $currentMonthNumber;
         }
+
+
         return $this->render('view', [
             'id' => $id,
             'events' => isset($resultArray) ? $resultArray : null,
