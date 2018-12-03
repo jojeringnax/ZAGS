@@ -238,6 +238,14 @@ a.desc {
     margin-left: 25px;
     height: 40px;
 }
+.checkbox label .checkbox-decorator .check, label.checkbox-inline .checkbox-decorator .check {
+    width: 1rem !important;
+    height: 1rem !important;
+    &:before {
+        margin-top: -6px !important;
+        margin-left: 6px !important;
+    }
+}
 
 .checkbox-inp-stat {
 

@@ -86,11 +86,19 @@ $(document).ready(function(){
     });
 
     $('.checkbox-inp-stat').change(function() {
-        console.log($(this).val(), $(this).prop("checked"));
-        if ($(this).prop("checked") == false) {
-            $('.'+$(this).val()).addClass('hide');
+        // console.log($(this).val(), $(this).prop("checked"));
+        if ($(this).prop("checked")) {
+            if ($(this).val() === 'conversion') {
+                $('.'+$(this).val()).removeClass('hide');
+            } else {
+                $('.'+$(this).val()).addClass('hide');
+            }
         } else {
-            $('.'+$(this).val()).removeClass('hide');
+            if ($(this).val() === 'cash') {
+                $('.'+$(this).val()).removeClass('hide');
+            } else {
+                $('.'+$(this).val()).addClass('hide');
+            }
         }
     });
 
