@@ -19,9 +19,10 @@
  *      ...
  * }
  */
-
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\grid\GridView;
+
 
 $this->title = 'Устройства';
 $this->params['breadcrumbs'][] = $this->title;
@@ -175,7 +176,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                <span>???</span>
                            </div>-->
                        </div>
-                       
+
                        <div class="elem-card-inf buttons d-flex flex-column justify-content-around align-items-center">
                            <?php $url_statistics = Url::to(['owner/view', 'id' => $id]); $url_cog = Url::to(['owner/config', 'id' => $id]); $url_encashment = Url::to(['owner/encashment', 'id' => $id]);?>
                            <div class="btn-set btn-settings">
