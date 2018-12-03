@@ -119,6 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                    </div>
                                </div>
                            <?php } ?>
+
                            <div class='elem-td'>
                                <span><?= $value['printer_media_count'] ?></span>
                            </div>
@@ -174,6 +175,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                <span>???</span>
                            </div>-->
                        </div>
+                       
                        <div class="elem-card-inf buttons d-flex flex-column justify-content-around align-items-center">
                            <div class="btn-set btn-settings">
                                <a href=""><span class="oi oi-cog"></span></a>
