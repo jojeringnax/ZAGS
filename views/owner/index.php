@@ -175,7 +175,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                <span>???</span>
                            </div>-->
                        </div>
-                       
+
                        <div class="elem-card-inf buttons d-flex flex-column justify-content-around align-items-center">
                            <div class="btn-set btn-settings">
                                <a href=""><span class="oi oi-cog"></span></a>
@@ -184,9 +184,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                <a href=""> <span class="oi oi-document"></span></a>
                            </div>
                            <div class="btn-set btn-encashment">
-                               <a href=""><span class="oi oi-briefcase"></span></a>
+                               <a href="<?= $url_encashment ?>"><span class="oi oi-briefcase"></span></a>
                            </div>
-
                        </div>
                    </div>
                 </div>
