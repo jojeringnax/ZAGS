@@ -46,7 +46,6 @@ $this->params['breadcrumbs'][] = $this->title;
                    </div>
                    <div class="d-flex">
                        <div class="elem-card-inf th th-card-inf">
-
                            <div class="elem-th">
                                <span>Выручка за текущий месяц</span>
                            </div>
@@ -79,7 +78,6 @@ $this->params['breadcrumbs'][] = $this->title;
                            </div>
                        </div>
                        <div class="elem-card-inf td-card-inf">
-
                            <div class="elem-td">
                                <span><?= $value['profit']?></span>
                            </div>

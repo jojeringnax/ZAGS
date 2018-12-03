@@ -211,4 +211,30 @@ a.desc:after {
   .buttons .btn-set a span {
     font-size: 22px; }
 
+#change-form-device .card-header {
+  color: white;
+  font-size: 22px;
+  font-weight: bold; }
+#change-form-device div .elem-card-inf .elem-th span {
+  font-size: 16px !important; }
+#change-form-device div .elem-card-inf .elem-td {
+  font-size: 16px !important; }
+  #change-form-device div .elem-card-inf .elem-td span {
+    font-size: 16px !important; }
+#change-form-device #btn-change-form-device {
+  margin: 0; }
+  #change-form-device #btn-change-form-device button {
+    width: 100%;
+    height: 100%;
+    margin: 0; }
+
+#state-device .form-group {
+  width: 100%; }
+
+#talisman-change .form-group {
+  width: 100%; }
+
+.change-form {
+  margin-bottom: 0; }
+
 /*# sourceMappingURL=style.css.map */

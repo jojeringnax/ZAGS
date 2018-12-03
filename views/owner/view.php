@@ -104,6 +104,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             $sumKinoselfieReprint = 0;
             $sumWeddingsReprint1 = 0;
             $sumWeddingsReprint2 = 0;
+            $sumKinoSelfie = 0;
             $wedPayView = 1;
             $talPayView = 1;
             if(date('m', strtotime($data)) !== $dateTime->format('m')) {
@@ -202,6 +203,10 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 $sumKinoselfieReprint = count($eventss);
                             }
 
+                            if ($eventName === app\models\events\Kinoselfie::CONDITION['name']) {
+                                $sumKinoselfie = count($eventss);
+                            }
+
                             $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + 0;
                             $sumWeddings = (isset($sumWeddings1) ? $sumWeddings1 : 0)  + (isset($sumWeddings2) ? $sumWeddings2 : 0);
                             $sumWeddingsReprint = (isset($sumWeddingsReprint1) ? $sumWeddingsReprint2 : 0)  + (isset($sumWeddingsReprint2) ? $sumWeddingsReprint2 : 0);
@@ -233,7 +238,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 <table class="table table-bordered" style="width:100%">
                                     <tbody>
                                         <tr>
-                                            <td></td>
+                                            <td><?= isset($sumKinoSelfie) ? $sumKinoSelfie : 0 ?></td>
                                             <td><?= isset($sumKinoselfieReprint) ? $sumKinoselfieReprint : 0 ?></td>
                                         </tr>
                                     </tbody>
