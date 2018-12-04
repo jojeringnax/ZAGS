@@ -109,5 +109,16 @@ $(document).ready(function(){
     //     e.preventDefault();
     //     console.log('kukus');
     // });
+    let dataQuietStartTime = $('#config-quiet_time_start').val();
+    let dataQuietEndTime = $('#config-quiet_time_end').val();
+    $('#config-quiet_time_start').attr('value', dataQuietStartTime + ":00");
+    $('#config-quiet_time_end').attr('value',dataQuietEndTime + ":00");
 
+    $('#change-form-device').submit( function(){
+        let valueQuiteStartTime = parseInt($('#config-quiet_time_start').val().slice(0, $('#config-quiet_time_start').length-4));
+        let valueQuiteEndTime = parseInt($('#config-quiet_time_end').val().slice(0, $('#config-quiet_time_end').length-4));
+        console.log(valueQuiteStartTime, valueQuiteEndTime)
+        $('#config-quiet_time_start').attr('value', valueQuiteStartTime);
+        $('#config-quiet_time_end').attr('value',valueQuiteEndTime);
+    });
 });
