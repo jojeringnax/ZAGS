@@ -33,10 +33,10 @@ class Module extends \yii\db\ActiveRecord
 
     const NAMES = [
         'validator',
-        'cashless',
         'printer',
+        'dispenser',
         'camera',
-        'dispenser'
+        'cashless',
     ];
 
     public $uptime_yesterday;
