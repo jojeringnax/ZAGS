@@ -30,7 +30,7 @@ class Uptime extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['module_id', 'uptime'], 'integer'],
+            [['module_id'], 'integer'],
             [['created_date'], 'safe'],
             [['module_id'], 'exist', 'skipOnError' => true, 'targetClass' => Module::className(), 'targetAttribute' => ['module_id' => 'id']],
         ];
@@ -85,7 +85,8 @@ class Uptime extends \yii\db\ActiveRecord
      */
     public static function getForCurrentMonthForModule($moduleId)
     {
-        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'time', date('Y-m-0'), date('Y-m-d')])->all();
+        $dayMore = date('d') + 1;
+        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_date', date('Y-m-0'), date('Y-m-'.$dayMore)])->all();
     }
 
     /**
@@ -96,6 +97,6 @@ class Uptime extends \yii\db\ActiveRecord
     {
         $date = new \DateTime();
         $date->modify('-1 day');
-        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_time', $date->format('Y-m-d'), date('Y-m-d')])->one();
+        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_date', $date->format('Y-m-d'), date('Y-m-d')])->one();
     }
 }

@@ -39,6 +39,10 @@ class Module extends \yii\db\ActiveRecord
         'dispenser'
     ];
 
+    public $uptime_yesterday;
+    public $uptime_today;
+    public $uptime_month;
+
     /**
      * {@inheritdoc}
      */
@@ -54,10 +58,10 @@ class Module extends \yii\db\ActiveRecord
     {
         return [
             [['device_id', 'status'], 'integer'],
-            [['uptime_yesterday', 'uptime_today', 'uptime_month'], 'float'],
-            [['error'], 'string'],
+            [['uptime_yesterday', 'uptime_today', 'uptime_month'], 'string'],
+            [['error'], 'integer'],
             [['name'], 'string', 'max' => 16],
-            [['device_id'], 'exist', 'skipOnError' => true, 'targetClass' => CurrentStatus::className(), 'targetAttribute' => ['device_id' => 'device_id']],
+            [['device_id'], 'integer'],
         ];
     }
 
@@ -105,9 +109,9 @@ class Module extends \yii\db\ActiveRecord
             }
         }
         $uptimeAvgMonth = $sum/count($uptimes);
-        $this->uptime_yesterday = $uptimeYesterday;
-        $this->uptime_today = $uptimeToday;
-        $this->uptime_month = $uptimeAvgMonth;
+        $this->uptime_yesterday = round($uptimeYesterday, 2).'%';
+        $this->uptime_today = round($uptimeToday, 2).'%';
+        $this->uptime_month = round($uptimeAvgMonth, 2).'%';
         return true;
     }
 
@@ -120,19 +124,19 @@ class Module extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return CurrentStatus[]
      */
     public function getDevice()
     {
-        return $this->hasOne(CurrentStatus::className(), ['device_id' => 'device_id']);
+        return $this->hasOne(CurrentStatus::className(), ['device_id' => 'device_id'])->one();
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return Uptime[]
      */
     public function getUptimes()
     {
-        return $this->hasMany(Uptime::className(), ['module_id' => 'id']);
+        return $this->hasMany(Uptime::className(), ['module_id' => 'id'])->all();
     }
 
     /**
@@ -161,7 +165,6 @@ class Module extends \yii\db\ActiveRecord
         $uptimeEx->module_id = $module->id;
         $uptimeEx->uptime = $uptime;
         $uptimeEx->save();
-        $module->setUptimesNeeded();
         return $result;
     }
 

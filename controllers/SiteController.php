@@ -174,38 +174,38 @@ class SiteController extends Controller
      */
     public function actionStatus()
     {
-        $request = Yii::$app->request;
-        $params = [
-            'id',
-            'fill_talisman',
-            'fill_wedding',
-            'printer_media_count',
-            'date'
-        ];
-        foreach (Module::NAMES as $name) {
-            $params[] = $name.'_uptime';
-            $params[] = $name.'_status';
-            $params[] = $name.'_error';
-        }
-        foreach($params as $param) {
-            $$param = $request->get($param) ? $request->get($param) : null;
+        $json = \GuzzleHttp\json_decode(Yii::$app->request->rawBody, true);
+        foreach ($json as $array) {
+            $deviceId = $array['DeviceId'];
+            $weddingDispenserIndex = $array['Wedding']['Dispenser'];
+            $talismanDispenserIndex = $array['Talisman']['Dispenser'];
+            foreach (Module::NAMES as $name) {
+                if (isset($array[ucfirst($name)])) {
+                    if ($name === 'dispenser') {
+                        foreach ($array['Dispensers'] as $dispenser) {
+                            if ($dispenser['Index'] === $weddingDispenserIndex) {
+                                $fillWedding = $dispenser['Fill'];
+                            } else if ($dispenser['Index'] === $talismanDispenserIndex) {
+                                $fillTalisman = $dispenser['Fill'];
+                            } else {
+                                continue;
+                            }
+                        }
+                        if (!isset($fillTalisman) || $fillTalisman == -1) {
+                            $fillTalisman = null;
+                        }
+                        if (!isset($fillWedding) || $fillWedding == -1) {
+                            $fillWedding = null;
+                        }
+                        $currentStatus = CurrentStatus::updateOrCreate($deviceId);
+                        $currentStatus->fill_wedding = $fillWedding;
+                        $currentStatus->fill_talisman = $fillTalisman;
+                    } else {
+                        Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
+                    }
+                }
+            }
         }
 
-        foreach (Module::NAMES as $name)
-        {
-            $u = $name.'_uptime';
-            $s = $name.'_status';
-            $e = $name.'_error';
-            $modules[] = [
-                'name' => $name,
-                'uptime' => $$u,
-                'status' => $$s,
-                'error' => $$e
-            ];
-        }
-        foreach ($modules as $module){
-            Module::findOrCreateAndUpdate($id, $module['name'], $module['uptime'], $module['status'], $module['error']);
-        }
-        return true;
     }
 }

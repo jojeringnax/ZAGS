@@ -20,16 +20,9 @@ class m181128_094249_create_table_modules extends Migration
             'name' => $this->string(16),
             'status' => $this->integer(1),
             'error' => $this->text(),
-            'update_at' => $this->timestamp()
+            'updated_at' => 'timestamp on update current_timestamp',
+            'created_at' => $this->timestamp()->defaultExpression('current_timestamp'),
         ]);
-
-        $this->addForeignKey(
-            'fk-modules-device_id',
-            $this->tableName, 'device_id',
-            'current_status',
-            'device_id',
-            'CASCADE'
-        );
     }
 
     /**
@@ -38,7 +31,6 @@ class m181128_094249_create_table_modules extends Migration
     public function safeDown()
     {
         try {
-            $this->dropForeignKey('fk-modules-device_id', $this->tableName);
             $this->dropTable($this->tableName);
             return true;
         } catch (Exception $e) {

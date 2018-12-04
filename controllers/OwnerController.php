@@ -111,6 +111,7 @@ class OwnerController extends Controller
         $licenses = Licenses::findAll(['id' => $devicesArray]);
         foreach ($licenses as $license) {
             /** @var $modules Module[]*/
+            $resultArray[$license->id] = [];
             foreach($modules as $module) {
                 if ($module->device_id === $license->id) {
                     $module->setUptimesNeeded();
@@ -129,6 +130,14 @@ class OwnerController extends Controller
                     $resultArray[$license->id][$name.'_status'] = 'not set';
                 }
             }
+            foreach (Module::NAMES as $name) {
+                if (!in_array($name.'_uptime_yesterday', array_keys($resultArray[$license->id]))) {
+                    $resultArray[$license->id][$name.'_uptime_yesterday'] = 'not set';
+                    $resultArray[$license->id][$name.'_uptime_today'] = 'not set';
+                    $resultArray[$license->id][$name.'_uptime_month'] = 'not set';
+                    $resultArray[$license->id][$name.'_status'] = 'not set';
+                }
+            }
             $resultArray[$license->id]['stacker'] = !isset($money['stacker'][$license->id]) ? $money['stacker'] : $money['stacker'][$license->id];
             $resultArray[$license->id]['profit'] = !isset($money['profit'][$license->id]) ? $money['profit'] : $money['profit'][$license->id];
             $currentStatus = $license->getCurrentStatus();
@@ -139,6 +148,7 @@ class OwnerController extends Controller
             $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
             $resultArray[$license->id]['printer_media_count'] = $currentStatus->printer_media_count;
         }
+
         return $this->render('index', [
             'data' => $resultArray
         ]);
