@@ -90,14 +90,17 @@ $(document).ready(function(){
         if ($(this).prop("checked")) {
             if ($(this).val() === 'conversion') {
                 $('.'+$(this).val()).removeClass('hide');
+                $('.conv_cash').addClass('hide')
             } else {
                 $('.'+$(this).val()).addClass('hide');
+
             }
         } else {
             if ($(this).val() === 'cash') {
                 $('.'+$(this).val()).removeClass('hide');
             } else {
                 $('.'+$(this).val()).addClass('hide');
+                $('.conv_cash').removeClass('hide')
             }
         }
     });

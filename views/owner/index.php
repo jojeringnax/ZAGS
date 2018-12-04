@@ -26,8 +26,19 @@ use yii\grid\GridView;
 
 $this->title = 'Устройства';
 $this->params['breadcrumbs'][] = $this->title;
-
+$this->registerJs("
+    $(document).ready(function() {
+        $('#uptime').change(function(){
+        let date = (this).val();
+            console.log($(this).val())
+               $('.uptime').each(function(){
+                   console.log($(this).attr('id'));
+                   $(this).html()
+               })
+        })
+    });");
 ?>
+
 <div class="row-devices">
     <div class="container">
         <div class="row d-flex justify-content-between">
@@ -89,9 +100,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                    <span><?= $value['online']?></span>
                                </div>
                                <div class="state-td">
-                                   <span>uptime</span>
+                                   <select class="form-control" name="" id="uptime">
+                                       <option value="_uptime_yesterday">Вчера</option>
+                                       <option value="_uptime_today">Сегодня</option>
+                                       <option value="_uptime_month">Месяц</option>
+                                   </select>
                                </div>
                            </div>
+
 <!--                           <div class="elem-td">
                                <div class="state-td">
 
@@ -109,12 +125,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                    <div class="state-td">
                                        <span><?= $value[$name.'_status'] ?></span>
                                    </div>
-                                   <div class="state-pr">
-                                       <select class="form-control" name="" id="">
-                                           <option value=""> <?= $value[$name.'_uptime_yesterday'] ?></option>
-                                           <option value=""> <?= $value[$name.'_uptime_today'] ?></option>
-                                           <option value=""> <?= $value[$name.'_uptime_month'] ?></option>
-                                       </select>
+                                   <div id="<?= $name ?>" class="uptime state-pr">
+
                                    </div>
                                </div>
                            <?php } ?>

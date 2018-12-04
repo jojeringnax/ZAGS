@@ -242,4 +242,7 @@ a.desc:after {
 .change-form {
   margin-bottom: 0; }
 
+#descriptions-device .form-group {
+  width: 100%; }
+
 /*# sourceMappingURL=style.css.map */
