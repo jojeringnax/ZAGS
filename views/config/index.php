@@ -1,10 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 
-$config = \app\models\Config::findOne(82);
-if ($config === null) {
-    return 'Устройсто не найдено в БД';
-}
+$uptimes = \app\models\Uptime::getForCurrentMonthForModule(1);
+var_dump($uptimes);
+
 
 ?>
 

@@ -49,6 +49,9 @@ $config = [
             ],
         ],
     ],
+    'on beforeAction' => function ($event) {
+        if(Yii::$app->request->contentType == "application/json") Yii::$app->controller->enableCsrfValidation = false;
+    },
     'params' => $params,
 ];
 

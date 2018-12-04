@@ -17,7 +17,7 @@ class m181129_090751_create_table_uptimes extends Migration
         $this->createTable($this->tableName, [
             'module_id' => $this->integer(11),
             'created_date' => $this->dateTime()->defaultExpression('CURRENT_TIMESTAMP'),
-            'uptime' => $this->integer(11)
+            'uptime' => $this->float(2)
         ]);
 
         $this->addForeignKey(
