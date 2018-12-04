@@ -82,23 +82,21 @@ $this->params['breadcrumbs'][] = ['label' => 'Редактирование'];
                     <div id="state-device"  class="elem-td" style="width: 100%">
                         <?= $form->field($model, 'disabled', [
                             'labelOptions' => [ 'class' => '']
-                        ])->DropDownList(['1' => 'Выключен', '0' => 'Включен'])->label(false) ?>
+                        ])->DropDownList(['0' => 'Выключен', '1' => 'Включен'])->label(false) ?>
                     </div>
                     <div class="elem-td d-flex justify-content-between">
                         <div class="state-td" style="width: 48%">
-                            <?= $form->field($model, 'quiet_time_start', [
-                                'labelOptions' => [ 'class' => 'bmd-label-static']
-                            ])->textInput()->label(false) ?>
+                            <?= $form->field($model, 'quiet_time_start')->textInput()->label(false) ?>
                         </div>
                         <div class="state-td" style="width: 48%">
-                            <?= $form->field($model, 'quiet_time_end', [
-                                'labelOptions' => [ 'class' => 'bmd-label-static']
-                            ])->textInput()->label(false) ?>
+                            <?= $form->field($model, 'quiet_time_end')->textInput()->label(false) ?>
                         </div>
 
                     </div>
-                    <div class="elem-td d-flex justify-content-between">
-                        <span>100, 200, 500</span>
+                    <div id="bills" class="elem-td d-flex justify-content-between">
+                        <?= $form->field($model, 'bills')->textInput([
+                            'class' => 'bills-change-page form-control'
+                        ])->label(false) ?>
                     </div>
                 </div>
             </div>

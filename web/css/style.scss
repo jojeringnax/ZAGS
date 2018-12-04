@@ -405,6 +405,10 @@ a.desc {
                 span {
                     font-size: 16px !important;
                 }
+
+                .bills-change-page {
+                    width: 100%;
+                }
             }
         }
     }
@@ -416,6 +420,12 @@ a.desc {
             height: 100%;
             margin: 0;
         }
+    }
+}
+
+#bills {
+    .form-group {
+        width: 100%;
     }
 }
 
