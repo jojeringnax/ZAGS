@@ -256,10 +256,10 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                             </td>
                             <td class="amount_of_instagram">
-                                <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+                                0
                             </td>
                             <td class="conversion hide conversion_of_instagram">
-                                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                                0
                             </td>
                         </tr>
                     </div>

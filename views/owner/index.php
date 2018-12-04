@@ -49,7 +49,7 @@ $this->registerJs("
 
 <div class="row-devices">
     <div class="container">
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between flex-wrap">
             <?php
                foreach($data as $id => $value) {
 //                    $value['license'];
