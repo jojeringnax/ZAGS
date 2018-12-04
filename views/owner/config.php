@@ -31,6 +31,7 @@ GridView::widget([
         ['label'=>'Начало тихого режима', 'value'=> 'quiet_time_start'],
         ['label'=>'Конец тихого режима', 'value'=> 'quiet_time_end'],
         ['label' => 'Количество тонера', 'value' => 'toner'],
+        ['label' => 'Купюры', 'value' => 'bills'],
         ['class' => \yii\grid\ActionColumn::className(),
             'buttons'=>[
                 'view'=>function ($url, $model) {
