@@ -132,15 +132,17 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                         <thead class="thead-light">
                             <tr style="font-size: 13px;" class="text-center">
                                 <th class="data" width="120" scope="col" style="vertical-align:middle;">Дата</th>
-                                <th class="cash sum_total" scope="col">Выручка</th>
-                                <th class="sum_cash" scope="col">Оборот (нал)</th>
-                                <th class="cash sum_cashless" scope="col">Оборот (без/нал)</th>
+                                <th class="conv_cash cash sum_total" scope="col">Выручка</th>
+                                <th class="conv_cash sum_cash" scope="col">Оборот (нал)</th>
+                                <th class="conv_cash cash sum_cashless" scope="col">Оборот (без/нал)</th>
                                 <th class="amount_of_wed" scope="col">Игр "Свадьба"</th>
                                 <th class="conversion hide conversion_of_wedding" scope="col">Конверсия "Свадьбы"</th>
                                 <th class="amount_of_selfie" scope="col">Селфи</th>
+                                <th class="conversion hide amount_of_selfie" scope="col">Конверсия Киноселфи</th>
                                 <th class="amount_of_talisman" scope="col">Игр "Талисман"</th>
                                 <th class="conversion hide conversion_of_talisman" scope="col">Конверсия "Талисманов"</th>
                                 <th class="amount_of_instargam" scope="col">Instagram</th>
+                                <th class="conversion hide amount_of_instargam" scope="col">Конверсия Instagram</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -212,13 +214,13 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                             $sumWeddingsReprint = (isset($sumWeddingsReprint1) ? $sumWeddingsReprint2 : 0)  + (isset($sumWeddingsReprint2) ? $sumWeddingsReprint2 : 0);
                         } ?>
                         <?php if(!empty($events)) { ?>
-                            <td class="cash sum_total">
+                            <td class="conv_cash cash sum_total">
                                 <?= $sumCash + $sumCashless ?>
                             </td>
-                            <td class="sum_cash">
+                            <td class="conv_cash sum_cash">
                                 <?= isset($sumCash) ? $sumCash : 0 ?>
                             </td>
-                            <td class="cash sum_cashless">
+                            <td class="conv_cash cash sum_cashless">
                                 <?= isset($sumCashless) ? $sumCashless : 0 ?>
                             </td>
                             <td class="amount_of_wed">
@@ -244,6 +246,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                     </tbody>
                                 </table>
                             </td>
+                            <td class="conversion hide conversion_of_talisman">
+                                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                            </td>
                             <td class="amount_of_talisman">
                                 <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
                             </td>
@@ -252,6 +257,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                             </td>
                             <td class="amount_of_instagram">
                                 <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+                            </td>
+                            <td class="conversion hide conversion_of_instagram">
+                                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                             </td>
                         </tr>
                     </div>

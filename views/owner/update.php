@@ -42,6 +42,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Редактирование'];
                     <div class="elem-th">
                         <span>Купюры</span>
                     </div>
+                    <div class="elem-th">
+                        <span>Описание устройства</span>
+                    </div>
                 </div>
                 <?php $form = ActiveForm::begin([
                     'options' => [
@@ -95,6 +98,11 @@ $this->params['breadcrumbs'][] = ['label' => 'Редактирование'];
                     </div>
                     <div id="bills" class="elem-td d-flex justify-content-between">
                         <?= $form->field($model, 'bills')->textInput([
+                            'class' => 'bills-change-page form-control'
+                        ])->label(false) ?>
+                    </div>
+                    <div id="descriptions-device" class="elem-td d-flex justify-content-between">
+                        <?= $form->field($model, 'description')->textInput([
                             'class' => 'bills-change-page form-control'
                         ])->label(false) ?>
                     </div>
