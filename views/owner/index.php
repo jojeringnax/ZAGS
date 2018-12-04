@@ -28,14 +28,22 @@ $this->title = 'Устройства';
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerJs("
     $(document).ready(function() {
+       $('.uptime').each(function(){
+           //console.log($(this).attr('id'));
+           let data = $(this).attr('data-'+$('#uptime').val());
+           console.log(data);
+           $(this).html(data);
+       });
         $('#uptime').change(function(){
-        let date = (this).val();
-            console.log($(this).val())
-               $('.uptime').each(function(){
-                   console.log($(this).attr('id'));
-                   $(this).html()
-               })
-        })
+        let date = $(this).val();
+           console.log($(this).val());
+           $('.uptime').each(function(){
+               //console.log($(this).attr('id'));
+               let data = $(this).attr('data-'+date);
+               //console.log(data);
+               $(this).html(data);
+           });
+        });
     });");
 ?>
 
@@ -101,9 +109,9 @@ $this->registerJs("
                                </div>
                                <div class="state-td">
                                    <select class="form-control" name="" id="uptime">
-                                       <option value="_uptime_yesterday">Вчера</option>
-                                       <option value="_uptime_today">Сегодня</option>
-                                       <option value="_uptime_month">Месяц</option>
+                                       <option value="yesterday">Вчера</option>
+                                       <option value="today">Сегодня</option>
+                                       <option value="month">Месяц</option>
                                    </select>
                                </div>
                            </div>
@@ -125,7 +133,7 @@ $this->registerJs("
                                    <div class="state-td">
                                        <span><?= $value[$name.'_status'] ?></span>
                                    </div>
-                                   <div id="<?= $name ?>" class="uptime state-pr">
+                                   <div id="<?= $name ?>" data-month="<?= $value[$name.'_uptime_month'] ?>" data-today = "<?= $value[$name.'_uptime_today'] ?>" data-yesterday = "<?= $value[$name.'_uptime_yesterday'] ?>" class="uptime state-pr">
 
                                    </div>
                                </div>
