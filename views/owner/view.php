@@ -105,8 +105,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
             $sumWeddingsReprint1 = 0;
             $sumWeddingsReprint2 = 0;
             $sumKinoSelfie = 0;
-            $wedPayView = 1;
-            $talPayView = 1;
+            $wedPayView = 0;
+            $talPayView = 0;
             if(date('m', strtotime($data)) !== $dateTime->format('m')) {
                 if ($totales[date('m_Y', strtotime($data))]['Games'] === 0 && ($totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money']) === 0) {
                     continue;
@@ -247,7 +247,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 </table>
                             </td>
                             <td class="conversion hide conversion_of_talisman">
-                                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                                <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                             </td>
                             <td class="amount_of_talisman">
                                 <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
@@ -259,7 +259,11 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 0
                             </td>
                             <td class="conversion hide conversion_of_instagram">
+<<<<<<< HEAD
                                 0
+=======
+                                <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+>>>>>>> master
                             </td>
                         </tr>
                     </div>
