@@ -209,7 +209,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 $sumKinoselfie = count($eventss);
                             }
 
-                            $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + 0;
+                            $wedPayView = (isset($wedPayView1) ? $wedPayView1 : 0)  +  (isset($wedPayView2) ? $wedPayView2 : 0);
                             $sumWeddings = (isset($sumWeddings1) ? $sumWeddings1 : 0)  + (isset($sumWeddings2) ? $sumWeddings2 : 0);
                             $sumWeddingsReprint = (isset($sumWeddingsReprint1) ? $sumWeddingsReprint2 : 0)  + (isset($sumWeddingsReprint2) ? $sumWeddingsReprint2 : 0);
                         } ?>
@@ -253,7 +253,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Метрики устройств�
                                 <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
                             </td>
                             <td class="conversion hide conversion_of_talisman">
-                                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                                <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                             </td>
                             <td class="amount_of_instagram">
                                 <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
