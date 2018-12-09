@@ -213,8 +213,8 @@ class OwnerController extends Controller
         } else {
             $timeFrom = \DateTime::createFromFormat('Y-m-d', $timeFrom);
             $timeTo = \DateTime::createFromFormat('Y-m-d', $timeTo);
-            $timeTo->modify('+1 day');
         }
+        $timeTo->modify('+1 day');
         $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
         $timeTo->modify('-1 day');
         $resultArray[$timeTo->format('Y-m-d')] = [];
@@ -381,6 +381,13 @@ class OwnerController extends Controller
 
         return $this->render('encashment' ,[
             'encashments' => $encashments,
+            'id' => $id
+        ]);
+    }
+
+    public function actionInstagram($id)
+    {
+        return $this->render('instagram' ,[
             'id' => $id
         ]);
     }

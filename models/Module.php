@@ -24,8 +24,9 @@ class Module extends \yii\db\ActiveRecord
     const STATUSES = array(
         'Работает',
         'Не работает',
-        'Возможно не работает',
-        'Отключен'
+        'Возможно работает',
+        'Отключен',
+        'Undefined'
     );
 
     const CREATED = 1;
@@ -33,11 +34,15 @@ class Module extends \yii\db\ActiveRecord
 
     const NAMES = [
         'validator',
-        'cashless',
         'printer',
+        'dispenser',
         'camera',
-        'dispenser'
+        'cashless',
     ];
+
+    public $uptime_yesterday;
+    public $uptime_today;
+    public $uptime_month;
 
     /**
      * {@inheritdoc}
@@ -54,10 +59,10 @@ class Module extends \yii\db\ActiveRecord
     {
         return [
             [['device_id', 'status'], 'integer'],
-            [['uptime_yesterday', 'uptime_today', 'uptime_month'], 'float'],
-            [['error'], 'string'],
+            [['uptime_yesterday', 'uptime_today', 'uptime_month'], 'string'],
+            [['error'], 'integer'],
             [['name'], 'string', 'max' => 16],
-            [['device_id'], 'exist', 'skipOnError' => true, 'targetClass' => CurrentStatus::className(), 'targetAttribute' => ['device_id' => 'device_id']],
+            [['device_id'], 'integer'],
         ];
     }
 
@@ -104,10 +109,10 @@ class Module extends \yii\db\ActiveRecord
                 $uptimeYesterday = $uptime->uptime;
             }
         }
-        $uptimeAvgMonth = $sum/count($uptimes);
-        $this->uptime_yesterday = $uptimeYesterday;
-        $this->uptime_today = $uptimeToday;
-        $this->uptime_month = $uptimeAvgMonth;
+        $uptimeAvgMonth = count($uptimes) !== 0 ? $sum/count($uptimes) : 0;
+        $this->uptime_yesterday = round($uptimeYesterday, 2).'%';
+        $this->uptime_today = round($uptimeToday, 2).'%';
+        $this->uptime_month = round($uptimeAvgMonth, 2).'%';
         return true;
     }
 
@@ -120,19 +125,19 @@ class Module extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return CurrentStatus[]
      */
     public function getDevice()
     {
-        return $this->hasOne(CurrentStatus::className(), ['device_id' => 'device_id']);
+        return $this->hasOne(CurrentStatus::className(), ['device_id' => 'device_id'])->one();
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return Uptime[]
      */
     public function getUptimes()
     {
-        return $this->hasMany(Uptime::className(), ['module_id' => 'id']);
+        return $this->hasMany(Uptime::className(), ['module_id' => 'id'])->all();
     }
 
     /**
@@ -143,8 +148,9 @@ class Module extends \yii\db\ActiveRecord
      * @param $error
      * @return int
      */
-    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $status, $error)
+    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $date, $version=null, $status=null, $error=null)
     {
+        $date = \DateTime::createFromFormat('d.m.Y', $date);
         $module = self::find()->where(['device_id' => $device_id, 'name' => $name])->one();
         if ($module === null) {
             $module = new self();
@@ -154,14 +160,15 @@ class Module extends \yii\db\ActiveRecord
         } else {
             $result = self::UPDATED;
         }
-        $module->status = $status;
-        $module->error = $error;
+        $module->status = $status === null ? $module->status : $status;
+        $module->error = $error === null ? $module->error : $error;
         $module->save();
         $uptimeEx = new Uptime();
         $uptimeEx->module_id = $module->id;
+        $uptimeEx->created_date = $date->format('Y-m-d H:i:s');
         $uptimeEx->uptime = $uptime;
+        $uptimeEx->version = $version;
         $uptimeEx->save();
-        $module->setUptimesNeeded();
         return $result;
     }
 

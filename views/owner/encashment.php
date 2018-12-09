@@ -8,7 +8,18 @@
 $this->title = 'Инкассации устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
 $this->params['breadcrumbs'][] = ['label' => 'Инкассации устройства №'.$id];
-
+$this->registerJs("
+   $('.breadcrumb-item a').click(function(e){
+    e.preventDefault();
+    let num =".$_GET['scrollTop'].";
+    console.log(num)
+        if($(this).text() == 'Устройства') {
+            document.location.href = $(this).attr('href') + '&scrollTop='+num;
+        }else {
+            document.location.href = $(this).attr('href');
+        }
+    })
+");
 if(!empty($encashments)) $this->registerJs(
         "
         let ququ = [];

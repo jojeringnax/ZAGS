@@ -37,7 +37,7 @@ class Config extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['wedding_price', 'reprint_price', 'device_id', 'disabled', 'multitouch_enabled'], 'integer'],
+            [['wedding_price', 'reprint_price', 'device_id', 'disabled', 'multitouch_enabled','talisman_price','kinoselfie_price','quiet_time_start','quiet_time_end'], 'integer'],
             [['bills', 'description', 'log_level'], 'string', 'max' => 255]
         ];
     }
