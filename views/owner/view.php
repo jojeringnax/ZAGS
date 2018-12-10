@@ -11,22 +11,24 @@ use yii\helpers\Url;
 
 $dateTime = DateTime::createFromFormat('Y-m-d', array_keys($events)[0]);
 $this->title = 'Метрики устройства №'.$id;
-$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner&']];
+$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner&','scrollTop' => (isset($_GET['scrollTop'])? $_GET['scrollTop']:0)]];
 $this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id];
 
 $this->registerJs("
-   $('.breadcrumb-item a').click(function(e){
-    e.preventDefault();
-    let num =".$_GET['scrollTop'].";
-    console.log(num)
-        if($(this).text() == 'Устройства') {
-            document.location.href = $(this).attr('href') + '&scrollTop='+num;
-        }else {
+    $('.amount_of_instargam a').click(function(e){
+        e.preventDefault();
+        if($(this).text() == 'Instagram') {
+            document.location.href = $(this).attr('href') + '&scrollTop='+ ".(isset($_GET['scrollTop'])? $_GET['scrollTop']:0)."+ '&scrollTopInst=' + $(window).scrollTop();
+        } else{
             document.location.href = $(this).attr('href');
         }
-    })
+    });
 ");
 
+$this->registerJs("
+   $(document).ready(function() {
+        window.scrollTo(0,".(isset($_GET['scrollTopInst'])? $_GET['scrollTopInst']:0).");
+    });");
 ?>
 
 <h1>Метрики устройства №<?= $id ?></h1>

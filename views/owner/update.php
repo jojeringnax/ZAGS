@@ -4,20 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Изменение настроек устройства № ' . $model->device_id;
-$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
+$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner', 'scrollTop' => (isset($_GET['scrollTop'])? $_GET['scrollTop']:0)]];
 $this->params['breadcrumbs'][] = ['label' => 'Редактирование устройства №'.$model->device_id];
-$this->registerJs("
-   $('.breadcrumb-item a').click(function(e){
-    e.preventDefault();
-    let num =".$_GET['scrollTop'].";
-    console.log(num)
-        if($(this).text() == 'Устройства') {
-            document.location.href = $(this).attr('href') + '&scrollTop='+num;
-        }else {
-            document.location.href = $(this).attr('href');
-        }
-    })
-");
 ?>
 <div class="container">
     <div class="row d-flex justify-content-center">
