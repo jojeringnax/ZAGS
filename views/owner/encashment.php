@@ -8,7 +8,18 @@
 $this->title = 'Инкассации устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
 $this->params['breadcrumbs'][] = ['label' => 'Инкассации устройства №'.$id];
-
+$this->registerJs("
+   $('.breadcrumb-item a').click(function(e){
+    e.preventDefault();
+    let num =".$_GET['scrollTop'].";
+    console.log(num)
+        if($(this).text() == 'Устройства') {
+            document.location.href = $(this).attr('href') + '&scrollTop='+num;
+        }else {
+            document.location.href = $(this).attr('href');
+        }
+    })
+");
 if(!empty($encashments)) $this->registerJs(
         "
         let ququ = [];
@@ -48,11 +59,11 @@ if(!empty($encashments)) $this->registerJs(
 </form> -->
 <form class="filter-data-encashment d-flex align-items-center" action="" method="">
     <div class="calendar">
-        <label for="date_first_encashment" class="d-flex align-items-center">От<input id="date_first_encashment" placeholder="enter date" type='text' class="item-datepicker form-control datepicker-here" data-position="right top" /></label>
-        <label for="date_second_encashment" class="d-flex align-items-center">До<input id="date_second_encashment" placeholder="enter date" type='text' class="item-datepicker form-control datepicker-here" data-position="right top" /></label>
+        <label for="date_first_encashment" class=" bmd-label-static">От<input id="date_first_encashment" placeholder="enter date" type='text' class="item-datepicker form-control datepicker-here" data-position="right top" /></label>
+        <label for="date_second_encashment" class=" bmd-label-static">До<input id="date_second_encashment" placeholder="enter date" type='text' class="item-datepicker form-control datepicker-here" data-position="right top" /></label>
     </div>
     <div class="btn-go d-flex align-items-center">
-        <input id="go-game" class="btn btn-success" type="submit" name="" value="GO!!!">
+        <input id="go-game" class="btn btn-primary btn-raised" type="submit" name="" value="GO!!!">
     </div>
 </form>
 <table class="table table-striped">

@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1>Пользователи</h1>
 
 <?php
-echo "<p><a class=\"btn btn-lg btn-success\" href = \"index.php?r=admin/add_user\" > Добавить пользователя </a></p>";
+echo "<p><a class=\"btn btn-lg btn-success\" href = \"index_cop_old.php?r=admin/add_user\" > Добавить пользователя </a></p>";
 ?>
 
 <?=

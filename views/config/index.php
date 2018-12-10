@@ -1,7 +1,14 @@
 <?php
 /* @var $this yii\web\View */
+$events = \app\models\Events::getEventsForTime(101);
 
-$config = \app\models\Config::findOne(82);
-if ($config === null) {
-    return 'Устройсто не найдено в БД';
-}
+?>
+<pre>
+    <?= var_dump($events) ?>
+</pre>
+<script>
+    new Tooltip(referenceElement, {
+        placement: 'top', // or bottom, left, right, and variations
+        title: "Top"
+    });
+</script>

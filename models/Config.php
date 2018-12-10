@@ -37,7 +37,7 @@ class Config extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['wedding_price', 'reprint_price', 'device_id', 'disabled', 'multitouch_enabled', 'quiet_time_start', 'quiet_time_end'], 'integer'],
+            [['wedding_price', 'reprint_price', 'device_id', 'disabled', 'multitouch_enabled','talisman_price','kinoselfie_price','quiet_time_start','quiet_time_end'], 'integer'],
             [['bills', 'description', 'log_level'], 'string', 'max' => 255]
         ];
     }
@@ -55,6 +55,8 @@ class Config extends \yii\db\ActiveRecord
             'bills' => 'Купюры',
             'multitouch_enabled' => 'Мультитач',
             'description' => 'Описание',
+            'kinoselfie_price' => 'Стоимость "Киноселфи"',
+            'talisman_price' => 'Стоимость "Талисмана"',
             'log_level' => 'Уровень логов',
             'quiet_time_start' => 'Начало тихого режима',
             'quiet_time_end' => 'Конец тихого режима',

@@ -16,18 +16,22 @@ $this->params['breadcrumbs'][] = $this->title;
 GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' => [
-        'wedding_price',
-        'reprint_price',
-        'device_id',
+        ['label'=>'Цена Свадьбы', 'value'=> 'wedding_price'],
+        ['label'=>'Цена повторной печати', 'value'=> 'reprint_price'],
         ['label' => 'Состояние аппарата', 'value' => function($model) {
             return $model->disabled ? "Включен" : "Выключен";
         }],
         ['label' => 'Мультитач', 'value' => function($model) {
             return $model->multitouch_enabled ? "Включен" : "Выключен";
         }],
+        'kinoselfie_price',
+        'talisman_price',
         'quiet_time_start',
         'quiet_time_end',
+        ['label'=>'Начало тихого режима', 'value'=> 'quiet_time_start'],
+        ['label'=>'Конец тихого режима', 'value'=> 'quiet_time_end'],
         ['label' => 'Количество тонера', 'value' => 'toner'],
+        ['label' => 'Купюры', 'value' => 'bills'],
         ['class' => \yii\grid\ActionColumn::className(),
             'buttons'=>[
                 'view'=>function ($url, $model) {

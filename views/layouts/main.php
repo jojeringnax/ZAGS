@@ -20,7 +20,6 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    
     <link rel="stylesheet" href="../web/js/air-datepicker/dist/css/datepicker.css">
 </head>
 <body>
@@ -36,16 +35,19 @@ AppAsset::register($this);
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'nav justify-content-end d-flex', 'style' => 'width:100%'],
+        'options' => ['class' => 'nav nav-tabs bg-dark justify-content-end d-flex', 'style' => 'width:100%'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index'], 'options' => ['class' => 'item-nav-li']],
+            ['label' => 'Главная', 'url' => ['/site/index'],
+
+            'linkOptions' => ['data-method' => 'post', 'class' => 'nav-link']
+            ],
             Yii::$app->user->isGuest ?
-                ['label' => 'Войти', 'url' => ['/site/login']] :
+                ['label' => 'Войти', 'url' => ['/site/login'],'linkOptions' => ['data-method' => 'post', 'class' => 'nav-link']] :
                 [
                     'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post'],
-                    'options' => ['class'=>'item-nav-li']
+                    'linkOptions' => ['data-method' => 'post', 'class' => 'nav-link'],
+                    'options' => ['class'=>'item-nav-li nav-item']
                 ],
         ],
     ]);

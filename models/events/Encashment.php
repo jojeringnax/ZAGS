@@ -28,6 +28,16 @@ class Encashment extends Events
         return self::find()->andWhere(['device_id' => $deviceId]);
     }
 
+
+    /**
+     * @param $deviceId
+     * @return array|null|\yii\db\ActiveRecord|self
+     */
+    public static function getLastEncashmentForDevice($deviceId)
+    {
+        return self::find()->andWhere(['device_id' => $deviceId])->orderBy('time DESC')->one();
+    }
+
     /**
      * @param $id
      * @return array|bool|null
@@ -36,7 +46,8 @@ class Encashment extends Events
     {
         $i = 0;
         $totalForEncashment = 0;
-        $paymentsAndEncashments = Events::find()->where(array_merge(['device_id' => $id], array_merge_recursive(Encashment::CONDITION, Payment::CONDITION)))->orderBy('time ASC')->all();
+        $paymentsAndEncashments = Events::find()->
+            where(array_merge(['device_id' => $id], array_merge_recursive(Encashment::CONDITION, Payment::CONDITION)))->orderBy('time DESC')->all();
         if ($paymentsAndEncashments === null) {return false;}
         foreach ($paymentsAndEncashments as $event) {
             if($event->name == self::CONDITION['name']) {

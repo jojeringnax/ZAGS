@@ -3,10 +3,20 @@
 namespace app\controllers;
 
 use app\models\Config;
+use app\models\CurrentStatus;
 use app\models\Events;
 use app\models\events\Encashment;
+use app\models\events\Game;
+use app\models\events\Kinoselfie;
+use app\models\events\Payment;
+use app\models\events\Talisman;
+use app\models\events\Wedding;
+use app\models\Licenses;
 use app\models\Log;
+use app\models\LoginForm;
+use app\models\Module;
 use app\models\Owner;
+use app\models\User;
 use function GuzzleHttp\Psr7\str;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
@@ -14,6 +24,7 @@ use yii\data\SqlDataProvider;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\db\Expression;
@@ -76,35 +87,60 @@ class OwnerController extends Controller
      */
     public function actionIndex()
     {
-        $count = Yii::$app->db->createCommand('SELECT COUNT(owners.id) FROM licenses JOIN owners ON (licenses.id=owners.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryScalar();
-
-        $table = array();
-        $set = Yii::$app->db->createCommand('SELECT owners.device_id AS device_id, licenses.license AS license, (NOW() - last_check) AS online, description, current_status.fill_wedding AS fill_wedding FROM licenses RIGHT JOIN owners ON (licenses.id=owners.device_id) RIGHT JOIN config ON (owners.device_id = config.device_id) LEFT JOIN current_status ON (config.device_id = current_status.device_id) WHERE owners.user_id = :userID', [':userID' => Yii::$app->user->id])->queryAll();
-
-        foreach ($set as $row) {
-            array_push($table, array(
-				'device_id' => $row['device_id'],
-				'license' => $row['license'],
-				'online' => $row['online'],
-				'description' => $row['description'],
-				'fill_wedding' => (is_null($row['fill_wedding']))?'н/д':$row['fill_wedding'],
-				'stacker' => max($this->getStackerContent($row['device_id']), $this->getStackerContent_new($row['device_id']))
-			));
+        if (Yii::$app->user->getIsGuest()) {
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->goBack();
+            }
+            return $this->render('/site/login', [
+                'model' => $model,
+            ]);
         }
-
-        $provider = new ArrayDataProvider([
-            'allModels' => $table,
-            'sort' => [
-                'attributes' => ['device_id'],
-            ],
-            'totalCount' => $count,
-            'pagination' => [
-                'pageSize' => 100,
-            ],
-        ]);
-
+        $owners = Owner::find()->where(['user_id' => Yii::$app->getUser()->id])->select(['device_id'])->all();
+        if ($owners == null) {
+            return $this->render('index', [
+                'data' => [],
+                'noOwner' => true
+            ]);
+        }
+        foreach($owners as $owner) {
+            $devicesArray[] = $owner->device_id;
+        }
+        $modules = Module::find()->where(['device_id' => $devicesArray])->all();
+        $money = Payment::getStackerForDevices($devicesArray);
+        $licenses = Licenses::findAll(['id' => $devicesArray]);
+        foreach ($licenses as $license) {
+            /** @var $modules Module[]*/
+            foreach($modules as $module) {
+                if ($module->device_id === $license->id) {
+                    $module->setUptimesNeeded();
+                    $resultArray[$license->id][$module->name . '_uptime_yesterday'] = $module->uptime_yesterday;
+                    $resultArray[$license->id][$module->name . '_uptime_today'] = $module->uptime_today;
+                    $resultArray[$license->id][$module->name . '_uptime_month'] = $module->uptime_month;
+                    $resultArray[$license->id][$module->name . '_status'] = $module->status;
+                    $founded = true;
+                }
+            }
+            if (!isset($founded)) {
+                foreach (Module::NAMES as $name) {
+                    $resultArray[$license->id][$name.'_uptime_yesterday'] = 'not set';
+                    $resultArray[$license->id][$name.'_uptime_today'] = 'not set';
+                    $resultArray[$license->id][$name.'_uptime_month'] = 'not set';
+                    $resultArray[$license->id][$name.'_status'] = 'not set';
+                }
+            }
+            $resultArray[$license->id]['stacker'] = !isset($money['stacker'][$license->id]) ? $money['stacker'] : $money['stacker'][$license->id];
+            $resultArray[$license->id]['profit'] = !isset($money['profit'][$license->id]) ? $money['profit'] : $money['profit'][$license->id];
+            $currentStatus = $license->getCurrentStatus();
+            $config = $license->getConfig();
+            $resultArray[$license->id]['license'] = $license->license;
+            $resultArray[$license->id]['online'] = (strtotime(date('Y-m-d H:i:s')) - strtotime($license->last_check)) > 180 ? 'Оффлайн' : 'Онлайн';
+            $resultArray[$license->id]['description'] = $config->description;
+            $resultArray[$license->id]['fill_wedding'] = $currentStatus->fill_wedding;
+            $resultArray[$license->id]['printer_media_count'] = $currentStatus->printer_media_count;
+        }
         return $this->render('index', [
-            'dataProvider' => $provider,
+            'data' => $resultArray
         ]);
     }
 
@@ -165,14 +201,24 @@ class OwnerController extends Controller
      * @param $id
      * @return string
      */
-    public function actionView($id)
+    public function actionView($id, $timeFrom=null, $timeTo=null)
     {
-        $timeFrom = new \DateTime();
-        $timeFrom->setDate(date('Y'), date('m') - 1, 1);
-        $timeTo = new \DateTime();
+        if($timeFrom === null && $timeTo === null) {
+            $timeFrom = \DateTime::createFromFormat('Y-m-d H:i:s', Events::getTimeOfFirstEvent());
+            $timeTo = new \DateTime();
+        } else if ($timeFrom === null) {
+            $timeFrom = \DateTime::createFromFormat('Y-m-d H:i:s', Events::getTimeOfFirstEvent());
+        } else if ($timeTo === null) {
+            $timeTo = new \DateTime();
+        } else {
+            $timeFrom = \DateTime::createFromFormat('Y-m-d', $timeFrom);
+            $timeTo = \DateTime::createFromFormat('Y-m-d', $timeTo);
+        }
+        $timeTo->modify('+1 day');
+        $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
+        $timeTo->modify('-1 day');
         $resultArray[$timeTo->format('Y-m-d')] = [];
         $diff = $timeTo->diff($timeFrom)->days;
-        $events = Events::getEventsForTime($id, $timeFrom->format('Y-m-d'), $timeTo->format('Y-m-d'));
         for($i=0;$i < $diff; $i++) {
             $timeTo->modify('-1 day');
             $resultArray[$timeTo->format('Y-m-d')] = [];
@@ -180,25 +226,40 @@ class OwnerController extends Controller
         foreach($events as $event) {
             $resultArray[date('Y-m-d', strtotime($event->time))][] = $event;
         }
-        $oldMonthNumber = date('m', strtotime(array_keys($resultArray)[0]));
-        $totalMonthMoney = 0;
-        $totalMonthCashless = 0;
+        $oldMonthNumber = date('m_Y');
         $totalesMonthMoney = [];
         $totalesMonthMoney[$oldMonthNumber] = array(
             'Money' => 0,
-            'Cashless' => 0
+            'Cashless' => 0,
+            'Games' => 0,
+            'Weddings' => 0,
+            'Kinoselfies' => 0,
+            'Talismans' => 0
         );
 
         foreach ($resultArray as $data => $events) {
-            $currentMonthNumber = date('m', strtotime($data));
+            $currentMonthNumber = date('m_Y', strtotime($data));
             if ($currentMonthNumber !== $oldMonthNumber) {
                 $totalesMonthMoney[$currentMonthNumber] = array(
                     'Money' => 0,
-                    'Cashless' => 0
+                    'Cashless' => 0,
+                    'Games' => 0,
+                    'Weddings' => 0,
+                    'Kinoselfies' => 0,
+                    'Talismans' => 0
                 );
             }
             $array = [];
             foreach($events as $event) {
+                if(in_array($event->name, Game::getCondition()['name'])) {
+                    if (in_array($event->name, Wedding::CONDITION['name']))
+                        $totalesMonthMoney[$currentMonthNumber]['Weddings'] += 1;
+                    if ($event->name === Kinoselfie::CONDITION['name'])
+                        $totalesMonthMoney[$currentMonthNumber]['Kinoselfies'] += 1;
+                    if ($event->name === Talisman::CONDITION['name'])
+                        $totalesMonthMoney[$currentMonthNumber]['Talismans'] += 1;
+                    $totalesMonthMoney[$currentMonthNumber]['Games'] += 1;
+                }
                 $array[$event->name][] = $event;
             }
             if (isset($array['Money'])) {
@@ -214,10 +275,26 @@ class OwnerController extends Controller
             $resultArray[$data] = $array;
             $oldMonthNumber = $currentMonthNumber;
         }
+
+
         return $this->render('view', [
             'id' => $id,
             'events' => isset($resultArray) ? $resultArray : null,
             'totales' => isset($totalesMonthMoney) ? $totalesMonthMoney : null,
+            'monthName' => array(
+                1 => 'Январь',
+                2 => 'Февраль',
+                3 => 'Март',
+                4 => 'Апрель',
+                5 => 'Май',
+                6 => 'Июнь',
+                7 => 'Июль',
+                8 => 'Август',
+                9 => 'Сентябрь',
+                10 => 'Октябрь',
+                11 => 'Ноябрь',
+                12 => 'Декабрь',
+            )
         ]);
     }
 
@@ -230,7 +307,7 @@ class OwnerController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['config', 'id' => $model->device_id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -304,6 +381,13 @@ class OwnerController extends Controller
 
         return $this->render('encashment' ,[
             'encashments' => $encashments,
+            'id' => $id
+        ]);
+    }
+
+    public function actionInstagram($id)
+    {
+        return $this->render('instagram' ,[
             'id' => $id
         ]);
     }

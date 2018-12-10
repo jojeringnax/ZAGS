@@ -26,7 +26,6 @@ a.desc:after {
   margin-left: 10px; }
 
 .page-item span {
-  margin-left: 0;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   position: relative;
@@ -110,12 +109,16 @@ a.desc:after {
   .filter-data-encashment .calendar label .item-datepicker {
     margin-left: 10px; }
 
-#date_second_encashment {
-  margin-top: 10px; }
-
 .item-statistics-filter {
   margin-left: 25px;
   height: 40px; }
+
+.checkbox label .checkbox-decorator .check, label.checkbox-inline .checkbox-decorator .check {
+  width: 1rem !important;
+  height: 1rem !important; }
+  .checkbox label .checkbox-decorator .check:before, label.checkbox-inline .checkbox-decorator .check:before {
+    margin-top: -6px !important;
+    margin-left: 6px !important; }
 
 .checkbox-inp-stat:checked {
   background: #337ab7;
@@ -124,6 +127,173 @@ a.desc:after {
   border-color: rgba(0, 0, 0, 0.26); }
 
 .month_before {
-  padding: 10px 15px 10px 15px; }
+  padding: 10px 15px 10px 15px;
+  margin-top: 10px;
+  background-color: #eee; }
+  .month_before .collapse-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold; }
+  .month_before div table {
+    border: 2.5px solid #ddd;
+    border-radius: 3px; }
+
+.card div {
+  overflow: auto; }
+
+/*======================owner-views=================================*/
+.input-update {
+  border: 0;
+  font-size: 16px !important;
+  color: #495057 !important;
+  outline: none;
+  width: 100%;
+  text-align-last: center;
+  border-right: 1px solid slategray;
+  padding: 5px 0 5px 0; }
+
+.select-update {
+  border: 0;
+  font-size: 16px !important;
+  outline: none;
+  width: 100%;
+  text-align-last: center;
+  border-right: 1px solid slategray;
+  padding: 5px 0 5px 0; }
+
+.uptime-select {
+  border: 0;
+  font-size: 16px !important;
+  color: #495057 !important;
+  outline: none;
+  width: 100%;
+  text-align-last: center;
+  padding: 5px 0 5px 0; }
+
+.elem-card {
+  width: 32%;
+  margin: 30px 0 0 0; }
+  .elem-card .bg-primary .elem-th span {
+    color: white;
+    font-size: 20px; }
+  .elem-card .bg-primary .elem-td span {
+    color: white;
+    font-size: 20px; }
+
+.content-cards .elem-card-inf div .elem-th {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 3px 5px;
+  border: 1px solid rgba(19, 0, 16, 0.31); }
+  .content-cards .elem-card-inf div .elem-th span {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+.content-cards .elem-card-inf div .elem-td {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgba(19, 0, 16, 0.31); }
+  .content-cards .elem-card-inf div .elem-td select {
+    text-align-last: center; }
+  .content-cards .elem-card-inf div .elem-td span {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .content-cards .elem-card-inf div .elem-td .state-td {
+    border-right: 2px solid rgba(19, 0, 16, 0.31);
+    padding: 3px 5px;
+    width: 50%;
+    text-align: center; }
+  .content-cards .elem-card-inf div .elem-td .state-pr {
+    padding: 3px 5px;
+    width: 50%;
+    text-align: center; }
+
+#change-form-device div .th-card-inf {
+  width: 48%; }
+
+.td-card-inf {
+  width: 40%; }
+
+.buttons {
+  width: 12%; }
+  .buttons .btn-set a span {
+    font-size: 22px; }
+
+#change-form-device .card-header {
+  color: white;
+  font-size: 22px;
+  font-weight: bold; }
+#change-form-device .content-update div .elem-th {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid lightslategray;
+  font-size: 16px; }
+  #change-form-device .content-update div .elem-th span {
+    display: flex;
+    align-items: center;
+    font-size: 16px; }
+#change-form-device .content-update div .elem-td {
+  width: 50%;
+  border: 1px solid lightslategray;
+  font-size: 16px; }
+  #change-form-device .content-update div .elem-td span {
+    display: flex;
+    align-items: center;
+    font-size: 16px; }
+  #change-form-device .content-update div .elem-td .form-group {
+    margin: 0; }
+#change-form-device div .elem-card-inf .elem-th span {
+  font-size: 16px !important; }
+#change-form-device div .elem-card-inf .elem-td {
+  font-size: 16px !important; }
+  #change-form-device div .elem-card-inf .elem-td span {
+    font-size: 16px !important; }
+  #change-form-device div .elem-card-inf .elem-td .bills-change-page {
+    width: 100%; }
+#change-form-device #btn-change-form-device {
+  margin: 0; }
+  #change-form-device #btn-change-form-device button {
+    width: 100%;
+    height: 100%;
+    margin: 0; }
+
+#bills .form-group {
+  width: 100%; }
+
+#state-device .form-group {
+  width: 100%; }
+
+#talisman-change .form-group {
+  width: 100%; }
+
+.change-form {
+  margin-bottom: 0; }
+
+#descriptions-device .form-group {
+  width: 100%; }
+
+#wrap_cards {
+  justify-content: space-between; }
+
+@media screen and (max-width: 560px) {
+  .elem-card {
+    width: 90%; }
+
+  .card-header {
+    justify-content: center !important; }
+
+  #wrap_cards {
+    justify-content: center; }
+
+  #change-form-device div .th-card-inf {
+    width: 80% !important; }
+    #change-form-device div .th-card-inf .elem-th span {
+      font-size: 14px !important; } }
 
 /*# sourceMappingURL=style.css.map */

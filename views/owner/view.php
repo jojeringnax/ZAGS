@@ -6,173 +6,269 @@
  */
 $bin = false;
 $sum_game = 0;
-$mounthName = array(
-    1 => 'Январь',
-    2 => 'Февраль',
-    3 => 'Март',
-    4 => 'Апрель',
-    5 => 'Май',
-    6 => 'Июнь',
-    7 => 'Июль',
-    8 => 'Август',
-    9 => 'Сентябрь',
-    10 => 'Октябрь',
-    11 => 'Ноябрь',
-    12 => 'Декабрь',
-);
+use yii\helpers\Url;
+
+
 $dateTime = DateTime::createFromFormat('Y-m-d', array_keys($events)[0]);
 $this->title = 'Метрики устройства №'.$id;
-$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
+$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner&']];
 $this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id];
 
-?>
-<h1>Метрики устройства №<?= $id ?></h1>
-<form class="filter-statistics" action="" method="">
-    <div class="filter-checlbox d-flex flex-wrap">
-        <label class="item-statistics-filter d-flex align-items-center" for="data"><input id="data" checked class="checkbox-inp-stat" value="data" type="checkbox" aria-label="Checkbox for following text input">Дата</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="sum_total"><input id="sum_total" checked class="checkbox-inp-stat" value="sum_total" type="checkbox" aria-label="Checkbox for following text input">Оборот (всего)</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="sum_cash"><input id="sum_cash" checked class="checkbox-inp-stat" value="sum_cash" type="checkbox" aria-label="Checkbox for following text input">Оборот (нал)</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="sum_cashless"><input id="sum_cashless" checked class="checkbox-inp-stat" value="sum_cashless" type="checkbox" aria-label="Checkbox for following text input">Оборот (без/нал)</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="amount_of_wed"><input id="amount_of_wed" checked class="checkbox-inp-stat" value="amount_of_wed" type="checkbox" aria-label="Checkbox for following text input">Игр "Свадьба"</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="conversion_of_wedding"><input id="conversion_of_wedding" checked class="checkbox-inp-stat" value="conversion_of_wedding" type="checkbox" aria-label="Checkbox for following text input">Конверсия "Свадьбы"</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="amount_of_talisman"><input id="amount_of_talisman" checked class="checkbox-inp-stat" value="amount_of_talisman" type="checkbox" aria-label="Checkbox for following text input">Игр "Талисман"</label>
-        <label class="item-statistics-filter d-flex align-items-center" for="conversion_of_talisman"><input id="conversion_of_talisman" checked class="checkbox-inp-stat" value="conversion_of_talisman" type="checkbox" aria-label="Checkbox for following text input">Конверсия "Талисманов"</label>
-        <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="#3" type="checkbox" aria-label="Checkbox for following text input">Игра№3</label>
-        <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="#4" type="checkbox" aria-label="Checkbox for following text input">Игра№4</label>
-        <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="#5" type="checkbox" aria-label="Checkbox for following text input">Игра№5</label>
-        <label class="item-statistics-filter d-flex align-items-center" for=""><input id="" checked class="checkbox-inp-stat" value="$6" type="checkbox" aria-label="Checkbox for following text input">Игра№6</label>
-        <!-- <input id="stat-filter" class="btn btn-success" type="submit" name="" value="GO!!" style="margin-left: 30px; height: 40px; border-bottom: 0.5rem"> -->
-    </div>
-</form>
+$this->registerJs("
+   $('.breadcrumb-item a').click(function(e){
+    e.preventDefault();
+    let num =".$_GET['scrollTop'].";
+    console.log(num)
+        if($(this).text() == 'Устройства') {
+            document.location.href = $(this).attr('href') + '&scrollTop='+num;
+        }else {
+            document.location.href = $(this).attr('href');
+        }
+    })
+");
 
-<div class="month_current card">
-    <a class="" data-toggle="collapse" href="#month_<?= $dateTime->format('m_Y') ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <?= $mounthName[$dateTime->format('m')] ?> - Оборот наличными: <?= $totales[$dateTime->format('m')]['Money'] ?> - Оборот б/нал: <?= $totales[$dateTime->format('m')]['Cashless'] ?> - Оборот всего: <?= $totales[$dateTime->format('m')]['Cashless'] + $totales[$dateTime->format('m')]['Money'] ?>
+?>
+
+<h1>Метрики устройства №<?= $id ?></h1>
+<form class="filter-statistics bmd-form-group d-flex flex-wrap" action="" method="">
+    <div class="filter-checlbox d-flex flex-wrap">
+        <!--        <div class="checkbox">
+                    <label class="item-statistics-filter" for="data">
+                        <input id="conversion" class="checkbox-inp-stat" value="data" type="checkbox" aria-label="Checkbox for following text input">
+                        <span class="checkbox-decorator">
+                            <span class="check"></span>
+                        </span>
+                        <span style="margin-top: -3px; display: block">Показать конверсию</span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="item-statistics-filter" for="sum_total">
+                        <input id="cash" class="checkbox-inp-stat" value="sum_total" type="checkbox" aria-label="Checkbox for following text input">
+                        <span class="checkbox-decorator">
+                            <span class="check"></span>
+                        </span>
+                        <span style="margin-top: -3px; display: block">Показать только наличные</span>
+                    </label>
+                </div>-->
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="conversion">
+                <input id="conversion" class="checkbox-inp-stat" value="conversion" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Показать конверсию</span>
+            </label>
+        </div>
+        <div class="checkbox">
+            <label class="item-statistics-filter" for="cash">
+                <input id="cash" class="checkbox-inp-stat" value="cash" type="checkbox" aria-label="Checkbox for following text input">
+                <span class="checkbox-decorator">
+                    <span class="check"></span>
+                </span>
+                <span style="margin-top: -3px; display: block">Показать только наличные</span>
+            </label>
+        </div>
+    </div>
+    <!--        <div class="checkbox">
+                <label class="item-statistics-filter" for="amount_of_wed">
+                    <input id="amount_of_wed" checked class="checkbox-inp-stat" value="amount_of_wed" type="checkbox" aria-label="Checkbox for following text input">
+                    <span class="checkbox-decorator">
+                        <span class="check"></span>
+                    </span>
+                    <span style="margin-top: -3px; display: block">Игр "Свадьба"</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label class="item-statistics-filter" for="conversion_of_wedding">
+                    <input id="conversion_of_wedding" checked class="checkbox-inp-stat" value="conversion_of_wedding" type="checkbox" aria-label="Checkbox for following text input">
+                    <span class="checkbox-decorator">
+                        <span class="check"></span>
+                    </span>
+                    <span style="margin-top: -3px; display: block">Конверсия "Свадьбы"</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label class="item-statistics-filter" for="amount_of_talisman">
+                    <input id="amount_of_talisman" checked class="checkbox-inp-stat" value="amount_of_talisman" type="checkbox" aria-label="Checkbox for following text input">
+                    <span class="checkbox-decorator">
+                        <span class="check"></span>
+                    </span>
+                    <span style="margin-top: -3px; display: block">Игр "Талисман"</span>
+                </label>
+            </div>
+            <div class="checkbox">
+                <label class="item-statistics-filter" for="conversion_of_talisman">
+                    <input id="conversion_of_talisman" checked class="checkbox-inp-stat" value="conversion_of_talisman" type="checkbox" aria-label="Checkbox for following text input">
+                    <span class="checkbox-decorator">
+                        <span class="check"></span>
+                    </span>
+                    <span style="margin-top: -3px; display: block">Конверсия "Талисманов"</span>
+                </label>
+            </div>-->
+</form>
+<?php
+$flag = true;
+foreach ($events as $data => $eventArray) {
+$sumCash = 0;
+$sumCashless = 0;
+$sumWeddings1 = 0;
+$sumWeddings2 = 0;
+$sumWeddings = 0;
+$sumTalisman = 0;
+$sumWeddingsReprint = 0;
+$sumKinoselfieReprint = 0;
+$sumWeddingsReprint1 = 0;
+$sumWeddingsReprint2 = 0;
+$sumKinoselfie = 0;
+$wedPayView = 0;
+$talPayView = 0;
+if(date('m', strtotime($data)) !== $dateTime->format('m')) {
+    if ($totales[date('m_Y', strtotime($data))]['Games'] === 0 && ($totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money']) === 0) {
+        continue;
+    }
+    $flag = true;
+    ?>
+    </tbody></table></div></div>
+
+<?php }
+if ($flag) { ?>
+<div class="month_before card">
+    <a class="collapse-link" data-toggle="collapse" href="#month_<?= date('Y_m', strtotime($data)) ?>" role="button" aria-expanded=" <?= date('m_Y') === date('m_Y', strtotime($data))?>" aria-controls="collapseExample">
+        <?= $monthName[(integer)date('m', strtotime($data))] ?>
+        - Оборот всего: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money'] ?>
+        - Оборот нал: <?= $totales[date('m_Y', strtotime($data))]['Money'] ?>
+        - Оборот б/нал: <?= $totales[date('m_Y', strtotime($data))]['Cashless'] ?>
+        - Игр: <?= $totales[date('m_Y', strtotime($data))]['Games'] ?>
+        - Свадеб: <?= $totales[date('m_Y', strtotime($data))]['Weddings'] ?>
+        - Киноселфи: <?= $totales[date('m_Y', strtotime($data))]['Kinoselfies'] ?>
+        - Талисманов: <?= $totales[date('m_Y', strtotime($data))]['Talismans'] ?>
     </a>
-    <div class="collapse" id="month_<?= $dateTime->format('m_Y') ?>">
-        <?php
-        $flag = true;
-        foreach ($events as $data => $eventArray) {
-            if ($eventArray === []) {
+    <div class="collapse <?= date('m_Y') === date('m_Y', strtotime($data)) ? 'show' : ''?>" id="month_<?= date('Y_m', strtotime($data)) ?>">
+        <table class="table table-striped" style="margin-top:10px;">
+            <thead class="thead-light">
+            <tr style="font-size: 13px;" class="text-center">
+                <th class="text-center data" width="120" scope="col" style="vertical-align:middle;">Дата</th>
+                <th class="text-center conv_cash cash sum_total" scope="col">Выручка</th>
+                <th class="text-center conv_cash sum_cash" scope="col">Оборот (нал)</th>
+                <th class="text-center conv_cash cash sum_cashless" scope="col">Оборот (без/нал)</th>
+                <th class="text-center amount_of_wed" colspan="2" scope="col">Игр "Свадьба"</th>
+                <th class="text-center conversion hide conversion_of_wedding" scope="col">Конверсия "Свадьбы"</th>
+                <th class="text-center amount_of_selfie" colspan="2" scope="col">Селфи</th>
+                <th class="text-center conversion hide amount_of_selfie" scope="col">Конверсия Киноселфи</th>
+                <th class="text-center amount_of_talisman" scope="col">Игр "Талисман"</th>
+                <th class="text-center conversion hide conversion_of_talisman" scope="col">Конверсия "Талисманов"</th>
+                <th class="text-center amount_of_instargam" scope="col"><a href="<?= Url::to(['owner/instagram', 'id' => $id]) ?>">Instagram</a></th>
+                <th class="text-center conversion hide amount_of_instargam" scope="col">Конверсия Instagram</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php  } ?>
+            <tr class="data-metrics">
+                <td id="text-center data" class="data">
+                    <?= $data ?>
+                </td>
+                <?php
                 $sumCash = 0;
                 $sumCashless = 0;
-                $sumWeddings1 = 0;
-                $sumWeddings2 = 0;
-                $sumWeddings = 0;
-                $sumTalisman = 0;
-                $wedPayView = 1;
-                $talPayView = 1;
-            }
-            if(preg_split('/-/', $data)[1] !== $dateTime->format('m')) {
-                $flag = true;
-                ?>
-                </tbody></table></div></div>
-                <div class="month_before">
-            <?php }
-            if ($flag) { ?>
-                <table class="table table-striped" style="margin-top:10px;">
-                    <thead class="thead-light">
-                    <tr style="font-size: 13px;">
-                        <th class="data" scope="col">Дата</th>
-                        <th class="sum_total" scope="col">Оборот (всего)</th>
-                        <th class="sum_cash" scope="col">Оборот (нал)</th>
-                        <th class="sum_cashless" scope="col">Оборот (без/нал)</th>
-                        <th class="amount_of_wed" scope="col">Игр "Свадьба"</th>
-                        <th class="conversion_of_wedding" scope="col">Конверсия "Свадьбы"</th>
-                        <th class="amount_of_talisman" scope="col">Игр "Талисман"</th>
-                        <th class="conversion_of_talisman" scope="col">Конверсия "Талисманов"</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-            <?php  } ?>
-                <tr class="data-metrics">
-                    <td id="data" class="data">
-                        <?= $data ?>
-                    </td>
-                    <?php
-                    $sumCash = 0;
-                    $sumCashless = 0;
-                    foreach($eventArray as $eventName => $eventss) {
-                        if ($eventName == 'Money') {
-                            foreach ($eventss as $value) {
-                                $sumCash += $value->data;
-                            }
+                foreach($eventArray as $eventName => $eventss) {
+                    if ($eventName == 'Money') {
+                        foreach ($eventss as $value) {
+                            $sumCash += $value->data;
                         }
+                    }
 
-                        if ($eventName == 'Cashless') {
-                            foreach ($eventss as $value) {
-                                $sumCashless += $value->data;
-                            }
+                    if ($eventName == 'Cashless') {
+                        foreach ($eventss as $value) {
+                            $sumCashless += $value->data;
                         }
-                        if ($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
-                            $sumWeddings1 = count($eventss);
-                        }
+                    }
 
-                        if ($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
-                            $sumWeddings2 = count($eventss);
-                        }
+                    if ($eventName === app\models\events\Wedding::CONDITION['name'][0]) {
+                        $sumWeddings1 = count($eventss);
+                    }
 
-                        if ($eventName === app\models\events\Talisman::CONDITION['name']) {
-                            $sumTalisman = count($eventss);
-                        }
+                    if ($eventName === app\models\events\Wedding::CONDITION['name'][1]) {
+                        $sumWeddings2 = count($eventss);
+                    }
+
+                    if ($eventName === app\models\events\Talisman::CONDITION['name']) {
+                        $sumTalisman = count($eventss);
+                        echo '<script>console.log("Date: '.$data.' Talisman: '.count($eventss).'")</script>';
+                    }
 
 
-                        if ($eventName === app\models\events\TalismanPaymentView::CONDITION['name']) {
-                            $talPayView = count($eventss);
-                        }
+                    if ($eventName === app\models\events\TalismanPaymentView::CONDITION['name']) {
+                        $talPayView = count($eventss);
+                    }
 
-                        if ($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][0]) {
-                            $wedPayView1 = count($eventss);
-                        }
+                    if ($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][0]) {
+                        $wedPayView1 = count($eventss);
+                    }
 
-                        if ($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][1]) {
-                            $wedPayView2 = count($eventss);
-                        }
+                    if ($eventName === app\models\events\WeddingPaymentView::CONDITION['name'][1]) {
+                        $wedPayView2 = count($eventss);
+                    }
 
-                        $wedPayView = isset($wedPayView1) ? $wedPayView1 : 0  + isset($wedPayView2) ? $wedPayView2 : 0;
-                        $sumWeddings = isset($sumWeddings1) ? $sumWeddings1 : 0  + isset($sumWeddings2) ? $sumWeddings2 : 0;
-                    } ?>
-                    <?php if(!empty($events)) { ?>
-                        <td class="sum_total">
-                            <?= $sumCash + $sumCashless ?>
-                        </td>
-                        <td class="sum_cash">
-                            <?= isset($sumCash) ? $sumCash : 0 ?>
-                        </td>
-                        <td class="sum_cashless">
-                            <?= isset($sumCashless) ? $sumCashless : 0 ?>
-                        </td>
-                        <!-- <div class="game item-metrics"> -->
-                            <td class="amount_of_wed">
-                                <?= $sumWeddings ?>
-                            </td>
-                        <!-- </div> -->
+                    if ($eventName === app\models\events\WeddingReprint::CONDITION['name'][0]) {
+                        $sumWeddingsReprint1 = count($eventss);
+                    }
 
-                        <!-- <div id="" class="conversion item-metrics"> -->
-                            <td class="conversion_of_wedding">
-                                <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : '0.00%' ?>
-                            </td>
-                        <!-- </div> -->
+                    if ($eventName === app\models\events\WeddingReprint::CONDITION['name'][1]) {
+                        $sumWeddingsReprint2 = count($eventss);
+                    }
 
-                        <!-- <div class="game item-metrics"> -->
-                            <td class="amount_of_talisman">
-                                <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
-                            </td>
-                        <!-- </div> -->
+                    if ($eventName === app\models\events\KinoselfieReprint::CONDITION['name']) {
+                        $sumKinoselfieReprint = count($eventss);
+                    }
 
-                        <!-- <div id="" class="conversion item-metrics"> -->
-                            <td class=" conversion_of_talisman">
-                                <?= isset($talPayView) && isset($sumTalisman) ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
-                            </td>
-                        <!-- </div> -->
-                    </tr>
+                    if ($eventName === app\models\events\Kinoselfie::CONDITION['name']) {
+                        $sumKinoselfie = count($eventss);
+                    }
 
-                </div>
-                <?php
-                }
-                $dateTime->modify($data);
-                $flag = false;
-            } ?>
-        </tbody>
+                    $wedPayView = (isset($wedPayView1) ? $wedPayView1 : 0)  +  (isset($wedPayView2) ? $wedPayView2 : 0);
+                    $sumWeddings = (isset($sumWeddings1) ? $sumWeddings1 : 0)  + (isset($sumWeddings2) ? $sumWeddings2 : 0);
+                    $sumWeddingsReprint = (isset($sumWeddingsReprint1) ? $sumWeddingsReprint2 : 0)  + (isset($sumWeddingsReprint2) ? $sumWeddingsReprint2 : 0);
+                } ?>
+                <?php if(!empty($events)) { ?>
+                <td class="text-center conv_cash cash sum_total">
+                    <?= $sumCash + $sumCashless ?>
+                </td>
+                <td class="text-center conv_cash sum_cash">
+                    <?= isset($sumCash) ? $sumCash : 0 ?>
+                </td>
+                <td class="text-center conv_cash cash sum_cashless">
+                    <?= isset($sumCashless) ? $sumCashless : 0 ?>
+                </td>
+                <td class="text-center amount_of_wed"><?= $sumWeddings ?></td>
+                <td class="text-center amount_of_wed"><?= isset($sumWeddingsReprint) ? $sumWeddingsReprint : 0 ?></td>
+                <td class="text-center conversion hide conversion_of_wedding">
+                    <?= $wedPayView !== 0 ? number_format($sumWeddings / $wedPayView * 100, 2, '.', ' ') . '%' : '0.00%' ?>
+                </td>
+                <td class="text-center amount_of_kinoselfie"><?= $sumKinoselfie ?></td>
+                <td class="text-center amount_of_kinoselfie"><?= $sumKinoselfieReprint ?></td>
+                <td class="text-center conversion hide conversion_of_talisman">
+                    <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                </td>
+                <td class="text-center amount_of_talisman">
+                    <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+                </td>
+                <td class="text-center conversion hide conversion_of_talisman">
+                    <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                </td>
+                <td class="text-center amount_of_instagram">
+                    <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+                </td>
+                <td class="text-center conversion hide conversion_of_instagram">
+                    <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                </td>
+            </tr>
+    </div>
+    <?php
+    }
+    $dateTime->modify($data);
+    $flag = false;
+    } ?>
+    </tbody>
     </table>
+</div>
 </div>
