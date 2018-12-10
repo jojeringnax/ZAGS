@@ -281,12 +281,30 @@ a.desc:after {
 #wrap_cards {
   justify-content: space-between; }
 
+.field-config-description {
+  margin: 0 !important;
+  width: 100%; }
+  .field-config-description .input-update-description {
+    background-color: transparent;
+    color: white !important;
+    border: 0;
+    width: 100%; }
+
+.card-header {
+  flex-grow: 1; }
+  .card-header .elem-td {
+    flex-grow: 1 !important;
+    display: flex;
+    justify-content: center; }
+
 @media screen and (max-width: 560px) {
   .elem-card {
     width: 90%; }
 
   .card-header {
     justify-content: center !important; }
+    .card-header .elem-td {
+      flex-grow: 1 !important; }
 
   #wrap_cards {
     justify-content: center; }
