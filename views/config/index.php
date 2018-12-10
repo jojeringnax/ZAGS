@@ -1,12 +1,11 @@
 <?php
 /* @var $this yii\web\View */
-
-$uptimes = \app\models\Uptime::getForCurrentMonthForModule(1);
-var_dump($uptimes);
-
+$events = \app\models\Events::getEventsForTime(101);
 
 ?>
-
+<pre>
+    <?= var_dump($events) ?>
+</pre>
 <script>
     new Tooltip(referenceElement, {
         placement: 'top', // or bottom, left, right, and variations

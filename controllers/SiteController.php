@@ -132,32 +132,32 @@ class SiteController extends Controller
         $xml = new XmlBuilder();
         $xml->data
             ->wedding_price
-                ->val(isset($config->wedding_price) ? $config->wedding_price : null)
-                ->parents('data')
+            ->val(isset($config->wedding_price) ? $config->wedding_price : null)
+            ->parents('data')
             ->reprint_price
-                ->val(isset($config->reprint_price) ? $config->reprint_price : null)
-                ->parents('data')
+            ->val(isset($config->reprint_price) ? $config->reprint_price : null)
+            ->parents('data')
             ->talisman_price
-                ->val(isset($config->talisman_price) ? $config->talisman_price : null)
-                ->parents('data')
+            ->val(isset($config->talisman_price) ? $config->talisman_price : null)
+            ->parents('data')
             ->kinoselfie_price
-                ->val(isset($config->kinoselfie_price) ? $config->kinoselfie_price : null)
-                ->parents('data')
+            ->val(isset($config->kinoselfie_price) ? $config->kinoselfie_price : null)
+            ->parents('data')
             ->disabled
-                ->val(isset($config->disabled) ? $config->disabled : null)
-                ->parents('data')
+            ->val(isset($config->disabled) ? $config->disabled : null)
+            ->parents('data')
             ->bills
-                ->val('50,100,200,500')
-                ->parents('data')
+            ->val('50,100,200,500')
+            ->parents('data')
             ->multitouch_enabled
-                ->val(isset($config->multitouch_enabled) ? $config->multitouch_enabled : null)
-                ->parents('data')
+            ->val(isset($config->multitouch_enabled) ? $config->multitouch_enabled : null)
+            ->parents('data')
             ->quiet_time_start
-                ->val(isset($config->quiet_time_start) ? $config->quiet_time_start : null)
-                ->parents('data')
+            ->val(isset($config->quiet_time_start) ? $config->quiet_time_start : null)
+            ->parents('data')
             ->quiet_time_end
-                ->val(isset($config->quiet_time_end) ? $config->quiet_time_end : null)
-                ->parents('data');
+            ->val(isset($config->quiet_time_end) ? $config->quiet_time_end : null)
+            ->parents('data');
         $currentStatus = CurrentStatus::updateOrCreate($id);
         $currentStatus->device_id = $id;
         $currentStatus->last_update = date('Y-m-d H:i:s');
@@ -176,7 +176,10 @@ class SiteController extends Controller
     {
         $json = \GuzzleHttp\json_decode(Yii::$app->request->rawBody, true);
         foreach ($json as $array) {
+            $version = $array['Version'];
+            $date = $array['Date'];
             $deviceId = $array['DeviceId'];
+            $version = $array['Version'];
             $weddingDispenserIndex = $array['Wedding']['Dispenser'];
             $talismanDispenserIndex = $array['Talisman']['Dispenser'];
             foreach (Module::NAMES as $name) {
@@ -201,11 +204,33 @@ class SiteController extends Controller
                         $currentStatus->fill_wedding = $fillWedding;
                         $currentStatus->fill_talisman = $fillTalisman;
                     } else {
-                        Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
+                        Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, $date, $version, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
                     }
                 }
             }
         }
+        return 'Ok';
+    }
 
+
+    /**
+     * @return bool
+     */
+    public function actionDaily()
+    {
+        $json = \GuzzleHttp\json_decode(Yii::$app->request->rawBody, true);
+        foreach ($json as $array) {
+            $deviceId = $array['DeviceId'];
+            $date = $array['Date'];
+            foreach (Module::NAMES as $name) {
+                if (isset($array[ucfirst($name).'Operational'])) {
+                    if ($name === 'dispenser') {
+                        continue;
+                    }
+                    Module::findOrCreateAndUpdate($deviceId, $name, $array[ucfirst($name).'Operational'] / 1000, $date);
+                }
+            }
+        }
+        return 'Ok';
     }
 }

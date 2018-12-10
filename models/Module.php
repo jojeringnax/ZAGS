@@ -24,8 +24,9 @@ class Module extends \yii\db\ActiveRecord
     const STATUSES = array(
         'Работает',
         'Не работает',
-        'Возможно не работает',
-        'Отключен'
+        'Возможно работает',
+        'Отключен',
+        'Undefined'
     );
 
     const CREATED = 1;
@@ -108,7 +109,7 @@ class Module extends \yii\db\ActiveRecord
                 $uptimeYesterday = $uptime->uptime;
             }
         }
-        $uptimeAvgMonth = $sum/count($uptimes);
+        $uptimeAvgMonth = count($uptimes) !== 0 ? $sum/count($uptimes) : 0;
         $this->uptime_yesterday = round($uptimeYesterday, 2).'%';
         $this->uptime_today = round($uptimeToday, 2).'%';
         $this->uptime_month = round($uptimeAvgMonth, 2).'%';
@@ -147,8 +148,9 @@ class Module extends \yii\db\ActiveRecord
      * @param $error
      * @return int
      */
-    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $status, $error)
+    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $date, $version=null, $status=null, $error=null)
     {
+        $date = \DateTime::createFromFormat('d.m.Y', $date);
         $module = self::find()->where(['device_id' => $device_id, 'name' => $name])->one();
         if ($module === null) {
             $module = new self();
@@ -158,12 +160,14 @@ class Module extends \yii\db\ActiveRecord
         } else {
             $result = self::UPDATED;
         }
-        $module->status = $status;
-        $module->error = $error;
+        $module->status = $status === null ? $module->status : $status;
+        $module->error = $error === null ? $module->error : $error;
         $module->save();
         $uptimeEx = new Uptime();
         $uptimeEx->module_id = $module->id;
+        $uptimeEx->created_date = $date->format('Y-m-d H:i:s');
         $uptimeEx->uptime = $uptime;
+        $uptimeEx->version = $version;
         $uptimeEx->save();
         return $result;
     }

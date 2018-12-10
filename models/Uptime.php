@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Faker\Provider\DateTime;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -11,6 +12,7 @@ use yii\db\ActiveRecord;
  * @property int $module_id
  * @property string $created_date
  * @property int $uptime
+ * @property strinf $version
  *
  * @property Module $module
  */
@@ -32,6 +34,7 @@ class Uptime extends \yii\db\ActiveRecord
         return [
             [['module_id'], 'integer'],
             [['created_date'], 'safe'],
+            [['version'], 'string'],
             [['module_id'], 'exist', 'skipOnError' => true, 'targetClass' => Module::className(), 'targetAttribute' => ['module_id' => 'id']],
         ];
     }
@@ -54,19 +57,15 @@ class Uptime extends \yii\db\ActiveRecord
      */
     public function beforeSave($insert)
     {
-        if (!parent::beforeSave($insert)) {
-            return false;
-        }
-        if ($insert) {
-            $uptimeSameDay = self::isExistForTodayForModule($this->module_id);
-            if($uptimeSameDay === null) {
-                return true;
-            } else {
-                $uptimeSameDay->created_date = $this->created_date;
+        if($insert) {
+            $uptimeSameDay = self::isExistForDateForModule($this->module_id, date('Y-m-d', strtotime($this->created_date)));
+            if ($uptimeSameDay !== null) {
+				$uptimeSameDay->created_date = $this->created_date;
                 $uptimeSameDay->uptime = $this->uptime;
                 $uptimeSameDay->save();
                 return false;
             }
+            return true;
         }
         return true;
     }
@@ -93,10 +92,11 @@ class Uptime extends \yii\db\ActiveRecord
      * @param $moduleId
      * @return self|null|ActiveRecord
      */
-    public static function isExistForTodayForModule($moduleId)
+    public static function isExistForDateForModule($moduleId, $date)
     {
-        $date = new \DateTime();
-        $date->modify('-1 day');
-        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_date', $date->format('Y-m-d'), date('Y-m-d')])->one();
+        $dateFrom = \DateTime::createFromFormat('Y-m-d', $date);
+        $dateTo = \DateTime::createFromFormat('Y-m-d', $date);
+        $dateTo->modify('+1 day');
+        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_date', $dateFrom->format('Y-m-d'), $dateTo->format('Y-m-d')])->one();
     }
 }

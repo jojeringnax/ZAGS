@@ -72,7 +72,7 @@ class Events extends \yii\db\ActiveRecord
     public static function getEventsForTime($deviceId, $timeFrom = null, $timeTo = null)
     {
         $events = self::find()
-            ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION, Kinoselfie::CONDITION, KinoselfieReprint::CONDITION, WeddingReprint::CONDITION))
+            ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION, KinoselfieReprint::CONDITION, WeddingReprint::CONDITION))
             ->andWhere(['device_id' => $deviceId]);
         if($timeFrom !== null || $timeTo !== null) {
            $events->andWhere(['between', 'time', $timeFrom, $timeTo]);
