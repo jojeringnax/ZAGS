@@ -15,9 +15,10 @@ class m181129_090751_create_table_uptimes extends Migration
     public function safeUp()
     {
         $this->createTable($this->tableName, [
+            'id' => $this->primaryKey(),
             'module_id' => $this->integer(11),
-            'created_date' => $this->dateTime()->defaultExpression('CURRENT_TIMESTAMP'),
-            'uptime' => $this->integer(11)
+            'created_date' => $this->dateTime()->defaultExpression('CURRENT_TIMESTAMP on update current_timestamp'),
+            'uptime' => $this->float(2)
         ]);
 
         $this->addForeignKey(
