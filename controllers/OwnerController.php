@@ -177,38 +177,6 @@ class OwnerController extends Controller
 
     /**
      * @param $id
-     * @return int|mixed
-     */
-    public function getStackerContent_new($id)
-    {
-        $set = Events::find()->where(['device_id' => $id])->andWhere(['name'=>'Money'])->andWhere(new Expression('time > (select IfNull(max(time), \'01-01-01 00:00:00\') from events where name = \'Encashment\' AND device_id = ' . $id . ')'))->all();
-
-        $result = 0;
-        foreach ($set as $row)
-            $result = $result + $row->data;
-        return $result;
-    }
-
-    /**
-     * @param $id
-     * @return int|string
-     */
-    public function getStackerContent($id)
-    {
-        $set = Log::find()->where([ 'device_id' => $id ])->andWhere(['like', 'message', 'Recieved % rubles', false])->andWhere(new Expression('time > (select IfNull(max(time), \'01-01-01 00:00:00\') from logs where message = \'Stacker inserted\' AND device_id = '.$id.')'))->all();
-
-        $result = 0;
-        foreach ($set as $row)
-        {
-            preg_match_all('!\d+!', $row->message, $counts);
-            $result = $result + implode($counts[0]);
-        }
-        return $result;
-    }
-
-
-    /**
-     * @param $id
      * @return string
      */
     public function actionView($id, $timeFrom=null, $timeTo=null)
