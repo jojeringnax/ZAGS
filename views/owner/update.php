@@ -51,7 +51,10 @@ $this->params['breadcrumbs'][] = ['label' => 'Редактирование ус�
                     <div class="elem-th">
                         <span>Цена Instagram</span>
                     </div>
-                    <div id="instagram-change" class="elem-td">
+                    <div id="instagram-change" class="elem-td" style="width: 25%">
+                        <input type="text" class="input-update" value="0">
+                    </div>
+                    <div id="instagram-change" class="elem-td" style="width: 25%">
                         <input type="text" class="input-update" value="0">
                     </div>
                 </div>
