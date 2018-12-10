@@ -501,6 +501,25 @@ a.desc {
 #wrap_cards {
     justify-content: space-between;
 }
+.field-config-description {
+    margin: 0 !important;
+    width: 100%;
+    .input-update-description {
+        background-color: transparent;
+        color: white !important;
+        border: 0;
+        width: 100%;
+    }
+}
+
+.card-header {
+    flex-grow: 1;
+    .elem-td {
+        flex-grow: 1 !important;
+        display: flex;
+        justify-content: center;
+    }
+}
 
 @media screen and (max-width: 560px) {
 
@@ -509,6 +528,9 @@ a.desc {
     }
     .card-header {
         justify-content: center !important;
+        .elem-td {
+            flex-grow: 1 !important;
+        }
     }
     #wrap_cards {
         justify-content: center;

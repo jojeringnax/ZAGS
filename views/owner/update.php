@@ -4,20 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Изменение настроек устройства № ' . $model->device_id;
-$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
+$this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner', 'scrollTop' => (isset($_GET['scrollTop'])? $_GET['scrollTop']:0)]];
 $this->params['breadcrumbs'][] = ['label' => 'Редактирование устройства №'.$model->device_id];
-$this->registerJs("
-   $('.breadcrumb-item a').click(function(e){
-    e.preventDefault();
-    let num =".$_GET['scrollTop'].";
-    console.log(num)
-        if($(this).text() == 'Устройства') {
-            document.location.href = $(this).attr('href') + '&scrollTop='+num;
-        }else {
-            document.location.href = $(this).attr('href');
-        }
-    })
-");
 ?>
 <div class="container">
     <div class="row d-flex justify-content-center">
@@ -27,9 +15,9 @@ $this->registerJs("
                     'class' => 'change-form'
                 ]
             ]); ?>
-            <div class="bg-primary card-header d-flex justify-content-center" style="font-weight: bold">
-                <div class="elem-td text-center">
-                    <span> <?= $model->description ?></span>
+            <div class="bg-primary card-header d-flex justify-content-center" style="font-weight: bold; width: 100%">
+                <div class="elem-td text-center" style="width: 100%">
+                    <?= $form->field($model, 'description')->textInput(['class'=>'input-update input-update-description'])->label(false) ?>
                 </div>
             </div>
             <div class="content-update">
@@ -72,9 +60,9 @@ $this->registerJs("
                         <span>Состояние аппарата</span>
                     </div>
                     <div id="state-device" class="elem-td">
-<!--                       <?/*= $form->field($model, 'disabled', [
+                       <?= $form->field($model, 'disabled', [
                             'labelOptions' => [ 'class' => '']
-                        ])->DropDownList(['1' => 'Выключен', '0' => 'Включен'],['class' => 'select-update'])->label(false) */?>-->
+                        ])->DropDownList(['1' => 'Выключен', '0' => 'Включен'],['class' => 'select-update'])->label(false) ?>
                     </div>
                 </div>
                 <div class="d-flex">

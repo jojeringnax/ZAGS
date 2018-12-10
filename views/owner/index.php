@@ -58,7 +58,7 @@ $nameArray = [
         <div id="wrap_cards" class="row d-flex flex-wrap">
             <?php foreach($data as $id => $value) {?>
                 <div class='card elem-card d-flex'>
-                    <div class="bg-primary card-header d-flex justify-content-center">
+                    <div class="bg-primary card-header d-flex justify-content-center flex-grow-1">
                         <div class="elem-td">
                             <span><?= $value['description'] ?></span>
                         </div>

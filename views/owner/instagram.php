@@ -5,8 +5,22 @@ use yii\helpers\Html;
 
 $this->title = 'Метрики устройства №'.$id;
 $this->params['breadcrumbs'][] = ['label' => 'Устройства', 'url' => ['index', 'r' => 'owner']];
-$this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id, 'url' => ['index', 'r' => 'owner/view', 'id' => $id]];
+$this->params['breadcrumbs'][] = ['label' => 'Метрики устройства №'.$id, 'url' => ['view', 'r' => 'owner', 'id' => $id]];
 $this->params['breadcrumbs'][] = ['label' => 'Метрики Instagram устройства №'.$id];
+$this->registerJs("
+   $('.breadcrumb-item a').click(function(e){
+    e.preventDefault();
+    let num =".(isset($_GET['scrollTop'])? $_GET['scrollTop']:0).", num_inst =".(isset($_GET['scrollTopInst'])? $_GET['scrollTopInst']:0).";
+        if ($(this).text() == 'Метрики устройства №".$id."'){
+            document.location.href = $(this).attr('href')+ '&scrollTop=' +num + '&scrollTopInst='+num_inst  ;
+        } else if ($(this).text() == 'Устройства'){
+            document.location.href = $(this).attr('href')+ '&scrollTop=' +num;
+        } else {
+            document.location.href = $(this).attr('href');
+        }
+    })
+");
+
 ?>
 <div class="container">
     <div class="row">

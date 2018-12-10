@@ -134,7 +134,7 @@ $(document).ready(function(){
             console.log(valueQuiteStartTime, valueQuiteEndTime)
             $('#config-quiet_time_start').attr('value', valueQuiteStartTime);
             $('#config-quiet_time_end').attr('value',valueQuiteEndTime);
-        });*/
+        });
     function disInput(val) {
         if ($(val).val() === '1') {
             $(val).css({'background-color':'darkred', 'color':'white'});
@@ -147,7 +147,7 @@ $(document).ready(function(){
 
     $('#config-disabled').change(function(){
         disInput($(this));
-    });
+    });*/
     $('#state-on-off span').each(function() {
         if($(this).text() == 'Оффлайн') {
             $(this).parent().css({'background-color':'darkred'});
