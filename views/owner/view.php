@@ -229,7 +229,7 @@ if ($flag) { ?>
 
                     $wedPayView = (isset($wedPayView1) ? $wedPayView1 : 0)  +  (isset($wedPayView2) ? $wedPayView2 : 0);
                     $sumWeddings = (isset($sumWeddings1) ? $sumWeddings1 : 0)  + (isset($sumWeddings2) ? $sumWeddings2 : 0);
-                    $sumWeddingsReprint = (isset($sumWeddingsReprint1) ? $sumWeddingsReprint2 : 0)  + (isset($sumWeddingsReprint2) ? $sumWeddingsReprint2 : 0);
+                    $sumWeddingsReprint = (isset($sumWeddingsReprint1) ? $sumWeddingsReprint1 : 0)  + (isset($sumWeddingsReprint2) ? $sumWeddingsReprint2 : 0);
                 } ?>
                 <?php if(!empty($events)) { ?>
                 <td class="text-center conv_cash cash sum_total">
