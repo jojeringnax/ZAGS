@@ -258,10 +258,10 @@ if ($flag) { ?>
                     <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                 </td>
                 <td class="text-center amount_of_instagram">
-                    <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
+                    0
                 </td>
                 <td class="text-center conversion hide conversion_of_instagram">
-                    <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                    0
                 </td>
             </tr>
     </div>
