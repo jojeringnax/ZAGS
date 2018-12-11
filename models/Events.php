@@ -2,6 +2,7 @@
 
 namespace app\models;
 use app\models\events\Kinoselfie;
+use app\models\events\KinoselfiePaymentView;
 use app\models\events\KinoselfieReprint;
 use app\models\events\Payment;
 use app\models\events\Talisman;
@@ -72,7 +73,7 @@ class Events extends \yii\db\ActiveRecord
     public static function getEventsForTime($deviceId, $timeFrom = null, $timeTo = null)
     {
         $events = self::find()
-            ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION, KinoselfieReprint::CONDITION, WeddingReprint::CONDITION))
+            ->where(array_merge_recursive(Wedding::CONDITION, Payment::CONDITION, Talisman::CONDITION, Kinoselfie::CONDITION, TalismanPaymentView::CONDITION, WeddingPaymentView::CONDITION, KinoselfieReprint::CONDITION, WeddingReprint::CONDITION, KinoselfiePaymentView::CONDITION))
             ->andWhere(['device_id' => $deviceId]);
         if($timeFrom !== null || $timeTo !== null) {
            $events->andWhere(['between', 'time', $timeFrom, $timeTo]);
