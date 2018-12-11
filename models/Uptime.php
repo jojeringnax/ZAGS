@@ -60,6 +60,9 @@ class Uptime extends \yii\db\ActiveRecord
         if($insert) {
             $uptimeSameDay = self::isExistForDateForModule($this->module_id, date('Y-m-d', strtotime($this->created_date)));
             if ($uptimeSameDay !== null) {
+                if($uptimeSameDay->main) {
+                    return false;
+                }
 				$uptimeSameDay->created_date = $this->created_date;
                 $uptimeSameDay->uptime = $this->uptime;
                 $uptimeSameDay->save();

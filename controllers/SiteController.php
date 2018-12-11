@@ -204,7 +204,7 @@ class SiteController extends Controller
                         $currentStatus->fill_wedding = $fillWedding;
                         $currentStatus->fill_talisman = $fillTalisman;
                     } else {
-                        Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, $date, $version, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
+                        Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, $date,true, $version, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
                     }
                 }
             }

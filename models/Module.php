@@ -148,7 +148,7 @@ class Module extends \yii\db\ActiveRecord
      * @param $error
      * @return int
      */
-    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $date, $version=null, $status=null, $error=null)
+    public static function findOrCreateAndUpdate($device_id, $name, $uptime, $date, $main = false, $version=null, $status=null, $error=null)
     {
         $date = \DateTime::createFromFormat('d.m.Y', $date);
         $module = self::find()->where(['device_id' => $device_id, 'name' => $name])->one();
@@ -168,6 +168,7 @@ class Module extends \yii\db\ActiveRecord
         $uptimeEx->created_date = $date->format('Y-m-d H:i:s');
         $uptimeEx->uptime = $uptime;
         $uptimeEx->version = $version;
+        $uptimeEx->main = $main;
         $uptimeEx->save();
         return $result;
     }
