@@ -116,7 +116,7 @@ class SiteController extends Controller
      * @param $printer_media_count
      * @return XmlBuilder|string
      */
-    public function actionGet_config($id, $fill_wedding=null, $fill_talisman=null, $printer_media_count)
+    public function actionGet_config($id, $fill_wedding=null, $fill_talisman=null, $printer_media_count=null)
     {
         $license = Licenses::findOne($id);
         if($license === null) {
