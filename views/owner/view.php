@@ -124,6 +124,8 @@ $sumWeddingsReprint2 = 0;
 $sumKinoselfie = 0;
 $wedPayView = 0;
 $talPayView = 0;
+$selfPayView = 0;
+
 if(date('m', strtotime($data)) !== $dateTime->format('m')) {
     if ($totales[date('m_Y', strtotime($data))]['Games'] === 0 && ($totales[date('m_Y', strtotime($data))]['Cashless'] + $totales[date('m_Y', strtotime($data))]['Money']) === 0) {
         continue;
@@ -226,6 +228,9 @@ if ($flag) { ?>
                     if ($eventName === app\models\events\Kinoselfie::CONDITION['name']) {
                         $sumKinoselfie = count($eventss);
                     }
+                    if ($eventName === app\models\events\Kinoselfie::CONDITION['name']) {
+                        $selfPayView = count($eventss);
+                    }
 
                     $wedPayView = (isset($wedPayView1) ? $wedPayView1 : 0)  +  (isset($wedPayView2) ? $wedPayView2 : 0);
                     $sumWeddings = (isset($sumWeddings1) ? $sumWeddings1 : 0)  + (isset($sumWeddings2) ? $sumWeddings2 : 0);
@@ -248,8 +253,8 @@ if ($flag) { ?>
                 </td>
                 <td class="text-center amount_of_kinoselfie"><?= $sumKinoselfie ?></td>
                 <td class="text-center amount_of_kinoselfie"><?= $sumKinoselfieReprint ?></td>
-                <td class="text-center conversion hide conversion_of_talisman">
-                    <?= $talPayView !== 0 ? number_format($sumTalisman / $talPayView * 100, 2, '.', ' ') . '%' : 0 ?>
+                <td class="text-center conversion hide conversion_of_kinoselfie">
+                    <?= $selfPayView !== 0 ? number_format($sumKinoselfie / $selfPayView * 100, 2, '.', ' ') . '%' : 0 ?>
                 </td>
                 <td class="text-center amount_of_talisman">
                     <?= isset($sumTalisman) ? $sumTalisman : 0 ?>
