@@ -175,37 +175,48 @@ class SiteController extends Controller
     public function actionStatus()
     {
         $json = \GuzzleHttp\json_decode(Yii::$app->request->rawBody, true);
+        $version = $json['Statistics']['Version'];
+        $date = $json['Statistics']['Date'];
+        $deviceId = $json['Statistics']['DeviceId'];
+        $version = $json['Statistics']['Version'];
+        $weddingDispenserIndex = $json['Statistics']['Wedding']['Dispenser'];
+        $talismanDispenserIndex = $json['Statistics']['Talisman']['Dispenser'];
+        $dispensersArray = $json['Statistics']['Dispensers']['DispenserDevice'];
+        foreach ($dispensersArray as $disp) {
+            $dispArray[$disp['Index']] = [
+              'uptime' => $disp['Operational']/1000,
+              'status' => $disp['Status'],
+              'error' => $disp['ErrorCode'],
+              'fill' => $disp['Fill']
+            ];
+        }
+        $fillTalisman = isset($dispArray[$talismanDispenserIndex]['fill']) ? $dispArray[$talismanDispenserIndex]['fill'] : null;
+        $fillWedding = isset($dispArray[$talismanDispenserIndex]['fill']) ? $dispArray[$weddingDispenserIndex]['fill'] : null;
+        $currentStatus = CurrentStatus::updateOrCreate($deviceId);
+        $currentStatus->fill_talisman = $fillTalisman;
+        $currentStatus->fill_wedding = $fillWedding;
+        $currentStatus->save();
         foreach ($json as $array) {
-            $version = $array['Version'];
-            $date = $array['Date'];
-            $deviceId = $array['DeviceId'];
-            $version = $array['Version'];
-            $weddingDispenserIndex = $array['Wedding']['Dispenser'];
-            $talismanDispenserIndex = $array['Talisman']['Dispenser'];
             foreach (Module::NAMES as $name) {
-                if (isset($array[ucfirst($name)])) {
-                    if ($name === 'dispenser') {
-                        foreach ($array['Dispensers'] as $dispenser) {
-                            if ($dispenser['Index'] === $weddingDispenserIndex) {
-                                $fillWedding = $dispenser['Fill'];
-                            } else if ($dispenser['Index'] === $talismanDispenserIndex) {
-                                $fillTalisman = $dispenser['Fill'];
-                            } else {
-                                continue;
-                            }
+                if ($name === 'dispenser') {
+                    for ($i = 0; $i < 16; $i++) {
+                        if (!isset($dispArray[$i])) {
+                            continue;
                         }
-                        if (!isset($fillTalisman) || $fillTalisman == -1) {
-                            $fillTalisman = null;
+                        $module = Module::findOrCreateAndUpdate($deviceId, $name . '_' . $i, $dispArray[$i]['uptime'], $date, true, $version, $dispArray[$i]['status'], $dispArray[$i]['error']);
+                        if ($i == $talismanDispenserIndex) {
+                            $module->talisman = 1;
+                            $module->save();
                         }
-                        if (!isset($fillWedding) || $fillWedding == -1) {
-                            $fillWedding = null;
+                        if ($i == $weddingDispenserIndex) {
+                            $module->wedding = 1;
+                            $module->save();
                         }
-                        $currentStatus = CurrentStatus::updateOrCreate($deviceId);
-                        $currentStatus->fill_wedding = $fillWedding;
-                        $currentStatus->fill_talisman = $fillTalisman;
-                    } else {
-                        Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, $date,true, $version, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
                     }
+                    continue;
+                }
+                if (isset($array[ucfirst($name)])) {
+                    Module::findOrCreateAndUpdate((integer) $deviceId, $name, $array[ucfirst($name)]['Operational'] / 1000, $date,true, $version, (integer) $array[ucfirst($name)]['Status'], (integer) $array[ucfirst($name)]['ErrorCode']);
                 }
             }
         }
@@ -219,15 +230,19 @@ class SiteController extends Controller
     public function actionDaily()
     {
         $json = \GuzzleHttp\json_decode(Yii::$app->request->rawBody, true);
+        $deviceId = $json['DailyUptimes']['DeviceId'];
+        $date = $json['DailyUptimes']['Date'];
         foreach ($json as $array) {
-            $deviceId = $array['DeviceId'];
-            $date = $array['Date'];
             foreach (Module::NAMES as $name) {
-                if (isset($array[ucfirst($name).'Operational'])) {
-                    if ($name === 'dispenser') {
-                        continue;
+                if ($name === 'dispenser') {
+                    for ($i=0;$i<16;$i++) {
+                        if (isset($array[ucfirst($name).$i.'Operational'])) {
+                            Module::findOrCreateAndUpdate($deviceId, $name.'_'.$i, $array[ucfirst($name).$i.'Operational'] / 1000, $date);
+                        }
                     }
-                    Module::findOrCreateAndUpdate($deviceId, $name, $array[ucfirst($name).'Operational'] / 1000, $date);
+                }
+                if (isset($array[ucfirst($name) . 'Operational'])) {
+                    Module::findOrCreateAndUpdate($deviceId, $name, $array[ucfirst($name) . 'Operational'] / 1000, $date);
                 }
             }
         }

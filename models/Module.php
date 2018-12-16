@@ -144,9 +144,12 @@ class Module extends \yii\db\ActiveRecord
      * @param $device_id
      * @param $name
      * @param $uptime
-     * @param $status
-     * @param $error
-     * @return int
+     * @param $date
+     * @param bool $main
+     * @param null $version
+     * @param null $status
+     * @param null $error
+     * @return Module|array|null|\yii\db\ActiveRecord
      */
     public static function findOrCreateAndUpdate($device_id, $name, $uptime, $date, $main = false, $version=null, $status=null, $error=null)
     {
@@ -170,7 +173,7 @@ class Module extends \yii\db\ActiveRecord
         $uptimeEx->version = $version;
         $uptimeEx->main = $main;
         $uptimeEx->save();
-        return $result;
+        return $module;
     }
 
 

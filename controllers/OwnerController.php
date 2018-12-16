@@ -115,6 +115,12 @@ class OwnerController extends Controller
             foreach($modules as $module) {
                 if ($module->device_id === $license->id) {
                     $module->setUptimesNeeded();
+                    if ($module->wedding) {
+                        $resultArray[$license->id]['dispenser_uptime_yesterday'] = $module->uptime_yesterday;
+                        $resultArray[$license->id]['dispenser_uptime_today'] = $module->uptime_today;
+                        $resultArray[$license->id]['dispenser_uptime_month'] = $module->uptime_month;
+                        $resultArray[$license->id]['dispenser_status'] = $module->status;
+                    }
                     $resultArray[$license->id][$module->name . '_uptime_yesterday'] = $module->uptime_yesterday;
                     $resultArray[$license->id][$module->name . '_uptime_today'] = $module->uptime_today;
                     $resultArray[$license->id][$module->name . '_uptime_month'] = $module->uptime_month;
