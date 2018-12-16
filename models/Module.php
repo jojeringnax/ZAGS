@@ -26,7 +26,7 @@ class Module extends \yii\db\ActiveRecord
         'Не работает',
         'Возможно работает',
         'Отключен',
-        'Undefined'
+        'Неопределенное состояние'
     );
 
     const CREATED = 1;
