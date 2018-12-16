@@ -41,7 +41,7 @@ $this->registerJs("
                $(this).html(data);
            });
         });
-        window.scrollTo(0,".(isset($_GET['scrollTop'])? $_GET['scrollTop']:0).");
+            window.scrollTo(0,".(isset($_GET['scrollTop'])? $_GET['scrollTop']:0).");
     });");
 
 $nameArray = [
@@ -108,7 +108,7 @@ $nameArray = [
                                     </div>
                                     <div class='elem-td'>
                                         <div class="state-td">
-                                            <span><?= $value[$name.'_status'] ?></span>
+                                            <span><?= is_integer($value[$name.'_status']) ? \app\models\Module::STATUSES[$value[$name.'_status']] : $value[$name.'_status'] ?></span>
                                         </div>
                                         <div id="<?= $name ?>" data-id="<?= $id ?>" data-month="<?= $value[$name.'_uptime_month'] ?>" data-today = "<?= $value[$name.'_uptime_today'] ?>" data-yesterday = "<?= $value[$name.'_uptime_yesterday'] ?>" class="uptime state-pr"></div>
                                     </div>

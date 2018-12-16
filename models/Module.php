@@ -2,9 +2,6 @@
 
 namespace app\models;
 
-use function GuzzleHttp\Psr7\str;
-use Yii;
-
 /**
  * This is the model class for table "modules".
  *
@@ -26,7 +23,7 @@ class Module extends \yii\db\ActiveRecord
         'Не работает',
         'Возможно работает',
         'Отключен',
-        'Неопределенное состояние'
+        'Неопре&shy;деленное состояние'
     );
 
     const CREATED = 1;
