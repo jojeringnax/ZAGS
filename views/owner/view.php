@@ -228,7 +228,7 @@ if ($flag) { ?>
                     if ($eventName === app\models\events\Kinoselfie::CONDITION['name']) {
                         $sumKinoselfie = count($eventss);
                     }
-                    if ($eventName === app\models\events\Kinoselfie::CONDITION['name']) {
+                    if ($eventName === app\models\events\KinoselfiePaymentView::CONDITION['name']) {
                         $selfPayView = count($eventss);
                     }
 
