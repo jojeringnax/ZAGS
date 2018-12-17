@@ -88,7 +88,7 @@ class Uptime extends \yii\db\ActiveRecord
     public static function getForCurrentMonthForModule($moduleId)
     {
         $dayMore = date('d') + 1;
-        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_date', date('Y-m-0'), date('Y-m-'.$dayMore)])->all();
+        return self::find()->where(['module_id' => $moduleId])->andWhere(['between', 'created_date', date('Y-m-01'), date('Y-m-'.$dayMore)])->all();
     }
 
     /**
